@@ -11,6 +11,7 @@ const MyTextField = ({ ...props }) => {
           component={TextField}
           {...props}
           {...field}
+          variant="outlined"
       />
       {meta.errors && meta.touched ? (
         <div>{meta.errors}</div>) : null}

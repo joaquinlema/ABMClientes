@@ -2,11 +2,15 @@ import {combineReducers} from 'redux';
 import FormularioUsuarioReducer from './FormularioUsuarioReducer';
 import UsuarioReducer from './UsuarioReducer';
 import TaskReducer from './TaskReducer';
+import ClienteReducer from './ClienteReducer';
+import ClienteFormularioReducer from './ClienteFormularioReducer';
 
 const rootReducer =  combineReducers({
      FormularioUsuarioReducer,
      UsuarioReducer,
-     TaskReducer
+     TaskReducer,
+     ClienteFormularioReducer,
+     ClienteReducer
 });
 
 export default rootReducer;

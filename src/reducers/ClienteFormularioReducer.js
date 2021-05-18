@@ -7,7 +7,7 @@ const initialState = {
     loading: false,
     error: '',
 }
-const FormularioUsuarioReducer =  (state = initialState, action) => {
+const ClienteFormularioReducer =  (state = initialState, action) => {
     switch(action.type){
         case SET_ERROR:
             return {
@@ -25,4 +25,4 @@ const FormularioUsuarioReducer =  (state = initialState, action) => {
     }
 } 
 
-export default FormularioUsuarioReducer;
+export default ClienteFormularioReducer;
