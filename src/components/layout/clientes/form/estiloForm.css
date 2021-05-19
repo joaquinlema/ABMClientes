@@ -6,3 +6,6 @@
       letter-spacing: 0.5px !important;
       color: #002563 !important;
   }
+  form {
+    font-family: "Titillium Web";
+  }
