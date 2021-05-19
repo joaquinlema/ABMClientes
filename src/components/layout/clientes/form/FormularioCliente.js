@@ -7,11 +7,15 @@ import { Button, LinearProgress, Grid, Divider } from '@material-ui/core';
 import MyTextField from './textField/MyTextField';
 import * as Yup from "yup";
 import { makeStyles } from '@material-ui/core/styles';
+import './estiloForm.css';
 
 const useStyles = makeStyles((theme) => ({
     grid: {
       marginTop: '27px',
       paddingLeft: '20px'
+    },
+    headerInput:{
+        paddingLeft: '20px'
     },
     formulario:{
         width: '734px',
@@ -19,10 +23,20 @@ const useStyles = makeStyles((theme) => ({
     },
     textField:{
         width: '100%',
-        marginTop: '5px'
+        marginTop: '5px',
+
+    },
+    inputText:{ 
+        fontStyle: 'normal',
+        fontWeight: '400',
+        fontSize: '16px',
+        lineHeight: '18px',
+        letterSpacing: ' 0.5px',
+        color: '#002563'
     },
     botones: {
-        marginLeft: '29%'
+        marginLeft: '423px',
+        marginTop: '40px',
     },
     label:{
         marginLeft: '20px',
@@ -32,6 +46,15 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '16px',
         letterSpacing: '0.4px',
         color: 'rgba(0, 37, 99, 0.6)'
+    },
+    labelCV:{
+        marginLeft: '20px',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        lineHeight: '18px',
+        letterSpacing: '0.5px',
+        color: '#414141',
     },
     titulo:{
         marginLeft: '20px',
@@ -50,6 +73,30 @@ const useStyles = makeStyles((theme) => ({
     },
     tipo: {
         alignSelf: 'center'
+    },
+    botonCancelar:{
+        color:'#5974FB',
+        width:'52px',
+        fontStyle: 'normal',
+        fontWeight: '700',
+        fontSize: '14px',
+        lineHeight: '16px',
+        textAlign: 'center',
+        textTransform: 'none'
+    },
+    botonGuardar:{
+        background: '#5974FB',
+        borderRadius: '4px',
+        width: '215px',
+        height: '40px',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: '14px',
+        lineHeight: '16px',
+        textAlign: 'center',
+        color: '#FFFFFF',
+        marginLeft: '31px',
+        textTransform: 'none'
     }
   }));
 
@@ -141,21 +188,21 @@ const FormularioCliente = () => {
   
                             <Divider variant="middle" className={classes.divider}/>
 
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                            <Grid item xs={3} md={3} lg={3} className={classes.headerInput}>
                                 {' '}
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
-                                <label>Clearing</label>    
+                            <Grid item xs={3} md={3} lg={3} className={classes.headerInput}>
+                                <label className={classes.label}>Clearing</label>    
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
-                                <label>Comision</label>    
+                            <Grid item xs={3} md={3} lg={3} className={classes.headerInput}>
+                                <label className={classes.label}>Comision</label>    
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
-                                <label>Tasa Mensual</label>
+                            <Grid item xs={3} md={3} lg={3} className={classes.headerInput}>
+                                <label className={classes.label}>Tasa Mensual</label>
                             </Grid>
 
                             <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo}>
-                                {'Compra'}
+                                <label className={classes.labelCV}>Compra</label>
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid}>
                                 <MyTextField   name="clearingCompra" type="text"  />
@@ -168,7 +215,7 @@ const FormularioCliente = () => {
                             </Grid>
 
                             <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo}>
-                                {'Venta'}
+                                <label className={classes.labelCV}>Venta</label>
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid}>
                                 <MyTextField   name="clearingVenta" type="text"  />
@@ -185,21 +232,19 @@ const FormularioCliente = () => {
                             </Grid>
 
                             <Grid item xs={12} md={12} lg={12} className={classes.botones}>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    disabled={isSubmitting}
-                                    onClick={submitForm}
-                                >
-                                     guardar{/* {editStatus ? 'Actualizar' : 'Guardar'} */}
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    color="secondary"
-                                    disabled={isSubmitting}
-                                   // onClick={() => { dispatch(abrirFormulario(false));}}
+                                <Button size="small" className={classes.botonCancelar} disabled={isSubmitting} 
+                                // onClick={() => { dispatch(abrirFormulario(false));}}
                                 >
                                     Cancelar
+                                </Button>
+                                
+                                <Button
+                                    variant="contained"
+                                    disabled={isSubmitting}
+                                    onClick={submitForm}
+                                    className={classes.botonGuardar}
+                                >
+                                     Crear{/* {editStatus ? 'Actualizar' : 'Guardar'} */}
                                 </Button>
                             </Grid>
                         </Grid>

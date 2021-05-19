@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "date-fns": "^2.17.0",
+    "fontsource-titillium-web": "^4.0.0",
     "formik": "^2.2.6",
     "formik-material-ui": "^3.0.1",
     "formik-material-ui-lab": "0.0.8",
