@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '31px',
         marginBottom: '32px',
         marginLeft: '24px'
+    },
+    tipo: {
+        alignSelf: 'center'
     }
   }));
 
@@ -137,6 +140,45 @@ const FormularioCliente = () => {
                             </Grid>
   
                             <Divider variant="middle" className={classes.divider}/>
+
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                {' '}
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                <label>Clearing</label>    
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                <label>Comision</label>    
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                <label>Tasa Mensual</label>
+                            </Grid>
+
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo}>
+                                {'Compra'}
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                <MyTextField   name="clearingCompra" type="text"  />
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                <MyTextField   name="comisionCompra" type="text"  />
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                <MyTextField   name="tasaMensualCompra" type="text"  />
+                            </Grid>
+
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo}>
+                                {'Venta'}
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                <MyTextField   name="clearingVenta" type="text"  />
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                <MyTextField   name="comisionVenta" type="text"  />
+                            </Grid>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                                <MyTextField   name="tasaMensualVenta" type="text"  />
+                            </Grid>
 
                             <Grid item xs={12} md={12} lg={12}>
                                 {isSubmitting && <LinearProgress />}
