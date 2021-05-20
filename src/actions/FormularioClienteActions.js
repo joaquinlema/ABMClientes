@@ -4,9 +4,7 @@ import {
     SET_LOADING, 
     SET_NEW_CLIENT, 
     UPDATE_CLIENT_LIST,
-    
 } from './types';
-//import axios from 'axios';
 
 export const setLoading = () => {
     return{

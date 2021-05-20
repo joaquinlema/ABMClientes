@@ -1,7 +1,7 @@
 import * as React from 'react';
-//import { useDispatch, useSelector } from 'react-redux';
-//import {createUser,editUser} from '../../../../actions/FormularioActions';
-//import {abrirFormulario} from '../../../../actions/UsuarioActions';
+import { useDispatch, useSelector } from 'react-redux';
+import {createUser,editUser} from '../../../../actions/FormularioClienteActions';
+import {abrirFormularioCliente} from '../../../../actions/ClienteActions';
 import { Formik, Form} from 'formik';
 import { Button, LinearProgress, Grid, Divider } from '@material-ui/core';
 import MyTextField from './textField/MyTextField';
@@ -111,8 +111,8 @@ const useStyles = makeStyles((theme) => ({
 const FormularioCliente = () => {
     const classes = useStyles();
 
-   // const dispatch = useDispatch();
-   // const {userEdit, editStatus}  = useSelector(state => state.ClienteReducer);
+   const dispatch = useDispatch();
+   const {clienteEdit, editStatus}  = useSelector(state => state.ClienteReducer);
     
     const SignupSchema = Yup.object().shape({
         name: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[a-zA-Z ]+$/,"Invalid Name only letters").required('Required'),
@@ -123,34 +123,30 @@ const FormularioCliente = () => {
     return (
             <Formik
                 initialValues={{
-                    alias: 'alias', 
-                    telefono: '12344412',
-                    nombre: 'nombre completo', 
-                    mail:'ja@hotmail.com', 
-                    direccion:'av peter 123',
-                    dni:'12344421', 
-                    cuil: '20-123123123-9', 
-                    clearingCompra:'clearingCompra', 
-                    tasaMensualCompra: 'tasa 123',
-                    comisionCompra:'comision 123',
-                    clearingVenta: '123a aventa', 
-                    tasaMensualVenta:'tasa venta', 
-                    comisionVenta:'comision venta',
-                    //estos de abajo no van
-                    // name: (userEdit.name !== '') ? userEdit.name : '',
-                    // apellido: (userEdit.apellido !== '') ? userEdit.apellido : '',
-                    // email: (userEdit.email !== '') ? userEdit.email : '',
+                    alias: (clienteEdit.alias !== '') ? clienteEdit.alias : '', 
+                    telefono: (clienteEdit.telefono !== '') ? clienteEdit.telefono : '',
+                    nombre: (clienteEdit.nombre !== '') ? clienteEdit.nombre : '', 
+                    mail: (clienteEdit.mail !== '') ? clienteEdit.mail : '', 
+                    direccion: (clienteEdit.direccion !== '') ? clienteEdit.direccion : '',
+                    dni: (clienteEdit.dni !== '') ? clienteEdit.dni : '', 
+                    cuil: (clienteEdit.cuil !== '') ? clienteEdit.cuil : '', 
+                    clearingCompra: (clienteEdit.clearingCompra !== '') ? clienteEdit.clearingCompra : '', 
+                    tasaMensualCompra: (clienteEdit.tasaMensualCompra !== '') ? clienteEdit.tasaMensualCompra : '',
+                    comisionCompra: (clienteEdit.comisionCompra !== '') ? clienteEdit.comisionCompra : '',
+                    clearingVenta: (clienteEdit.clearingVenta !== '') ? clienteEdit.clearingVenta : '', 
+                    tasaMensualVenta: (clienteEdit.tasaMensualVenta !== '') ? clienteEdit.tasaMensualVenta : '', 
+                    comisionVenta: (clienteEdit.comisionVenta !== '') ? clienteEdit.comisionVenta : '',
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { setSubmitting,resetForm }) => {
                     setTimeout(() => {
-                        // if(editStatus){
-                        //    // dispatch(editUser(values,userEdit.id));
-                        // }else{
-                        //     //dispatch(createUser(values));
-                        // }
+                        if(editStatus){
+                           dispatch(editUser(values, clienteEdit.id));
+                        }else{
+                            dispatch(createUser(values));
+                        }
                         setSubmitting(false);
-                        //dispatch(abrirFormulario(false));
+                        dispatch(abrirFormularioCliente(false));
                         resetForm();
                     }, 500);
                 }}
@@ -241,7 +237,7 @@ const FormularioCliente = () => {
 
                             <Grid item xs={12} md={12} lg={12} className={classes.botones}>
                                 <Button size="small" className={classes.botonCancelar} disabled={isSubmitting} 
-                                // onClick={() => { dispatch(abrirFormulario(false));}}
+                                onClick={() => { dispatch(abrirFormularioCliente(false));}}
                                 >
                                     Cancelar
                                 </Button>
@@ -252,7 +248,7 @@ const FormularioCliente = () => {
                                     onClick={submitForm}
                                     className={classes.botonGuardar}
                                 >
-                                     Crear{/* {editStatus ? 'Actualizar' : 'Guardar'} */}
+                                    {editStatus ? 'Actualizar' : 'Crear'}
                                 </Button>
                             </Grid>
                         </Grid>
