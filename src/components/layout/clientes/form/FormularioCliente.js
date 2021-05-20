@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {createUser,editUser} from '../../../../actions/FormularioClienteActions';
+import {createClient,editClient} from '../../../../actions/FormularioClienteActions';
 import {abrirFormularioCliente} from '../../../../actions/ClienteActions';
 import { Formik, Form} from 'formik';
 import { Button, LinearProgress, Grid, Divider } from '@material-ui/core';
@@ -134,9 +134,9 @@ const FormularioCliente = () => {
                 onSubmit={(values, { setSubmitting,resetForm }) => {
                     setTimeout(() => {
                         if(editStatus){
-                           dispatch(editUser(values, clienteEdit.id));
+                           dispatch(editClient(values, clienteEdit.id));
                         }else{
-                            dispatch(createUser(values));
+                            dispatch(createClient(values));
                         }
                         setSubmitting(false);
                         dispatch(abrirFormularioCliente(false));

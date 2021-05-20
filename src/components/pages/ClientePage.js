@@ -1,7 +1,7 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
 import { useDispatch ,useSelector } from 'react-redux';
-import {abrirFormularioCliente} from '../actions/ClienteActions'; 
+import {abrirFormularioCliente} from '../../actions/ClienteActions'; 
 import NuevoCliente from '../layout/clientes/tablaClientes/nuevo/NuevoCliente';
 import FormularioCliente from '../layout/clientes/form/FormularioCliente';
 import DialogoGeneral from '../layout/dialogUtil/DialogGeneral';

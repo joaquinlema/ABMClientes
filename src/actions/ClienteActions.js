@@ -3,8 +3,8 @@ import {
     GET_CLIENTS,
     SET_ERROR,
     STATUS_FORMULARIO_CLIENTE,
-    UPDATE_CLIENT
-} from './types';
+    UPDATE_CLIENT,
+} from './typesCliente';
 
 import axios from 'axios';
 
