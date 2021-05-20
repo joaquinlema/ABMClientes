@@ -105,27 +105,27 @@ const FormularioCliente = () => {
    const {clienteEdit, editStatus, tituloFormulario}  = useSelector(state => state.ClienteReducer);
     
     const SignupSchema = Yup.object().shape({
-        name: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[a-zA-Z ]+$/,"Invalid Name only letters").required('Required'),
-        apellido: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[a-zA-Z ]+$/,"Invalid SurName only letters").required('Required'),
-        email: Yup.string().email('Invalid Mail Format').required('Required'),
+        alias: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
+        telefono: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[0-9]+$/,"Solo Numeros").required('Required'),
+        mail: Yup.string().email('Formarto Invalido').required('Required'),
     });
 
     return (
             <Formik
                 initialValues={{
-                    alias: (clienteEdit.alias !== '') ? clienteEdit.alias : '', 
-                    telefono: (clienteEdit.telefono !== '') ? clienteEdit.telefono : '',
-                    nombre: (clienteEdit.nombre !== '') ? clienteEdit.nombre : '', 
-                    mail: (clienteEdit.mail !== '') ? clienteEdit.mail : '', 
-                    direccion: (clienteEdit.direccion !== '') ? clienteEdit.direccion : '',
-                    dni: (clienteEdit.dni !== '') ? clienteEdit.dni : '', 
-                    cuil: (clienteEdit.cuil !== '') ? clienteEdit.cuil : '', 
-                    clearingCompra: (clienteEdit.clearingCompra !== '') ? clienteEdit.clearingCompra : '', 
-                    tasaMensualCompra: (clienteEdit.tasaMensualCompra !== '') ? clienteEdit.tasaMensualCompra : '',
-                    comisionCompra: (clienteEdit.comisionCompra !== '') ? clienteEdit.comisionCompra : '',
-                    clearingVenta: (clienteEdit.clearingVenta !== '') ? clienteEdit.clearingVenta : '', 
-                    tasaMensualVenta: (clienteEdit.tasaMensualVenta !== '') ? clienteEdit.tasaMensualVenta : '', 
-                    comisionVenta: (clienteEdit.comisionVenta !== '') ? clienteEdit.comisionVenta : '',
+                    alias: (typeof clienteEdit.alias !== 'undefined') ? clienteEdit.alias : '', 
+                    telefono: (typeof clienteEdit.telefono !== 'undefined') ? clienteEdit.telefono : '',
+                    nombre: (typeof clienteEdit.nombre !== 'undefined') ? clienteEdit.nombre : '', 
+                    mail: (typeof clienteEdit.mail !== 'undefined') ? clienteEdit.mail : '', 
+                    direccion: (typeof clienteEdit.direccion !== 'undefined') ? clienteEdit.direccion : '',
+                    dni: (typeof clienteEdit.dni !== 'undefined') ? clienteEdit.dni : '', 
+                    cuil: (typeof clienteEdit.cuil !== 'undefined') ? clienteEdit.cuil : '', 
+                    clearingCompra: (typeof clienteEdit.clearingCompra !== 'undefined') ? clienteEdit.clearingCompra : '', 
+                    tasaMensualCompra: (typeof clienteEdit.tasaMensualCompra !== 'undefined') ? clienteEdit.tasaMensualCompra : '',
+                    comisionCompra: (typeof clienteEdit.comisionCompra !== 'undefined') ? clienteEdit.comisionCompra : '',
+                    clearingVenta: (typeof clienteEdit.clearingVenta !== 'undefined') ? clienteEdit.clearingVenta : '', 
+                    tasaMensualVenta: (typeof clienteEdit.tasaMensualVenta !== 'undefined') ? clienteEdit.tasaMensualVenta : '', 
+                    comisionVenta: (typeof clienteEdit.comisionVenta !== 'undefined') ? clienteEdit.comisionVenta : '',
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { setSubmitting,resetForm }) => {
@@ -199,7 +199,7 @@ const FormularioCliente = () => {
                                 <label className={classes.labelCV}>Compra</label>
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="clearingCompra" type="text"  />
+                                <MyTextField  name="clearingCompra" type="text"  />
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
                                 <MyTextField   name="comisionCompra" type="text"  />
@@ -238,7 +238,7 @@ const FormularioCliente = () => {
                                     onClick={submitForm}
                                     className={classes.botonGuardar}
                                 >
-                                    {editStatus ? 'Actualizar' : 'Crear'}
+                                    {editStatus ? 'Modificar' : 'Crear'}
                                 </Button>
                             </Grid>
                         </Grid>

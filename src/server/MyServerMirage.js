@@ -34,23 +34,23 @@ export function makeServer({ environment = "test" } = {}) {
     routes() {
       this.namespace = "api";
 
-      this.get("/clientes", (schema) => {
+      this.get("/clients", (schema) => {
         return schema.clientes.all()
       });
 
-      this.post("/clientes", (schema, request) => {
+      this.post("/clients", (schema, request) => {
         let attrs = JSON.parse(request.requestBody).data;
 
         return schema.clientes.create(attrs)
       });
 
-      this.post("/clientes/delete/:id", (schema, request) => {
+      this.post("/clients/delete/:id", (schema, request) => {
         let id = request.params.id
       
         return schema.clientes.find(id).destroy();
       });
 
-      this.patch("/clientes/edit/:id", function (schema, request) {
+      this.patch("/clients/edit/:id", function (schema, request) {
         let id = request.params.id
         let attrs = JSON.parse(request.requestBody).data;
       

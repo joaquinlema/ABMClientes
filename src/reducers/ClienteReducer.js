@@ -6,7 +6,8 @@ import {
     DELETE_CLIENT,
     UPDATE_CLIENT,
     STATUS_FORMULARIO_CLIENTE,
-    UPDATE_CLIENT_LIST
+    UPDATE_CLIENT_LIST,
+    CERRAR_MENSAJE
 } from '../actions/typesCliente';
  
 const initialState = {
@@ -16,7 +17,9 @@ const initialState = {
     clienteEdit:{},
     editStatus: false,
     abrirFormularioStatus: false,
-    tituloFormulario: 'Nuevo Cliente'
+    tituloFormulario: 'Nuevo Cliente',
+    mostrarMensaje: false,
+    textoMensaje: ''
 }
 const ClienteReducer =  (state = initialState, action) => {
     switch(action.type){
@@ -26,7 +29,9 @@ const ClienteReducer =  (state = initialState, action) => {
                 clientes: state.clientes.map(elem => elem.id === action.payload.id ? action.payload : elem),
                 editStatus:false,
                 tituloFormulario: 'Nuevo Cliente',
-                clienteEdit:{}
+                clienteEdit:{},
+                mostrarMensaje: true,
+                textoMensaje: 'Cliente Modificado Exitosamente.'
             }
         case STATUS_FORMULARIO_CLIENTE:
             return{
@@ -60,16 +65,26 @@ const ClienteReducer =  (state = initialState, action) => {
                 ...state,
                 loading: true
             };
+            case CERRAR_MENSAJE:
+                return {
+                    ...state,
+                    mostrarMensaje: false,
+                    textoMensaje: ''
+                };
         case SET_NEW_CLIENT:
             return {
                 ...state,
-                clientes: [...state.clientes,action.payload]
+                clientes: [...state.clientes,action.payload],
+                mostrarMensaje: true,
+                textoMensaje: 'Cliente Creado Exitosamente.'
             }
         case DELETE_CLIENT:
             return{
                 ...state,
                 // eslint-disable-next-line eqeqeq
-                clientes: state.clientes.filter(elem => { return (elem.id != action.payload)})
+                clientes: state.clientes.filter(elem => { return (elem.id != action.payload)}),
+                mostrarMensaje: true,
+                textoMensaje: 'Cliente Eliminado Exitosamente.'
         }
         default:
             return state;

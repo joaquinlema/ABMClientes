@@ -4,6 +4,7 @@ import {
     SET_ERROR,
     STATUS_FORMULARIO_CLIENTE,
     UPDATE_CLIENT,
+    CERRAR_MENSAJE
 } from './typesCliente';
 
 import axios from 'axios';
@@ -66,6 +67,14 @@ export const abrirFormularioCliente = (status)  => {
     return({
         type: STATUS_FORMULARIO_CLIENTE,
         payload: status
+    });
+
+}
+
+export const cerrarMensajeCliente = ()  => dispatch => {
+      
+    dispatch({
+        type: CERRAR_MENSAJE,
     });
 
 }
