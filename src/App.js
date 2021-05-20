@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { makeServer } from './server/MyServerMirage';
 import HomePage from './components/pages/ContainerPage';
+import './App.css';
 import WebFont from 'webfontloader';
 
 WebFont.load({

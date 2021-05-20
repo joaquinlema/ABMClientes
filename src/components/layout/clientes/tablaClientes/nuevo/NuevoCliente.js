@@ -14,6 +14,9 @@ buttonStyle: {
     lineHeight: '16px',
     textAlign: 'center',
     color: '#FFFFFF',
+    width: '215px',
+    height: '40px',
+    textTransform: 'none'
 }
 }));
 
