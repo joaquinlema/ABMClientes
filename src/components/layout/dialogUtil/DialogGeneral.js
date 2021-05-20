@@ -1,19 +1,17 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { DialogContent } from '@material-ui/core';
-import { DialogTitle } from '@material-ui/core';
 
-export default function DialogoGeneral({open, onClose, tituloFormulario, formulario}) {
+export default function DialogoGeneral({open, cerrar, formulario}) {
 
   return (
     <div>
       <Dialog
         open={open}
-        onClose={onClose}
+        onClose={cerrar}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{tituloFormulario}</DialogTitle>
         <DialogContent>
             {formulario}
         </DialogContent>

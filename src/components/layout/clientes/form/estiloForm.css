@@ -9,3 +9,13 @@
   /* form {
     font-family: "Titillium Web";
   } */
+  .MuiDialog-paperWidthSm {
+    max-width: 734px !important;
+}
+
+.MuiDialogContent-root {
+  flex: 1 1 auto;
+  padding: 20px !important;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

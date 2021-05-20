@@ -11,16 +11,11 @@ import './estiloForm.css';
 
 const useStyles = makeStyles((theme) => ({
     grid: {
-      marginTop: '27px',
-      paddingLeft: '20px'
+      marginTop: '18px',
+    //   paddingLeft: '20px'
     },
     headerInput:{
         paddingLeft: '20px'
-    },
-    formulario:{
-        width: '734px',
-        marginLeft: '353px',
-        fontFamily: 'Titillium Web'
     },
     textField:{
         width: '100%',
@@ -36,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
         color: '#002563'
     },
     botones: {
-        marginLeft: '423px',
-        marginTop: '40px',
+        marginLeft: '366px',
+        marginTop: '35px',
     },
     label:{
         marginLeft: '20px',
@@ -58,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
         color: '#414141',
     },
     titulo:{
-        marginLeft: '20px',
         fontStyle: 'normal',
         fontWeight: 'bolder',
         fontSize: '22px',
@@ -68,9 +62,9 @@ const useStyles = makeStyles((theme) => ({
     },
     divider:{
         width: '97%',
-        marginTop: '31px',
+        marginTop: '23px',
         marginBottom: '32px',
-        marginLeft: '24px'
+        marginLeft: '12px'
     },
     tipo: {
         alignSelf: 'center'
@@ -98,6 +92,9 @@ const useStyles = makeStyles((theme) => ({
         color: '#FFFFFF',
         marginLeft: '31px',
         textTransform: 'none'
+    },
+    gridCompraVenta: {
+        marginTop: '1px'
     }
   }));
 
@@ -105,7 +102,7 @@ const FormularioCliente = () => {
     const classes = useStyles();
 
    const dispatch = useDispatch();
-   const {clienteEdit, editStatus}  = useSelector(state => state.ClienteReducer);
+   const {clienteEdit, editStatus, tituloFormulario}  = useSelector(state => state.ClienteReducer);
     
     const SignupSchema = Yup.object().shape({
         name: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[a-zA-Z ]+$/,"Invalid Name only letters").required('Required'),
@@ -145,9 +142,9 @@ const FormularioCliente = () => {
                 }}
             >
                 {({ submitForm, isSubmitting}) => (
-                    <Form className={classes.formulario}>
-                        <span className={classes.titulo}>Nuevo Cliente</span>
-                        <Grid container>
+                    <Form >
+                        <span className={classes.titulo}>{tituloFormulario}</span>
+                        <Grid container spacing={2}>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
                                 <label className={classes.label}>Alias*</label>
                                 <MyTextField className={classes.textField} name="alias" type="text" />
@@ -198,29 +195,29 @@ const FormularioCliente = () => {
                                 <label className={classes.label}>Tasa Mensual</label>
                             </Grid>
 
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo}>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo + ' ' + classes.gridCompraVenta}>
                                 <label className={classes.labelCV}>Compra</label>
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
                                 <MyTextField   name="clearingCompra" type="text"  />
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
                                 <MyTextField   name="comisionCompra" type="text"  />
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
                                 <MyTextField   name="tasaMensualCompra" type="text"  />
                             </Grid>
 
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo}>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo + ' ' + classes.gridCompraVenta}>
                                 <label className={classes.labelCV}>Venta</label>
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
                                 <MyTextField   name="clearingVenta" type="text"  />
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
                                 <MyTextField   name="comisionVenta" type="text"  />
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid}>
+                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
                                 <MyTextField   name="tasaMensualVenta" type="text"  />
                             </Grid>
 

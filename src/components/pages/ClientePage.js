@@ -8,7 +8,7 @@ import DialogoGeneral from '../layout/dialogUtil/DialogGeneral';
 
 const ClientePage = () => {
 
-    const {abrirFormularioStatus, tituloFormulario} = useSelector(state => state.ClienteReducer);
+    const {abrirFormularioStatus} = useSelector(state => state.ClienteReducer);
     const dispatch = useDispatch();
     return (
         <Grid
@@ -20,7 +20,7 @@ const ClientePage = () => {
         </Grid>
 
         <Grid container item xs={12} sm={12} md={4} lg={4}>
-            <DialogoGeneral open={abrirFormularioStatus} tituloFormulario={tituloFormulario} onClose={dispatch(abrirFormularioCliente)} formulario={<FormularioCliente />} />
+            <DialogoGeneral open={abrirFormularioStatus} cerrar={() => dispatch(abrirFormularioCliente)} formulario={<FormularioCliente />} />
         </Grid>
         
     </Grid>
