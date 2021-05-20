@@ -5,7 +5,7 @@ import {
     GET_CLIENTS,
     DELETE_CLIENT,
     UPDATE_CLIENT,
-    STATUS_FORMULARIO,
+    STATUS_FORMULARIO_CLIENTE,
     UPDATE_CLIENT_LIST
 } from '../actions/typesCliente';
  
@@ -28,7 +28,7 @@ const ClienteReducer =  (state = initialState, action) => {
                 tituloFormulario: 'Nuevo Cliente',
                 clienteEdit:{}
             }
-        case STATUS_FORMULARIO:
+        case STATUS_FORMULARIO_CLIENTE:
             return{
                 ...state,
                 abrirFormularioStatus: action.payload,

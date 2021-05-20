@@ -14,7 +14,7 @@ const ClientePage = () => {
         <Grid
         container
         direction="row"
-    >
+        >
         <Grid container item xs={12} sm={12} md={8} lg={8}>
             <NuevoCliente />
         </Grid>

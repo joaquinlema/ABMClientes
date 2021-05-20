@@ -3,7 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import { DialogContent } from '@material-ui/core';
 import { DialogTitle } from '@material-ui/core';
 
-export default function DialogoGeneral({open,   onClose, tituloFormulario, formulario}) {
+export default function DialogoGeneral({open, onClose, tituloFormulario, formulario}) {
 
   return (
     <div>
