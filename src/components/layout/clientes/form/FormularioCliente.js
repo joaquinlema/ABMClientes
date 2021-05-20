@@ -8,13 +8,6 @@ import MyTextField from './textField/MyTextField';
 import * as Yup from "yup";
 import { makeStyles } from '@material-ui/core/styles';
 import './estiloForm.css';
-import WebFont from 'webfontloader';
-
-WebFont.load({
-    google: {
-      families: ['Titillium Web:300,400,700', 'sans-serif']
-    }
-  });
 
 const useStyles = makeStyles((theme) => ({
     grid: {
