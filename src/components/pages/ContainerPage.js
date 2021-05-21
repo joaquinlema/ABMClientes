@@ -27,6 +27,7 @@ import TareaPage from './TareaPage';
 import SettingsApplicationsRoundedIcon from '@material-ui/icons/SettingsApplicationsRounded';
 import { createBrowserHistory } from "history";
 import ClientePage from './ClientePage';
+import Login from '../layout/login/Login';
 
 const drawerWidth = 240;
 
@@ -155,7 +156,7 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
-          {[{text : 'Usuarios', ruta: '/User'}, {text : 'Tareas', ruta: '/Tarea'},{text : 'Clientes', ruta: '/Cliente'}].map((elem, index) => (
+          {[{text : 'Login', ruta: '/Login'},{text : 'Usuarios', ruta: '/User'}, {text : 'Tareas', ruta: '/Tarea'},{text : 'Clientes', ruta: '/Cliente'}].map((elem, index) => (
             <ListItem button key={elem.text} component={Link} to={elem.ruta} >
               <ListItemIcon>{index % 2 === 0 ? <AccountCircleRoundedIcon /> : <AssignmentRoundedIcon />}</ListItemIcon>
               <ListItemText primary={elem.text} />
@@ -176,6 +177,7 @@ export default function MiniDrawer() {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route  path='/User' component={UsuarioPagina} />
+            <Route  path='/Login' component={Login} />
             <Route  path='/Tarea' component={TareaPage} />
             <Route  path='/Cliente' component={ClientePage} />
             <Route  path='/about' component={About} />

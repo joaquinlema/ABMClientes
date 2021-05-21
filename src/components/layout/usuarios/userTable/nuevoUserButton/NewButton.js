@@ -1,22 +1,14 @@
-import { Button } from '@material-ui/core';
 import React from 'react';
-import AddCircleOutlineRoundedIcon from '@material-ui/icons/AddCircleOutlineRounded';
 import { useDispatch } from 'react-redux';
 import {abrirFormulario} from '../../../../../actions/UsuarioActions';
+import BotonNuevo from '../../../utils/botonNuevo/BotonNuevo';
 
 const NewButton = () => {
     const dispatch = useDispatch();
 
     return (
-        <Button
-        variant="contained"
-        color="primary"
-        endIcon={<AddCircleOutlineRoundedIcon />}
-        onClick={() => dispatch(abrirFormulario(true))}
-      >
-        Nuevo Usuario
-      </Button>
-    );
+      <BotonNuevo label={'Nuevo Usuario'} accion={() => dispatch(abrirFormulario(true))} />
+     );
 }
 
 export default NewButton;
