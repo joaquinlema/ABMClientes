@@ -11,10 +11,11 @@ const ClientePage = () => {
 
     const {abrirFormularioStatus, mostrarMensaje, textoMensaje} = useSelector(state => state.ClienteReducer);
     const dispatch = useDispatch();
+
     return (
         <Grid container direction="row">
         <Grid>
-            <Mensaje open={mostrarMensaje} mensaje={textoMensaje} cerrarMsj={() => dispatch(cerrarMensajeCliente)}/>
+            <Mensaje open={mostrarMensaje} mensaje={textoMensaje} cerrarMsj={() => dispatch(cerrarMensajeCliente())}/>
         </Grid>
         <Grid container item xs={12} sm={12} md={8} lg={8}>
             <NuevoCliente />

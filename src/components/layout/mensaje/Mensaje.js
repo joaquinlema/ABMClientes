@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import { Button } from '@material-ui/core';
+import './estiloMensaje.css';
 
 export default function Mensaje({open, cerrarMsj, mensaje}) {
-    const cerrar = (
-        <Button size="small" onClick={cerrarMsj}>
-          Cerrar
-        </Button>
-      );
+
+  const cerrar = (
+      <Button size="small" className="cerrar" onClick={cerrarMsj}>
+        Cerrar
+      </Button>
+    );
+
   return (
-    <div>
+    <Fragment>
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         open={open}
@@ -19,6 +22,6 @@ export default function Mensaje({open, cerrarMsj, mensaje}) {
             cerrar
         }
       />
-    </div>
+    </Fragment>
   );
 }

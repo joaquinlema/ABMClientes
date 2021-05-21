@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <HomePage />
+      <HomePage className="body"/>
     </Provider>
   );
 }

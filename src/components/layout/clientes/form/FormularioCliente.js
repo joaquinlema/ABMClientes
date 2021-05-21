@@ -12,7 +12,6 @@ import './estiloForm.css';
 const useStyles = makeStyles((theme) => ({
     grid: {
       marginTop: '18px',
-    //   paddingLeft: '20px'
     },
     headerInput:{
         paddingLeft: '20px'
@@ -58,7 +57,8 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '22px',
         lineHeight: '24px',
         letterSpacing: '0.18px',
-        color: '#002563'
+        color: '#002563',
+        fontFamily:'Titillium Web'
     },
     divider:{
         width: '97%',
