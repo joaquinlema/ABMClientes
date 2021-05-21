@@ -16,7 +16,8 @@ buttonStyle: {
     color: '#FFFFFF',
     width: '215px',
     height: '40px',
-    textTransform: 'none'
+    textTransform: 'none',
+    fontFamily: "Titillium Web"
 }
 }));
 

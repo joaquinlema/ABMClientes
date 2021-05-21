@@ -40,7 +40,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '12px',
         lineHeight: '16px',
         letterSpacing: '0.4px',
-        color: 'rgba(0, 37, 99, 0.6)'
+        color: 'rgba(0, 37, 99, 0.6)',
+        fontFamily:'Titillium Web'
+
     },
     labelCV:{
         marginLeft: '20px',
@@ -50,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '18px',
         letterSpacing: '0.5px',
         color: '#414141',
+        fontFamily:'Titillium Web'
+
     },
     titulo:{
         fontStyle: 'normal',
@@ -77,7 +81,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '14px',
         lineHeight: '16px',
         textAlign: 'center',
-        textTransform: 'none'
+        textTransform: 'none',
+        fontFamily:'Titillium Web'
+
     },
     botonGuardar:{
         background: '#5974FB',
@@ -91,7 +97,9 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         color: '#FFFFFF',
         marginLeft: '31px',
-        textTransform: 'none'
+        textTransform: 'none',
+        fontFamily:'Titillium Web'
+
     },
     gridCompraVenta: {
         marginTop: '1px'
