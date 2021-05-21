@@ -2,10 +2,10 @@ import { Grid } from '@material-ui/core';
 import React from 'react';
 import { useDispatch ,useSelector } from 'react-redux';
 import {abrirFormularioCliente, cerrarMensajeCliente} from '../../actions/ClienteActions'; 
-import NuevoCliente from '../layout/clientes/tablaClientes/nuevo/NuevoCliente';
 import FormularioCliente from '../layout/clientes/form/FormularioCliente';
-import DialogoGeneral from '../layout/dialogUtil/DialogGeneral';
-import Mensaje from '../layout/mensaje/Mensaje';
+import DialogoGeneral from '../layout/utils/dialogUtil/DialogGeneral';
+import Mensaje from '../layout/utils/mensaje/Mensaje';
+import TablaClientes from '../layout/clientes/tablaClientes/TablaClientes';
 
 const ClientePage = () => {
 
@@ -17,8 +17,8 @@ const ClientePage = () => {
         <Grid>
             <Mensaje open={mostrarMensaje} mensaje={textoMensaje} cerrarMsj={() => dispatch(cerrarMensajeCliente())}/>
         </Grid>
-        <Grid container item xs={12} sm={12} md={8} lg={8}>
-            <NuevoCliente />
+        <Grid container item xs={12} sm={12} md={12} lg={12}>
+            <TablaClientes />
         </Grid>
 
         <Grid container item xs={12} sm={12} md={4} lg={4}>

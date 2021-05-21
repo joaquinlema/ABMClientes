@@ -1,10 +1,19 @@
-import React from 'react';
+import { Grid } from '@material-ui/core';
+import React, { Fragment } from 'react';
+import HeaderPage from '../../utils/header/HeaderPage';
+import EnhancedTable from './tableJ/Table';
+import NuevoCliente from '../tablaClientes/nuevo/NuevoCliente';
 
 const TablaClientes = () => {
     return (
-        <div>
-            
-        </div>
+        <Fragment>
+            <Grid container item xs={12} sm={12} md={12} lg={12}>
+                <HeaderPage titulo={'Clientes'} boton={<NuevoCliente />}/>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+                <EnhancedTable />
+            </Grid>
+        </Fragment>
     );
 }
 
