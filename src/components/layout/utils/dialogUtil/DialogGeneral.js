@@ -2,7 +2,7 @@ import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { DialogContent } from '@material-ui/core';
 
-export default function DialogoGeneral({open, cerrar, formulario}) {
+export default function DialogoGeneral({open, cerrar, contenido}) {
 
   return (
     <div>
@@ -13,7 +13,7 @@ export default function DialogoGeneral({open, cerrar, formulario}) {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent>
-            {formulario}
+            {contenido}
         </DialogContent>
       </Dialog>
     </div>

@@ -126,9 +126,12 @@ class EnhancedTable extends React.Component {
     return (
       <Paper className={classes.root}>
         <EnhancedTableToolbar numSelected={selected.length} classes={classes} />
+
         <div className={classes.tableWrapper}>
           <Table className={classes.table} aria-label="customized table">
+        
             <EnhancedTableHead numSelected={selected.length} order={order} orderBy={orderBy} onRequestSort={this.handleRequestSort} rowCount={data.length}/>
+        
             <TableBody>
               {Utils.stableSort(data, Utils.getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

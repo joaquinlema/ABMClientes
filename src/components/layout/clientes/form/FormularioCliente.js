@@ -8,6 +8,7 @@ import MyTextField from './textField/MyTextField';
 import * as Yup from "yup";
 import { makeStyles } from '@material-ui/core/styles';
 import './estiloForm.css';
+import BotonNuevo from '../../utils/botonNuevo/BotonNuevo';
 
 const useStyles = makeStyles((theme) => ({
     grid: {
@@ -82,7 +83,8 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '16px',
         textAlign: 'center',
         textTransform: 'none',
-        fontFamily:'Titillium Web'
+        fontFamily:'Titillium Web',
+        marginRigth: '31px'
 
     },
     botonGuardar:{
@@ -233,21 +235,15 @@ const FormularioCliente = () => {
                                 {isSubmitting && <LinearProgress />}
                             </Grid>
 
-                            <Grid item xs={12} md={12} lg={12} className={classes.botones}>
+                            <Grid item xs={12} md={12} lg={12} className={classes.botones}  container justify="flex-end" spacing={1}>
                                 <Button size="small" className={classes.botonCancelar} disabled={isSubmitting} 
                                 onClick={() => { dispatch(abrirFormularioCliente(false));}}
                                 >
                                     Cancelar
                                 </Button>
                                 
-                                <Button
-                                    variant="contained"
-                                    disabled={isSubmitting}
-                                    onClick={submitForm}
-                                    className={classes.botonGuardar}
-                                >
-                                    {editStatus ? 'Modificar' : 'Crear'}
-                                </Button>
+                                <BotonNuevo accion={submitForm} label={editStatus ? 'Modificar' : 'Crear'}/>
+                          
                             </Grid>
                         </Grid>
                     </Form>
