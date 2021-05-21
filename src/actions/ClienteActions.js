@@ -62,9 +62,9 @@ export const deleteClient = (id) => async dispatch => {
     }
 }
 
-export const abrirFormularioCliente = (status)  => {
+export const abrirFormularioCliente = (status)  => dispatch => {
       
-    return({
+    dispatch({
         type: STATUS_FORMULARIO_CLIENTE,
         payload: status
     });
