@@ -1,18 +1,16 @@
 import React from 'react'
-import classNames from 'classnames';
-// import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 // import Tooltip from '@material-ui/core/Tooltip';
 import SearchIcon from '@material-ui/icons/Search';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
-const styles = theme => ({
-    root: {
+const useStyles = makeStyles((theme) => ({    
+  root: {
       width: '100%',
     },
     actions:{
-        position: 'absolute',
         width: '122px',
         height: '24px',
         left: '0px',
@@ -40,21 +38,21 @@ const styles = theme => ({
         marginLeft:'950px'
     }
 
-  });
+  }));
 
  const  ToolbarUtil = (props) => {
-    const { numSelected} = props;
-     const classes = styles();
+     const classes = useStyles();
+
     return (
-        <Toolbar className={classNames(classes.root, {[classes.highlight]: numSelected > 0,})} >
+        <Toolbar >
         <div className={classes.title}>
-            <Typography variant="h6" id="tableTitle" className={classes.actions}>
+            <Typography variant="h6">
               Listado total
             </Typography>
         </div>
         <div  />
         <div className={classes.spacer}>
-              <IconButton aria-label="Filter list"  className={classes.searchIcon}>
+              <IconButton aria-label="Filter list" >
                 <SearchIcon/>
               </IconButton>
         </div>

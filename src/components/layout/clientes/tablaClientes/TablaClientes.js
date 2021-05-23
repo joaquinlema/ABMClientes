@@ -18,14 +18,11 @@ const TablaClientes = () => {
           width: 90,
         },
         {
-          field: 'fullName',
-          headerName: 'Full name',
-          description: 'This column has a value getter and is not sortable.',
-          sortable: false,
-          width: 160,
-          valueGetter: (params) =>
-            `${params.getValue('firstName') || ''} ${params.getValue('lastName') || ''}`,
-        },
+            field: 'age2',
+            headerName: 'Age2',
+            type: 'number',
+            width: 90,
+          },
       ];
       
       const rows = [
