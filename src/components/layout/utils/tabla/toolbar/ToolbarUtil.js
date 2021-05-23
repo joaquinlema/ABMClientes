@@ -42,7 +42,7 @@ const styles = theme => ({
 
   });
 
- const  ToolbarMenu=(props)=> {
+ const  ToolbarUtil = (props) => {
     const { numSelected} = props;
      const classes = styles();
     return (
@@ -61,7 +61,7 @@ const styles = theme => ({
       </Toolbar>
     )
 }
-export default ToolbarMenu;
+export default ToolbarUtil;
 
 
   
