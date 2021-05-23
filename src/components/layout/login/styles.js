@@ -1,4 +1,4 @@
-import { colors } from '@material-ui/core';
+
 import { makeStyles} from '@material-ui/core/styles';
 export default makeStyles((theme) => ({
    
@@ -89,11 +89,8 @@ export default makeStyles((theme) => ({
         width: '215px',
         left: '0px',
         top: '0px',
-        borderRadius: '4px',
         position: 'absolute',
-        left: '0%',
         right: '0%',
-        top: '0%',
         bottom: '0%',
         backgroundColor: '#5974FB',
         borderRadius: '4px',
@@ -103,7 +100,6 @@ export default makeStyles((theme) => ({
         height: '16px',
         width: '187px',
         left: '15px',
-        top: '12p',
         borderRadius: 'nullpx',
         position: 'absolute',
         left: '15px',
@@ -131,7 +127,6 @@ export default makeStyles((theme) => ({
         textAlign: 'center',
         color: '#FFFFFF',
         width: '128px',
-        top: '12px',
         borderRadius: 'nullpx',
 
       },
@@ -143,8 +138,6 @@ export default makeStyles((theme) => ({
         bottom: '31.45%',
         height: '40px',
         width: '215px',
-        left: '612px',
-        top: '662px',
         borderRadius: '0px',
     },
     textButtonContainer:{
@@ -154,8 +147,6 @@ export default makeStyles((theme) => ({
         bottom: '25.78%',
         height: '40px',
         width: '74px',
-        left: '682px',
-        top: '720px',
         borderRadius: '0px'   
     },
     containerInput:{
@@ -166,8 +157,6 @@ export default makeStyles((theme) => ({
     bottom: '37.3%',
     height: '96px',
     width: '450px',
-    left: '495px',
-    top: '546px',
     borderRadius: '0px'
 },
 containerInputNombre:{
@@ -178,14 +167,13 @@ containerInputNombre:{
     bottom: '47,46%',
     height: '96px',
     width: '450px',
-    left: '495px',
-    top: '442px',
     borderRadius: '0px'
 },
 
 body:{
     position: 'absolute',
     width: '1440px',
+   //  width: '100%',
     height: '1024px',
     left: '0px',
     top: '0px',

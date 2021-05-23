@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 import { makeServer } from './server/MyServerMirage';
-import HomePage from './components/pages/ContainerPage';
+import HomePage from './components/pages/containerPage/ContainerPage';
 import './App.css';
 import WebFont from 'webfontloader';
 

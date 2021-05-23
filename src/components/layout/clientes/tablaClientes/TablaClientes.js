@@ -7,10 +7,10 @@ import NuevoCliente from '../tablaClientes/nuevo/NuevoCliente';
 const TablaClientes = () => {
     return (
         <Fragment>
-            <Grid container item xs={12} sm={12} md={12} lg={12}>
+            <Grid container item xs={12} sm={12} md={12} lg={12} style={{marginLeft:'240px'}}>
                 <HeaderPage titulo={'Clientes'} boton={<NuevoCliente />}/>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Grid item xs={12} sm={12} md={12} lg={12} style={{width: '1240px',marginLeft:'240px'}}>
                 <EnhancedTable />
             </Grid>
         </Fragment>
