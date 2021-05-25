@@ -1,0 +1,43 @@
+.MuiDataGrid-root {
+    flex: 1;
+    color: rgba(0, 0, 0, 0.87);
+    border: 0px !important;
+    height: 98% !important;
+    display: flex;
+    outline: none;
+    position: relative;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    font-family: "Titillium Web" !important;
+    font-weight: 400;
+    line-height: 1.43;
+    border-radius: 4px;
+    flex-direction: column;
+    letter-spacing: 0.01071em;
+}
+
+.MuiDataGrid-columnsContainer, .MuiDataGrid-columnHeaderTitle {
+    font-family: 'Titillium Web' !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.5px !important;
+    color: #002563 !important;
+    flex: none !important;
+    order: 0 !important;
+    flex-grow: 0 !important;
+    margin: 0px 8px !important;
+}
+
+.MuiDataGrid-row{
+    font-family: 'Titillium Web' !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    line-height: 18px !important;
+    letter-spacing: 0.5px !important;
+    color: #002563 !important;
+    margin-left: 20px;
+    width: 218px;
+}

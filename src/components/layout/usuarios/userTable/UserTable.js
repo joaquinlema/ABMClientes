@@ -43,7 +43,9 @@ const UserTable = () => {
           empty: true,
           customBodyRender: (value, tableMeta, updateValue) => {
             return (
-                <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => dispatch(setEditUser({'id':tableMeta.rowData[0],'name':tableMeta.rowData[1], 'apellido':tableMeta.rowData[2], 'email':tableMeta.rowData[3] }))}>
+                <IconButton color="primary" aria-label="upload picture" component="span" 
+                onClick={() => dispatch(setEditUser({'id':tableMeta.rowData[0],'name':tableMeta.rowData[1], 'apellido':tableMeta.rowData[2], 'email':tableMeta.rowData[3] }))}
+                >
                     <EditIcon />
                 </IconButton>
             );
