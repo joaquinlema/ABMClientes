@@ -24,18 +24,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function TablaUtil({columns, rows, title, attr}) {
+export default function TablaUtil({columns, rows, title, attr, options}) {
 
   const classes = useStyles();
-
-  const options = {
-    selectableRows: false,
-    download: false,
-    print:false,
-    filter:false,
-    confirmFilters:false,
-    viewColumns:false
-};
 
 return (
     <MUIDataTable

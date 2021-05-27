@@ -39,6 +39,15 @@ const TablaUsuarios = () => {
     ];
 
     const attr = ["nombre", "apellido","usuario","rol","sucursal"];
+
+    const options = {
+      selectableRows: false,
+      download: false,
+      print:false,
+      filter:true,
+      confirmFilters:false,
+      viewColumns:false
+  };
       
     return (
         <Fragment>
@@ -46,7 +55,7 @@ const TablaUsuarios = () => {
                 <HeaderPage titulo={'Usuarios'} boton={<NuevoUsuario />}/>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-                <TablaUtil rows={usuarios} columns={columns} title={'Listado Total'} attr={attr}/>
+                <TablaUtil rows={usuarios} columns={columns} title={'Listado Total'} attr={attr} options={options}/>
             </Grid>
         </Fragment>
     );

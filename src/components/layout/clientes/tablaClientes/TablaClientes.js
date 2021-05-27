@@ -39,6 +39,15 @@ const TablaClientes = () => {
     ];
 
     const attr = ["alias", "nombre","telefono","mail","direccion"];
+
+    const options = {
+      selectableRows: false,
+      download: false,
+      print:false,
+      filter:false,
+      confirmFilters:false,
+      viewColumns:false
+  };
       
     return (
         <Fragment>
@@ -46,7 +55,7 @@ const TablaClientes = () => {
                 <HeaderPage titulo={'Clientes'} boton={<NuevoCliente />}/>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-                <TablaUtil rows={clientes} columns={columns} title={'Listado Total'} attr={attr}/>
+                <TablaUtil rows={clientes} columns={columns} title={'Listado Total'} attr={attr} options={options}/>
             </Grid>
         </Fragment>
     );
