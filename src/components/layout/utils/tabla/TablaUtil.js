@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function TablaUtil({columns, rows, title}) {
+export default function TablaUtil({columns, rows, title, attr}) {
 
   const classes = useStyles();
 
@@ -43,10 +43,11 @@ return (
       title={title}
       data={rows.map(e=>{
           return [
-              e[columns[0]],
-              e[columns[1]],
-              e[columns[2]],
-              e[columns[3]]
+            e[attr[0]],
+            e[attr[1]],
+            e[attr[2]],
+            e[attr[3]],
+            e[attr[4]]
           ]
       })}
       columns={columns}

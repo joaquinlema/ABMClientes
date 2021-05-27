@@ -18,9 +18,9 @@ const TablaClientes = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const columns = ["Id", "Name","Apellido","Email",
+    const columns = ["Alias", "Nombre","Telefono","Mail","Direccion",
       {
-        name: "Edit",
+        name: " ",
         options: {
           filter: true,
           sort: false,
@@ -37,6 +37,8 @@ const TablaClientes = () => {
         }
       }
     ];
+
+    const attr = ["alias", "nombre","telefono","mail","direccion"]
       
     return (
         <Fragment>
@@ -44,7 +46,7 @@ const TablaClientes = () => {
                 <HeaderPage titulo={'Clientes'} boton={<NuevoCliente />}/>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-                <TablaUtil rows={clientes} columns={columns} title={'Clientes'}/>
+                <TablaUtil rows={clientes} columns={columns} title={'Listado Total'} attr={attr}/>
             </Grid>
         </Fragment>
     );
