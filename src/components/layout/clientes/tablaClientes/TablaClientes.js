@@ -38,7 +38,7 @@ const TablaClientes = () => {
       }
     ];
 
-    const attr = ["alias", "nombre","telefono","mail","direccion"]
+    const attr = ["alias", "nombre","telefono","mail","direccion"];
       
     return (
         <Fragment>

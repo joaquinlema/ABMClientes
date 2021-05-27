@@ -12,8 +12,8 @@ import {
 const initialState = {
     loading: false,
     error: '',
-    users:[],
-    userEdit:{},
+    usuarios:[],
+    usuarioEdit:{},
     editStatus: false,
     abrirFormularioStatus: false,
     tituloFormulario: 'Formulario Nuevo'
@@ -23,23 +23,23 @@ const UsuarioReducer =  (state = initialState, action) => {
         case UPDATE_USER_LIST:
             return{
                 ...state,
-                users: state.users.map(elem => elem.id === action.payload.id ? action.payload : elem),
+                usuarios: state.usuarios.map(elem => elem.id === action.payload.id ? action.payload : elem),
                 editStatus:false,
                 tituloFormulario:'Formulario Nuevo',
-                userEdit:{}
+                usuarioEdit:{}
             }
         case STATUS_FORMULARIO:
             return{
                 ...state,
                 abrirFormularioStatus: action.payload,
                 tituloFormulario:'Formulario Nuevo',
-                userEdit:{},
+                usuarioEdit:{},
                 editStatus:false,
             }
         case UPDATE_USER:
             return{
                 ...state,
-                userEdit:action.payload,
+                usuarioEdit:action.payload,
                 editStatus:true,
                 tituloFormulario:'Formulario Edicion',
                 abrirFormularioStatus:true
@@ -53,7 +53,7 @@ const UsuarioReducer =  (state = initialState, action) => {
         case GET_USERS:
             return {
                 ...state,
-                users: action.payload
+                usuarios: action.payload
             }
         case SET_LOADING:
             return {
@@ -63,13 +63,13 @@ const UsuarioReducer =  (state = initialState, action) => {
         case SET_NEW_USER:
             return {
                 ...state,
-                users: [...state.users,action.payload]
+                usuarios: [...state.usuarios,action.payload]
             }
         case DELETE_USER:
             return{
                 ...state,
                 // eslint-disable-next-line eqeqeq
-                users: state.users.filter(elem => { return (elem.id != action.payload)})
+                usuarios: state.usuarios.filter(elem => { return (elem.id != action.payload)})
         }
         default:
             return state;

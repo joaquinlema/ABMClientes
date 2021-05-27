@@ -18,7 +18,7 @@ const TablaUsuarios = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const columns = ["Alias", "Nombre","Telefono","Mail","Direccion",
+    const columns = ["Nombre", "Apellido","Usuario","Rol","Sucursal",
       {
         name: " ",
         options: {
@@ -38,7 +38,7 @@ const TablaUsuarios = () => {
       }
     ];
 
-    const attr = ["alias", "nombre","telefono","mail","direccion"]
+    const attr = ["nombre", "apellido","usuario","rol","sucursal"];
       
     return (
         <Fragment>
