@@ -38,18 +38,19 @@ export default function TablaUtil({columns, rows, title}) {
 };
 
 return (
-        <MUIDataTable
-            title={title}
-            data={rows.map(e=>{
-                return [
-                    e[columns[0]],
-                    e[columns[1]],
-                    e[columns[2]],
-                    e[columns[3]]
-                ]
-            })}
-            columns={columns}
-            options={options}
-        />
+    <MUIDataTable
+      className={classes.titulo}
+      title={title}
+      data={rows.map(e=>{
+          return [
+              e[columns[0]],
+              e[columns[1]],
+              e[columns[2]],
+              e[columns[3]]
+          ]
+      })}
+      columns={columns}
+      options={options}
+    />
   );
 }

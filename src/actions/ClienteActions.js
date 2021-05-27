@@ -15,7 +15,7 @@ export const getClients = () => async dispatch => {
 
         dispatch({
             type: GET_CLIENTS,
-            payload: data.clients
+            payload: data.clientes
         });
 
     } catch (error) {

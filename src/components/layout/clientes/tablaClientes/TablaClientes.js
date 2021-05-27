@@ -44,7 +44,6 @@ const TablaClientes = () => {
                 <HeaderPage titulo={'Clientes'} boton={<NuevoCliente />}/>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-                {/* <EnhancedTable /> */}
                 <TablaUtil rows={clientes} columns={columns} title={'Clientes'}/>
             </Grid>
         </Fragment>
