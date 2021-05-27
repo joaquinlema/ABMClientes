@@ -46,7 +46,7 @@ const ClienteReducer =  (state = initialState, action) => {
                 ...state,
                 clienteEdit:action.payload.clienteEdit,
                 editStatus:true,
-                tituloFormulario: 'Editar '+ action.payload.nombreCliente,
+                tituloFormulario: 'Editar '+ action.payload.alias,
                 abrirFormularioStatus:true
             }
         case SET_ERROR:
