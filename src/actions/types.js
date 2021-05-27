@@ -13,3 +13,4 @@ export const GET_TASKS = 'GET_TASKS';
 export const DELETE_TASK = 'DELETE_TASK';
 export const UPDATE_TASK = 'UPDATE_TASK';
 export const UPDATE_TASK_LIST = 'UPDATE_TASK_LIST';
+export const CERRAR_MENSAJE = 'CERRAR_MENSAJE';
