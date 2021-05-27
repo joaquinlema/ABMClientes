@@ -1,0 +1,22 @@
+.MuiInputBase-input{ 
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 16px !important;
+      line-height: 18px !important;
+      letter-spacing: 0.5px !important;
+      color: #002563 !important;
+      font-family: "Titillium Web";
+  }
+  /* form {
+    font-family: "Titillium Web";
+  } */
+  .MuiDialog-paperWidthSm {
+    max-width: 734px !important;
+}
+
+.MuiDialogContent-root {
+  flex: 1 1 auto;
+  padding: 20px !important;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
