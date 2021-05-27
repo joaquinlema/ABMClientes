@@ -7,6 +7,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Styles from './styles'
+import { useHistory } from 'react-router';
 
 const Login = () => {
 
@@ -17,7 +18,9 @@ const Login = () => {
     const classes = Styles();
 
     const validateUser = (values) => {
-        alert(JSON.stringify(values))
+        alert(JSON.stringify(values));
+        localstorage.setItem("USER_FINANCIERA",values.nombre);
+        useHistory.push("/");
     }
     return (
         <Formik

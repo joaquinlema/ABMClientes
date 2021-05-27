@@ -118,15 +118,15 @@ const divider={
  },
  dividerTransferencia:{
   
-   top:'368px', 
+   top:'358px', 
    ...divider,
  },
  dividerIngreso:{
-    top:'478px', 
+    top:'462px', 
     ...divider,
   },
   dividerAdministracion:{
-    top:'590px', 
+    top:'570px', 
     ...divider,
   },
  icono:{
@@ -136,21 +136,30 @@ const divider={
    bottom:'71%',
    color:'#FFFFFF',
  },
- containerMoneda:{
-  top:'253px',
+ containerReporte:{
+  top:'153px',
   marginLeft:'40px',
  },
+ containerMoneda:{
+  top:'240px',
+  marginLeft:'40px',
+  position:'absolute'
+ },
  containerTransferencia:{
-    top:'295px',
+    top:'370px',
     marginLeft:'40px',
+    position: 'absolute',
+    left:'-5px'
    },
    containerIngreso:{
-    top:'346px',
+    top:'480px',
     marginLeft:'40px',
+    position: 'absolute',
    },
    containerAdministracion:{
-    top:'438px',
+    top:'605px',
     marginLeft:'40px',
+    position: 'absolute',
    },
  titleLink:{
   width: '121px',
@@ -169,15 +178,42 @@ const divider={
   marginLeft:'17.22px',
   color: '#FFFFFF',
  },
-
-
  labelCompra:{
      ...label,
-     top: '140px',
+     top: '-120px',
+     left:'-20px'
+     
  },
  labelAdministracion:{
     ...label,
-    top: '330px',
-}
-
+    top: '-105px',
+    left:'-20px'
+},
+textLogin:{
+      top: '13.67%',
+      left: '1331px',
+      color: '#002563',
+      width: '85px',
+      bottom: '40.74%',
+      height: '35px',
+      position: 'absolute',
+      fontSize: '16px',
+      fontStyle: 'normal',
+      textAlign: 'right',
+      fontFamily: 'Titillium Web',
+      fontWeight: 'bold',
+      lineHeight: '18px',
+      borderRadius: '10px',
+      letterSpacing: '0.5px',
+    },
+    iconoLogin:{
+      top: '13.67%',
+      left: '1279px',
+      color: '#FFFFFF',
+      width: '35px',
+      height: '35px',
+      position: 'absolute',
+      borderRadius: '10px',
+      backgroundColor: '#00256',
+    }
 }));
