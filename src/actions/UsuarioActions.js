@@ -4,7 +4,8 @@ import {
     SET_ERROR,
     STATUS_FORMULARIO,
     UPDATE_USER,
-    CERRAR_MENSAJE
+    CERRAR_MENSAJE,
+    GET_USERS_ROL
 } from './types';
 
 import axios from 'axios';
@@ -63,12 +64,30 @@ export const deleteUser = (id) => async dispatch => {
 }
 
 export const abrirFormularioUsuario = (status) =>  dispatch => {
-      
+    dispatch(getUsuarioRol());
     dispatch({
         type: STATUS_FORMULARIO,
         payload: status
     });
 
+}
+
+export const getUsuarioRol = () => async dispatch => {
+    try {
+        const { data } = await axios.get('/api/users/roles');
+
+        dispatch({
+            type: GET_USERS_ROL,
+            payload: data.rols
+        });
+
+    } catch (error) {
+        dispatch({
+            type: SET_ERROR,
+            payload: error
+        });
+
+    }
 }
 
 export const cerrarMensajeUsuario = ()  => dispatch => {

@@ -7,7 +7,8 @@ import {
     UPDATE_USER,
     STATUS_FORMULARIO,
     UPDATE_USER_LIST,
-    CERRAR_MENSAJE
+    CERRAR_MENSAJE,
+    GET_USERS_ROL
 } from '../actions/types';
  
 const initialState = {
@@ -19,10 +20,16 @@ const initialState = {
     abrirFormularioStatus: false,
     tituloFormulario: 'Nuevo Usuario',
     mostrarMensaje: false,
-    textoMensaje: ''
+    textoMensaje: '',
+    roles: []
 }
 const UsuarioReducer =  (state = initialState, action) => {
     switch(action.type){
+        case GET_USERS_ROL:
+            return{
+                ...state,
+                roles: action.payload
+            }
         case CERRAR_MENSAJE:
             return {
                 ...state,

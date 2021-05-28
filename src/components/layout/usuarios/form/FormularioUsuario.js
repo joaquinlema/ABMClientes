@@ -2,13 +2,14 @@ import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {createUser,editUser} from '../../../../actions/FormularioUsuarioActions';
 import {abrirFormularioUsuario} from '../../../../actions/UsuarioActions';
-import { Formik, Form} from 'formik';
-import { Button, LinearProgress, Grid, Divider } from '@material-ui/core';
+import { Formik, Form, Field} from 'formik';
+import { Button, LinearProgress, Grid, Divider, FormControl, MenuItem } from '@material-ui/core';
 import MyTextField from './textField/MyTextField';
 import * as Yup from "yup";
 import { makeStyles } from '@material-ui/core/styles';
 import './estiloForm.css';
 import BotonNuevo from '../../utils/botonNuevo/BotonNuevo';
+import { Select } from 'formik-material-ui';
 
 const useStyles = makeStyles((theme) => ({
     grid: {
@@ -20,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     textField:{
         width: '100%',
         marginTop: '5px',
-
     },
     inputText:{ 
         fontStyle: 'normal',
@@ -112,7 +112,7 @@ const FormularioUsuario = () => {
     const classes = useStyles();
 
    const dispatch = useDispatch();
-   const {usuarioEdit, editStatus, tituloFormulario}  = useSelector(state => state.UsuarioReducer);
+   const {usuarioEdit, editStatus, tituloFormulario, roles}  = useSelector(state => state.UsuarioReducer);
     
     const SignupSchema = Yup.object().shape({
         nombre: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
@@ -148,7 +148,7 @@ const FormularioUsuario = () => {
                     }, 500);
                 }}
             >
-                {({ submitForm, isSubmitting}) => (
+                {({ submitForm, isSubmitting, errors, touched, initialValues}) => (
                     <Form >
                         <span className={classes.titulo}>{tituloFormulario}</span>
                         <Grid container spacing={2}>
@@ -164,14 +164,31 @@ const FormularioUsuario = () => {
 
                             <Divider variant="middle" className={classes.divider}/>
 
-                            <Grid item xs={6} md={6} lg={6} className={classes.grid}>
+                            <Grid item xs={6} md={6} lg={6}>
                                 <label className={classes.label}>Usuario *</label>
                                 <MyTextField className={classes.textField} name="usuario" type="text" />
                             </Grid>
 
-                            <Grid item xs={6} md={6} lg={6} className={classes.grid} >
+                            <Grid item xs={6} md={6} lg={6} >
                                 <label className={classes.label}>Rol *</label> 
-                                <MyTextField className={classes.textField} name="rol" type="text" />
+                                <FormControl className={classes.textField}>
+                                    <Field
+                                        error={errors.rol && touched.rol ? true : false}
+                                        component={Select}
+                                        name="rol"
+                                        value={initialValues.rol}
+                                        variant="outlined"
+                                        inputProps={{
+                                            id: 'rol',
+                                        }}
+                                    >
+                                        {roles.length > 0 &&
+                                            roles.map((item, index) => (
+                                                <MenuItem key={index} value={item.id}>{item.rol}</MenuItem>
+                                            ))
+                                        }
+                                    </Field>
+                                </FormControl>
                             </Grid>
 
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
