@@ -61,7 +61,6 @@ export function makeServer({ environment = "test" } = {}) {
         return schema.clientes.find(id).update(attrs)
       });
 
-      //viejo
       this.get("/users", (schema) => {
         return schema.users.all()
       });
@@ -88,7 +87,7 @@ export function makeServer({ environment = "test" } = {}) {
       
         return schema.users.find(id).update(attrs)
       });
-
+   //viejo
       this.get("/tasks", (schema) => {
         return schema.tasks.all()
       });

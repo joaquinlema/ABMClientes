@@ -118,9 +118,9 @@ const FormularioUsuario = () => {
         nombre: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
         apellido: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
         usuario: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
-        rol: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
+        rol: Yup.string().ensure().required('Required'),
         contraseña: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
-        sucursal: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
+        sucursal: Yup.string().min(1, 'Too Short!').max(70, 'Too Long!').required('Required'),
     });
 
     return (
@@ -176,7 +176,7 @@ const FormularioUsuario = () => {
                                         error={errors.rol && touched.rol ? true : false}
                                         component={Select}
                                         name="rol"
-                                        value={initialValues.rol}
+                                        defaultValue={initialValues.rol}
                                         variant="outlined"
                                         inputProps={{
                                             id: 'rol',
@@ -184,11 +184,13 @@ const FormularioUsuario = () => {
                                     >
                                         {roles.length > 0 &&
                                             roles.map((item, index) => (
-                                                <MenuItem key={index} value={item.id}>{item.rol}</MenuItem>
+                                                <MenuItem key={index} value={item.rol}>{item.rol}</MenuItem>
                                             ))
                                         }
                                     </Field>
                                 </FormControl>
+                                {errors.rol && touched.rol ? (
+                                    <p className='MuiFormHelperText-root MuiFormHelperText-contained Mui-error'>{errors.rol}</p>) : null}
                             </Grid>
 
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>

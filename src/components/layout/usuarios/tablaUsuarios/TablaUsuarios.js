@@ -10,7 +10,7 @@ import {getUsuarios} from '../../../../actions/UsuarioActions';
 
 const TablaUsuarios = () => {
 
-    const {usuarios} = useSelector(state => state.UsuarioReducer);
+    const { usuarios } = useSelector(state => state.UsuarioReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
