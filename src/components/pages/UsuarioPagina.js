@@ -22,7 +22,7 @@ const UsuarioPage = () => {
             </Grid>
 
             <Grid container item xs={12} sm={12} md={4} lg={4}>
-                <DialogoGeneral open={abrirFormularioStatus} cerrar={() => dispatch(abrirFormularioUsuario)} contenido={<FormularioUsuario />} />
+                <DialogoGeneral open={abrirFormularioStatus} cerrar={() => dispatch(abrirFormularioUsuario(false))} contenido={<FormularioUsuario />} />
             </Grid>
         
         </Grid>

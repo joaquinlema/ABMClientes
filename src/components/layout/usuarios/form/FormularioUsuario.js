@@ -115,27 +115,24 @@ const FormularioUsuario = () => {
    const {usuarioEdit, editStatus, tituloFormulario}  = useSelector(state => state.UsuarioReducer);
     
     const SignupSchema = Yup.object().shape({
-        alias: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
-        telefono: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[0-9]+$/,"Solo Numeros").required('Required'),
-        mail: Yup.string().email('Formarto Invalido').required('Required'),
+        nombre: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
+        apellido: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
+        usuario: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
+        rol: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
+        contraseña: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
+        sucursal: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
     });
 
     return (
             <Formik
                 initialValues={{
-                    alias: (typeof usuarioEdit.alias !== 'undefined') ? usuarioEdit.alias : '', 
-                    telefono: (typeof usuarioEdit.telefono !== 'undefined') ? usuarioEdit.telefono : '',
                     nombre: (typeof usuarioEdit.nombre !== 'undefined') ? usuarioEdit.nombre : '', 
-                    mail: (typeof usuarioEdit.mail !== 'undefined') ? usuarioEdit.mail : '', 
-                    direccion: (typeof usuarioEdit.direccion !== 'undefined') ? usuarioEdit.direccion : '',
-                    dni: (typeof usuarioEdit.dni !== 'undefined') ? usuarioEdit.dni : '', 
-                    cuil: (typeof usuarioEdit.cuil !== 'undefined') ? usuarioEdit.cuil : '', 
-                    clearingCompra: (typeof usuarioEdit.clearingCompra !== 'undefined') ? usuarioEdit.clearingCompra : '', 
-                    tasaMensualCompra: (typeof usuarioEdit.tasaMensualCompra !== 'undefined') ? usuarioEdit.tasaMensualCompra : '',
-                    comisionCompra: (typeof usuarioEdit.comisionCompra !== 'undefined') ? usuarioEdit.comisionCompra : '',
-                    clearingVenta: (typeof usuarioEdit.clearingVenta !== 'undefined') ? usuarioEdit.clearingVenta : '', 
-                    tasaMensualVenta: (typeof usuarioEdit.tasaMensualVenta !== 'undefined') ? usuarioEdit.tasaMensualVenta : '', 
-                    comisionVenta: (typeof usuarioEdit.comisionVenta !== 'undefined') ? usuarioEdit.comisionVenta : '',
+                    apellido: (typeof usuarioEdit.apellido !== 'undefined') ? usuarioEdit.apellido : '', 
+                    usuario: (typeof usuarioEdit.usuario !== 'undefined') ? usuarioEdit.usuario : '', 
+                    rol: (typeof usuarioEdit.rol !== 'undefined') ? usuarioEdit.rol : '', 
+                    contraseña: (typeof usuarioEdit.contraseña !== 'undefined') ? usuarioEdit.contraseña : '', 
+                    sucursal: (typeof usuarioEdit.sucursal !== 'undefined') ? usuarioEdit.sucursal : '', 
+                    
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { setSubmitting,resetForm }) => {
@@ -156,79 +153,35 @@ const FormularioUsuario = () => {
                         <span className={classes.titulo}>{tituloFormulario}</span>
                         <Grid container spacing={2}>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                <label className={classes.label}>Alias*</label>
-                                <MyTextField className={classes.textField} name="alias" type="text" />
-                            </Grid>
-
-                            <Grid item xs={6} md={6} lg={6} className={classes.grid} >
-                                <label className={classes.label}>Nombre</label> 
+                                <label className={classes.label}>Nombre *</label>
                                 <MyTextField className={classes.textField} name="nombre" type="text" />
                             </Grid>
 
-                            <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                <label className={classes.label}>Telefono*</label>
-                                <MyTextField className={classes.textField}  name="telefono" type="text" />
+                            <Grid item xs={6} md={6} lg={6} className={classes.grid} >
+                                <label className={classes.label}>Apellido *</label> 
+                                <MyTextField className={classes.textField} name="apellido" type="text" />
                             </Grid>
 
-                            <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                <label className={classes.label}>Mail</label>
-                                <MyTextField className={classes.textField}  name="mail" type="Email"  />
-                            </Grid>
-
-                            <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                <label className={classes.label}>DNI</label>
-                                <MyTextField className={classes.textField}  name="dni" type="text"  />
-                            </Grid>
-
-                            <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                <label className={classes.label}>CUIL</label>
-                                <MyTextField className={classes.textField}  name="cuil" type="text"  />
-                            </Grid>
-
-                            <Grid item xs={12} md={12} lg={12} className={classes.grid}>
-                                <label className={classes.label}>Direccion</label>
-                                <MyTextField className={classes.textField}  name="direccion" type="text" />
-                            </Grid>
-  
                             <Divider variant="middle" className={classes.divider}/>
 
-                            <Grid item xs={3} md={3} lg={3} className={classes.headerInput}>
-                                {' '}
-                            </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.headerInput}>
-                                <label className={classes.label}>Clearing</label>    
-                            </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.headerInput}>
-                                <label className={classes.label}>Comision</label>    
-                            </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.headerInput}>
-                                <label className={classes.label}>Tasa Mensual</label>
+                            <Grid item xs={6} md={6} lg={6} className={classes.grid}>
+                                <label className={classes.label}>Usuario *</label>
+                                <MyTextField className={classes.textField} name="usuario" type="text" />
                             </Grid>
 
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo + ' ' + classes.gridCompraVenta}>
-                                <label className={classes.labelCV}>Compra</label>
-                            </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField  name="clearingCompra" type="text"  />
-                            </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="comisionCompra" type="text"  />
-                            </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="tasaMensualCompra" type="text"  />
+                            <Grid item xs={6} md={6} lg={6} className={classes.grid} >
+                                <label className={classes.label}>Rol *</label> 
+                                <MyTextField className={classes.textField} name="rol" type="text" />
                             </Grid>
 
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo + ' ' + classes.gridCompraVenta}>
-                                <label className={classes.labelCV}>Venta</label>
+                            <Grid item xs={6} md={6} lg={6} className={classes.grid}>
+                                <label className={classes.label}>Contraseña *</label>
+                                <MyTextField className={classes.textField} name="contraseña" type="password" />
                             </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="clearingVenta" type="text"  />
-                            </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="comisionVenta" type="text"  />
-                            </Grid>
-                            <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="tasaMensualVenta" type="text"  />
+
+                            <Grid item xs={6} md={6} lg={6} className={classes.grid} >
+                                <label className={classes.label}>Sucursal *</label> 
+                                <MyTextField className={classes.textField} name="sucursal" type="text" />
                             </Grid>
 
                             <Grid item xs={12} md={12} lg={12}>

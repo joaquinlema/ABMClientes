@@ -6,7 +6,8 @@ import {
     DELETE_USER,
     UPDATE_USER,
     STATUS_FORMULARIO,
-    UPDATE_USER_LIST
+    UPDATE_USER_LIST,
+    CERRAR_MENSAJE
 } from '../actions/types';
  
 const initialState = {
@@ -22,6 +23,12 @@ const initialState = {
 }
 const UsuarioReducer =  (state = initialState, action) => {
     switch(action.type){
+        case CERRAR_MENSAJE:
+            return {
+                ...state,
+                mostrarMensaje: false,
+                textoMensaje: ''
+            };
         case UPDATE_USER_LIST:
             return{
                 ...state,
