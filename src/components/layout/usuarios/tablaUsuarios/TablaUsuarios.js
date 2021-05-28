@@ -7,6 +7,7 @@ import {  IconButton } from "@material-ui/core";
 import EditIcon from '@material-ui/icons/Edit';
 import { useDispatch, useSelector } from 'react-redux';
 import {getUsuarios} from '../../../../actions/UsuarioActions';
+import EdicionPopUp from '../../utils/popup/EdicionPopUp';
 
 const TablaUsuarios = () => {
 
@@ -27,11 +28,12 @@ const TablaUsuarios = () => {
           empty: true,
           customBodyRender: (value, tableMeta, updateValue) => {
             return (
-                <IconButton color="primary" aria-label="upload picture" component="span" 
-                //onClick={() => dispatch(setEditUser({'id':tableMeta.rowData[0],'name':tableMeta.rowData[1], 'apellido':tableMeta.rowData[2], 'email':tableMeta.rowData[3] }))}
-                >
-                    <EditIcon />
-                </IconButton>
+                <EdicionPopUp />
+                // <IconButton color="primary" aria-label="upload picture" component="span" 
+                // //onClick={() => dispatch(setEditUser({'id':tableMeta.rowData[0],'name':tableMeta.rowData[1], 'apellido':tableMeta.rowData[2], 'email':tableMeta.rowData[3] }))}
+                // >
+                //     <EditIcon />
+                // </IconButton>
             );
           }
         }
