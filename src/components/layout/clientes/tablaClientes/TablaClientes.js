@@ -27,7 +27,7 @@ const TablaClientes = () => {
           customBodyRender: (value, tableMeta, updateValue) => {
             return (
               <EdicionPopUp 
-              accionEdicion={() => dispatch(setEditClient({ nombre: tableMeta.rowData[0], apellido: tableMeta.rowData[1], usuario:tableMeta.rowData[2], rol:tableMeta.rowData[3], sucursal:tableMeta.rowData[4] })) }
+              accionEdicion={() => dispatch(setEditClient({ alias: tableMeta.rowData[0], nombre: tableMeta.rowData[1], telefono:tableMeta.rowData[2], mail:tableMeta.rowData[3], direccion:tableMeta.rowData[4] })) }
               accionEliminar={() => console.log('Eliminar')}
               />
             );

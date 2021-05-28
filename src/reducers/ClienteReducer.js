@@ -44,7 +44,7 @@ const ClienteReducer =  (state = initialState, action) => {
         case UPDATE_CLIENT:
             return{
                 ...state,
-                clienteEdit:action.payload.clienteEdit,
+                clienteEdit:action.payload,
                 editStatus:true,
                 tituloFormulario: 'Editar '+ action.payload.alias,
                 abrirFormularioStatus:true
