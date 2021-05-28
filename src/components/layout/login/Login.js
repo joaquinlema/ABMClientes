@@ -5,12 +5,13 @@ import * as Yup from "yup";
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import MyTextField from '../clientes/form/textField/MyTextField'
 import IconButton from '@material-ui/core/IconButton';
 import Styles from './styles'
-import { useHistory } from 'react-router';
+import { useHistory  } from 'react-router';
 
 const Login = () => {
-
+    let history = useHistory();
     const SignupSchema = Yup.object().shape({
         //nombre: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[a-zA-Z ]+$/, "Invalid Name only letters").required('Required'),
         //password: Yup.string().min(6, 'Password has to be longer than 6 characters!').required('Password is required!')
@@ -19,8 +20,8 @@ const Login = () => {
 
     const validateUser = (values) => {
         alert(JSON.stringify(values));
-        localstorage.setItem("USER_FINANCIERA",values.nombre);
-        useHistory.push("/");
+        localStorage.setItem("USER_FINANCIERA",values.nombre);
+        history.push("/");
     }
     return (
         <Formik
@@ -51,7 +52,7 @@ const Login = () => {
 
                         <Grid item sm={12} md={12} className={classes.containerInputNombre}>
                             <InputLabel className={classes.labelInput} >Nombre</InputLabel>
-                            <TextField id="outlined-basic" variant="outlined" error={errors.nombre} name="nombre" className={classes.inputUsuario} />
+                            <MyTextField id="outlined-basic"  name="nombre" className={classes.inputUsuario} />
                         </Grid>
                         <Grid item sm={12} md={12} className={classes.containerInput}>
                             <InputLabel htmlFor="standard-adornment-password" className={classes.labelInput}>

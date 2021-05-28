@@ -29,7 +29,7 @@ const divider={
   },
   appBar: {
     height: '80px',
-    width: '1440px',
+    width: '100%',
     left: '0px',
     top: '0px',
     zIndex: theme.zIndex.drawer + 1,
@@ -191,7 +191,7 @@ const divider={
 },
 textLogin:{
       top: '13.67%',
-      left: '1331px',
+      left: '100%',
       color: '#002563',
       width: '85px',
       bottom: '40.74%',
@@ -207,13 +207,12 @@ textLogin:{
       letterSpacing: '0.5px',
     },
     iconoLogin:{
-      top: '13.67%',
-      left: '1279px',
+      top: '17%',
+      left:'20%',
       color: '#FFFFFF',
       width: '35px',
       height: '35px',
-      position: 'absolute',
       borderRadius: '10px',
-      backgroundColor: '#00256',
+      backgroundColor: '#002563',
     }
 }));
