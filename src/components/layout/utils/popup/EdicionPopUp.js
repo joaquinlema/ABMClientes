@@ -1,9 +1,9 @@
-import { Button, IconButton, List, ListItem, ListItemText, Popover } from '@material-ui/core';
+import { IconButton, List, ListItem, ListItemText, Popover } from '@material-ui/core';
 import React, { Fragment } from 'react';
 import './popupestilo.css';
 import EditIcon from '@material-ui/icons/Edit';
 
-const EdicionPopUp = () => {
+const EdicionPopUp = ({accionEdicion, accionEliminar}) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -20,11 +20,9 @@ const EdicionPopUp = () => {
 
     return (
         <Fragment>
-            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleClick} 
-                //onClick={() => dispatch(setEditUser({'id':tableMeta.rowData[0],'name':tableMeta.rowData[1], 'apellido':tableMeta.rowData[2], 'email':tableMeta.rowData[3] }))}
-                >
-                    <EditIcon />
-                </IconButton>
+            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleClick} >
+                <EditIcon />
+            </IconButton>
             <Popover 
                 id={id}
                 open={open}
@@ -40,10 +38,10 @@ const EdicionPopUp = () => {
                 }}
             >
                 <List component="nav" className='popup'>
-                    <ListItem button onClick={() => { alert('clicked') }}>
+                    <ListItem button onClick={() => accionEdicion}>
                         <ListItemText primary="Editar" />
                     </ListItem>
-                    <ListItem button onClick={() => { alert('clicked2') }}>
+                    <ListItem button onClick={() => accionEliminar}>
                         <ListItemText primary="Eliminar" />
                     </ListItem>
                 </List>
