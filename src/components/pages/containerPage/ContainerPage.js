@@ -53,21 +53,15 @@ export default function MiniDrawer() {
       <CssBaseline />
       <AppBar className={clsx(classes.appBar, { [classes.appBarShift]: open, })}>
         <Toolbar>
-          <div>
-            <IconButton onClick={logout}>
-              <PersonOutlineIcon  className={classes.iconoLogin} /><h5 className={classes.textLogin}>Hola ,{localStorage.getItem('USER_FINANCIERA')}</h5>
+          <div className={classes.containerLogin}>
+            <IconButton className={classes.iconoLogin} onClick={logout}>
+              <PersonOutlineIcon  /><h5 className={classes.textLogin}>Hola ,{localStorage.getItem('USER_FINANCIERA')}</h5>
             </IconButton>  
           </div>
         </Toolbar>
       </AppBar>
       <Router history={history}>
-        <Drawer
-          variant="permanent"
-          className={clsx(classes.drawer, {
-            [classes.drawerOpen]: open,
-          })}
-          classes={{ paper: clsx({ [classes.drawerOpen]: open, }), }}
-        >
+        <Drawer variant="permanent" className={clsx(classes.drawer, { [classes.drawerOpen]: open,})} classes={{ paper: clsx({ [classes.drawerOpen]: open, }), }}>
           <div>
             <h5 className={classes.titleSistema}>
               Sistema <br></br>de Financiera

@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     textField:{
         width: '100%',
         marginTop: '5px',
-
     },
     inputText:{ 
         fontStyle: 'normal',

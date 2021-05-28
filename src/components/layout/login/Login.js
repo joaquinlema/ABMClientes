@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import MyTextField from '../clientes/form/textField/MyTextField'
+import MyTextField from '../clientes/form/textField/MyTextField';
 import IconButton from '@material-ui/core/IconButton';
 import Styles from './styles'
 import { useHistory  } from 'react-router';
@@ -42,26 +42,25 @@ const Login = () => {
         >
             {({ submitForm, isSubmitting, values, setFieldValue, errors }) => (
                 <Form>
-                    <Grid className={classes.body} container>
-                        <Grid item sm={12} md={12} >
+                    <Grid className={classes.body} container direction="column" justify="center" alignItems="center">
+                    
+                        <Grid item xs={12} md={12}  >
                             <h5 className={classes.bienvenido}>¡Bienvenido!</h5>
                         </Grid>
-                        <Grid item sm={12} md={12} >
-                            <h3 className={classes.financiera}>Sistema de <br></br>Financiera</h3>
+                        <Grid item xs={12} md={12} className={classes.grid} >
+                            <h3 className={classes.financiera}>Sistema <br></br>de Financiera</h3>
                         </Grid>
-
-                        <Grid item sm={12} md={12} className={classes.containerInputNombre}>
-                            <InputLabel className={classes.labelInput} >Nombre</InputLabel>
-                            <MyTextField id="outlined-basic"  name="nombre" className={classes.inputUsuario} />
+                        <Grid item xs={12} md={12} className={classes.grid}>
+                            <InputLabel  className={classes.label}>Nombre</InputLabel>
+                            <MyTextField  type="text" name="nombre"  className={classes.inputUsuario}/>
                         </Grid>
-                        <Grid item sm={12} md={12} className={classes.containerInput}>
-                            <InputLabel htmlFor="standard-adornment-password" className={classes.labelInput}>
-                                Password
-                        </InputLabel>
+                        <Grid item xs={12} md={12} className={classes.grid}>
+                            <InputLabel  className={classes.label}>Password</InputLabel>
                             <OutlinedInput
+                                className={classes.inputPassword}
                                 type={values.showPassword ? 'text' : 'password'}
                                 name="password"
-                                className={classes.inputPassword}
+                                onChange={(values) => { setFieldValue('password', values.target.values)}}
                                 endAdornment={
                                     <InputAdornment>
                                         <IconButton
@@ -83,7 +82,7 @@ const Login = () => {
                         <Grid item xs={12} md={12} lg={12}>
                             {isSubmitting && <LinearProgress />}
                         </Grid>
-                        <Grid item sm={12} md={12} className={classes.containerButton}>
+                        <Grid item sm={12} md={12} className={classes.grid}>
                             <Button variant="contained" className={classes.button} disabled={isSubmitting} onClick={submitForm}>
                                 <label className="-Label-Button">Aceptar</label>
                             </Button>
