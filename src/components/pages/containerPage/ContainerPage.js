@@ -1,12 +1,10 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -14,12 +12,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Home from '../Home';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect,useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect,useHistory,useLocation } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import About from '../About';
 import NotFound from '../NotFound';
+import MonedaPage from '../MonedaPage'
 import UsuarioPagina from '../UsuarioPagina';
-import TareaPage from '../TareaPage';
 import Login from '../../layout/login/Login'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
@@ -28,16 +26,21 @@ import TuneIcon from '@material-ui/icons/Tune';
 import SyncAltIcon from '@material-ui/icons/SyncAlt';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import WebIcon from '@material-ui/icons/Web';
+import AccountBalanceOutlinedIcon from '@material-ui/icons/AccountBalanceOutlined';
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import { createBrowserHistory } from "history";
 import ClientePage from '../ClientePage';
 import styles from './styles'
 
 
-export default function MiniDrawer() {
+const MiniDrawer = () => {
+
   const classes = styles();
   let histories = useHistory();
   const [open, setOpen] = React.useState(true);
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
   const history = createBrowserHistory();
 
   if (!localStorage.getItem('USER_FINANCIERA')) {
@@ -133,10 +136,10 @@ export default function MiniDrawer() {
           <Grid container>
             <Switch>
               <Route path='/User' component={UsuarioPagina} />
-              <Route path='/Login' component={Login} />
-              <Route path='/Tarea' component={TareaPage} />
               <Route path='/Cliente' component={ClientePage} />
               <Route path='/about' component={About} />
+              <Route path='/Login' component={Login} />
+              <Route path='/moneda' component={MonedaPage} />
               <Route component={NotFound} />
             </Switch>
           </Grid>
@@ -145,3 +148,5 @@ export default function MiniDrawer() {
     </div>
   );
 }
+
+export default MiniDrawer;

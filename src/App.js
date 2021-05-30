@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import store from './store';
 import { BrowserRouter as Router, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { makeServer } from './server/MyServerMirage';
-import Login from './components/layout/login/Login'
 import HomePage from './components/pages/containerPage/ContainerPage';
+import Login from './components/layout/login/Login'
 import './App.css';
 import WebFont from 'webfontloader';
 
@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 WebFont.load({
-    google: {
-      families: ['Titillium Web:300,400,700', 'sans-serif']
-    }
-  });
+  google: {
+    families: ['Titillium Web:300,400,700', 'sans-serif']
+  }
+});
 
 if (process.env.NODE_ENV === "development") {
   makeServer({ environment: "development" })
