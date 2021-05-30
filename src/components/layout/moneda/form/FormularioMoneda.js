@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const FormularioMoneda = () => {
+const FormularioMoneda = ({compra}) => {
     const classes = useStyles();
 
     const dispatch = useDispatch();
@@ -90,6 +90,7 @@ const FormularioMoneda = () => {
         (data.nombre == "USD") ? setFieldValue('valorCotizacion',values.cotizacion * 100) :  setFieldValue('valorCotizacion',values.cotizacion / 100);
     }
 
+    
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Formik
@@ -105,8 +106,11 @@ const FormularioMoneda = () => {
                 validationSchema={SignupSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     setTimeout(() => {
+                     
                         setSubmitting(false);
+                        alert(JSON.stringify(values));
                         resetForm();
+                    
                     }, 500);
                 }}
             >
@@ -134,7 +138,12 @@ const FormularioMoneda = () => {
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
                                 {isSubmitting && <LinearProgress />}
                             </Grid>
-
+                              {compra && <Button
+                                    variant="contained"
+                                    color="primary"
+                                    disabled={isSubmitting}
+                                    onClick={submitForm}
+                                ></Button> }
                             {/* <Grid item xs={12} md={12} lg={12} className={classes.botones}>
                                 <Button
                                     variant="contained"
