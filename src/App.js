@@ -11,7 +11,8 @@ import WebFont from 'webfontloader';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width:'100%',
+    flexGrow: 1,
+    
   }
 }));
 
@@ -31,12 +32,12 @@ const App = () => {
   return (
     <Provider store={store}>
       <HashRouter>
-     
-        <Switch>
+        <div className={classes.root}>
+          <Switch>
             <Route exact={true} path='/' component={HomePage} />
             <Route path='/Login' component={Login} />
           </Switch>
-       
+        </div>
       </HashRouter>
     </Provider>
   );

@@ -2,7 +2,7 @@ import { Grid } from '@material-ui/core';
 import React from 'react';
 import { useDispatch ,useSelector } from 'react-redux';
 import {abrirFormularioCliente, cerrarMensajeCliente} from '../../actions/ClienteActions'; 
-import NuevaMoneda from '../layout/moneda/operacion/NuevaMoneda'
+import NuevaMoneda from '../layout/moneda/operacion/NuevaCompra'
 import Mensaje from '../layout/utils/mensaje/Mensaje';
 
 const ClientePage = () => {

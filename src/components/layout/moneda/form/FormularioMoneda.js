@@ -26,11 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     root: {
-        position: 'absolute',
         left: '20%',
-        right: '0%',
-        top: '15%',
-        bottom: '0%',
         backgroundColor: '#FFFFFF',
         boxShadow: '0px 5px 10px rgba(0, 37, 99, 0.05)',
         borderRadius: '12px',
@@ -92,23 +88,19 @@ const FormularioUsuario = () => {
                     <Form>
                         <Grid container className={classes.root}>
                             <Grid item xs={12} md={5} lg={5}>
-
                                 <MyTextField className={classes.textField} name="cliente" type="text" label="Cliente" placeholder="Nombre"></MyTextField>
                             </Grid>
                             <Grid item xs={12} md={5} lg={5}>
                                 <MyTextField className={classes.textField} name="valorCliente" type="text" />
-
                             </Grid>
                             <Grid item xs={12} md={2} lg={2}>
                                 <MyTextField className={classes.textField} name="moneda" />
                             </Grid>
                             <Grid item xs={12} md={6} lg={6}>
                                 <MyTextField className={classes.textField} name="cotizacion" type="text" label="Cotizacion"></MyTextField>
-
                             </Grid>
                             <Grid item xs={12} md={6} lg={6}>
                                 <MyTextField className={classes.textField} name="valorCotizacion" type="text"></MyTextField>
-
                             </Grid>
                             <Grid item xs={12} md={12} lg={12}>
                                 {isSubmitting && <LinearProgress />}
@@ -121,7 +113,7 @@ const FormularioUsuario = () => {
                                     disabled={isSubmitting}
                                     onClick={submitForm}
                                 >
-
+                                    Guardar
                                 </Button>
                             </Grid>
                         </Grid>

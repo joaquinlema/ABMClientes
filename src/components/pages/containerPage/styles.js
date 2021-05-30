@@ -69,7 +69,7 @@ const drawerWidth = 239;
    width:'16.78px',
    height:'21.94px',
    color:'#FFFFFF',
-   marginLeft:'30px'
+   marginLeft:'5px'
  },
 
  titleLink:{
@@ -105,7 +105,6 @@ textLogin:{
       lineHeight: '18px',
       borderRadius: '10px',
       letterSpacing: '0.5px',
-      marginLeft:'100px'
     },
     iconoLogin:{      
       color: '#FFFFFF',

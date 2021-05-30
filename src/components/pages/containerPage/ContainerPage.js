@@ -57,8 +57,8 @@ const MiniDrawer = () => {
       <AppBar className={clsx(classes.appBar, { [classes.appBarShift]: open, })}>
         <Toolbar>
           <div className={classes.containerLogin}>
-            <IconButton className={classes.iconoLogin} onClick={logout}>
-              <PersonOutlineIcon  /><h5 className={classes.textLogin}>{"Hola" +","+localStorage.getItem('USER_FINANCIERA')}</h5>
+            <IconButton onClick={logout}>
+              <PersonOutlineIcon className={classes.iconoLogin}/><h5 className={classes.textLogin}>{"Hola" +","+localStorage.getItem('USER_FINANCIERA')}</h5>
             </IconButton>  
           </div>
         </Toolbar>
