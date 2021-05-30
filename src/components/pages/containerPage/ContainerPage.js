@@ -55,70 +55,78 @@ export default function MiniDrawer() {
         <Toolbar>
           <div className={classes.containerLogin}>
             <IconButton className={classes.iconoLogin} onClick={logout}>
-              <PersonOutlineIcon  /><h5 className={classes.textLogin}>Hola ,{localStorage.getItem('USER_FINANCIERA')}</h5>
+              <PersonOutlineIcon  /><h5 className={classes.textLogin}>{"Hola" +","+localStorage.getItem('USER_FINANCIERA')}</h5>
             </IconButton>  
           </div>
         </Toolbar>
       </AppBar>
       <Router history={history}>
         <Drawer variant="permanent" className={clsx(classes.drawer, { [classes.drawerOpen]: open,})} classes={{ paper: clsx({ [classes.drawerOpen]: open, }), }}>
-          <div>
+            <Grid container> 
+            <Grid item xs={12} md={12}>
             <h5 className={classes.titleSistema}>
               Sistema <br></br>de Financiera
             </h5>
-
-          </div>
-          <div>
-            <List>
-              <ListItem button component={Link} to={'/Cliente'} className={classes.containerReporte} >
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <List>
+              <ListItem button component={Link} to={'/Cliente'} >
                 <ListItemIcon ><AccountBalanceIcon className={classes.icono} /></ListItemIcon>
-                <ListItemText className={classes.titleLink} primary="Reporte" />
+                <ListItemText className={classes.titleLink}  primary="Reporte" />
               </ListItem>
             </List>
-          </div>
-          <Divider className={classes.dividerMoneda} />
-          <List className={classes.containerMoneda}>
-            <label className={classes.labelCompra}>COMPRA/VENTA</label>
+            </Grid>      
+            <Divider className={classes.divider} />
+          <Grid item xs={12} md={12}>
+          <List>
+            <label className={classes.label}>COMPRA/VENTA</label>
             <ListItem button component={Link} to={'/Cliente'}  >
               <ListItemIcon ><AttachMoneyIcon className={classes.icono} /></ListItemIcon>
-              <ListItemText className={classes.titleLink} primary="Moneda" />
+              <ListItemText className={classes.titleLink}  primary="Moneda" />
             </ListItem>
             <ListItem button component={Link} to={'/Moneda'}  >
               <ListItemIcon ><WebIcon className={classes.icono} /></ListItemIcon>
-              <ListItemText className={classes.titleLink} primary="Cheques" />
+              <ListItemText  className={classes.titleLink}  primary="Cheques" />
             </ListItem>
           </List>
-          <Divider className={classes.dividerTransferencia} />
-          <List className={classes.containerTransferencia}>
+          </Grid>  
+          <Divider className={classes.divider} />
+          <Grid item xs={12} md={12}>
+          <List>
             <ListItem button component={Link} to={'/Moneda'}  >
               <ListItemIcon ><TelegramIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink} >Transferencia <br></br> al exterior</ListItemText>
             </ListItem>
           </List>
-          <Divider className={classes.dividerIngreso} />
-          <List className={classes.containerIngreso}>
+          </Grid>
+          <Divider className={classes.divider} />
+          <Grid item xs={12} md={12}>
+          <List>
             <ListItem button component={Link} to={'/Moneda'} >
               <ListItemIcon ><SyncAltIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink} >Ingreso y <br></br> egresos</ListItemText>
             </ListItem>
           </List>
-          <Divider className={classes.dividerAdministracion} />
-          <List className={classes.containerAdministracion}>
-            <label className={classes.labelAdministracion}>ADMINISTRACION</label>
+          </Grid>
+          <Divider className={classes.divider} />
+          <Grid item xs={12} md={12}>
+          <List>
+            <label className={classes.label}>ADMINISTRACION</label>
             <ListItem button component={Link} to={'/Moneda'}  >
               <ListItemIcon ><PeopleAltOutlinedIcon className={classes.icono} /></ListItemIcon>
-              <ListItemText className={classes.titleLink} >Clientes</ListItemText>
+              <ListItemText className={classes.titleLink}  >Clientes</ListItemText>
             </ListItem>
             <ListItem button component={Link} to={'/Moneda'}  >
               <ListItemIcon ><PersonOutlineIcon className={classes.icono} /></ListItemIcon>
-              <ListItemText className={classes.titleLink} >Usuarios</ListItemText>
+              <ListItemText className={classes.titleLink}  >Usuarios</ListItemText>
             </ListItem>
             <ListItem button component={Link} to={'/Moneda'}  >
               <ListItemIcon ><TuneIcon className={classes.icono} /></ListItemIcon>
-              <ListItemText className={classes.titleLink} >Parametros<br></br>globales</ListItemText>
+              <ListItemText className={classes.titleLink}  >Parametros<br></br>globales</ListItemText>
             </ListItem>
           </List>
-
+          </Grid>
+         </Grid>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
