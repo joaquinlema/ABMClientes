@@ -66,7 +66,7 @@ const FormularioUsuario = () => {
                                 <MyTextField className={classes.grid} name="name" type="text" label="Nombre" placeholder="Nombre" InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
-                                                <AccountCircle />
+                                              {values.showPassword ? <Visibility /> : <VisibilityOff />}
                                             </InputAdornment>
                                         ),
                                     }}/>
