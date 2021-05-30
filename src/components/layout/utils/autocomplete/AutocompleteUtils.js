@@ -12,11 +12,13 @@ const SelectUtils = (props) => {
                 className={classes.selectUtils}
                 options={props.OPTIONS_SELECT}
                 onChange={props.ONCHANGE_SELECT}
-                getOptionLabel={(option) => option['nombre']}
+                getOptionLabel={(option) => option['nombre']}   
+                value={props.VALUES}
                 renderInput={(params) =>
                     <TextField {...params}
                         label={props.LABEL_SELECT}
                         variant="outlined"
+                     
                         />
                     }
             />

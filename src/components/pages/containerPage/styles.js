@@ -115,5 +115,8 @@ textLogin:{
     },
     containerLogin:{
       marginLeft: '90%',
+    },
+    gridReporte:{
+      marginTop:'40px'
     }
 }));

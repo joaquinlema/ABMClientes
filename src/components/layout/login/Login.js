@@ -16,7 +16,7 @@ const Login = () => {
     let history = useHistory();
     const validateUser = (values) => {
         alert(JSON.stringify(values));
-        localStorage.setItem("USER_FINANCIERA", values.nombre);
+        sessionStorage.setItem("USER_FINANCIERA", values.nombre);
         history.push("/");
     }
     const SignupSchema = Yup.object().shape({

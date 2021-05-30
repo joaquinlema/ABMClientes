@@ -29,6 +29,9 @@ const NavMoneda = () => {
             <Progress></Progress>
         )
     }
+    const guardarCompra=(data)=>{
+        alert(JSON.stringify(data))
+    }
     const classes = Styles();
     return (
         <Grid container direction="row">
@@ -40,9 +43,6 @@ const NavMoneda = () => {
             </Grid>
             <Grid item xs={3} sm={3} md={3} lg={3} className={classes.gridResumen}>
                 <Resumen></Resumen>
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12} >
-
             </Grid>
         </Grid>
     );

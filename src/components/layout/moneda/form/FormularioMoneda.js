@@ -8,6 +8,7 @@ import MyTextField from '../../clientes/form/textField/MyTextField';
 import Autocomplete from '../../utils/autocomplete/AutocompleteUtils'
 import * as Yup from "yup";
 import { makeStyles } from '@material-ui/core/styles';
+import { TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     grid: {
@@ -75,6 +76,19 @@ const FormularioMoneda = () => {
     });
 
 
+    const setValor=(setFieldValue,data,values)=>{
+        setFieldValue('cotizacion',data);
+        (values.tipoMoneda.nombre=='USD') ? setFieldValue('valorCotizacion',data*100) : setFieldValue('valorCotizacion',data/100)
+    }
+
+    const setTipoMoneda =(setFieldValue,data,values)=>{
+        setFieldValue('tipoMoneda', data);
+        (values.cotizacion) ? setValorCotizacion(setFieldValue,data,values) : setFieldValue('cotizacion',values.cotizacion);
+    }
+
+    const setValorCotizacion=(setFieldValue,data,values)=>{
+        (data.nombre == "USD") ? setFieldValue('valorCotizacion',values.cotizacion * 100) :  setFieldValue('valorCotizacion',values.cotizacion / 100);
+    }
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -82,9 +96,10 @@ const FormularioMoneda = () => {
                 initialValues={{
                     cliente: '',
                     cotizacion: '',
-                    moneda: monedaValues[0],
+                    tipoMoneda: monedaValues[0],
                     valorCliente: '',
-                    valorCotizacion: ''
+                    valorCotizacion: '',
+                    descripcionCliente:'',
 
                 }}
                 validationSchema={SignupSchema}
@@ -103,16 +118,16 @@ const FormularioMoneda = () => {
                                 <Autocomplete OPTIONS_SELECT={clientes.sort()} ONCHANGE_SELECT={(_, data) => { setFieldValue('cliente', data) }} LABEL_SELECT="Cliente"></Autocomplete>
                             </Grid>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
-                                <MyTextField className={classes.textField} name="valorCliente" type="text" />
+                                <TextField  variant="outlined" className={classes.textField}  type="number" onChange={(value) => setValor(setFieldValue,value.currentTarget.value,values)}></TextField>
                             </Grid>
                             <Grid item xs={1} md={1} lg={1} className={classes.grid}>
-                                <Autocomplete OPTIONS_SELECT={monedaValues} ONCHANGE_SELECT={(_, data) => { setFieldValue('moneda', data) }} LABEL_SELECT="Moneda"></Autocomplete>
+                                <Autocomplete OPTIONS_SELECT={monedaValues} VALUES={values.tipoMoneda} ONCHANGE_SELECT={(_, data) => { setTipoMoneda(setFieldValue,data,values)}} LABEL_SELECT="Moneda"></Autocomplete>
                             </Grid>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
-                                <MyTextField className={classes.textField} name="cotizacion" type="text" label="Descripcion cliente"></MyTextField>
+                                <MyTextField className={classes.textField} name="descripcionCliente" type="text" label="Descripcion cliente"></MyTextField>
                             </Grid>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                {(values.moneda.nombre == 'USD') ? <MyTextField className={classes.textField} name="valorCotizacion" type="text" label="ARS"></MyTextField> :
+                                {(values.tipoMoneda.nombre == 'USD') ? <MyTextField className={classes.textField} name="valorCotizacion" type="text" label="ARS"></MyTextField> :
                                     <MyTextField className={classes.textField} name="valorCotizacion" type="text" label="USD"></MyTextField>
                                 }
                             </Grid>

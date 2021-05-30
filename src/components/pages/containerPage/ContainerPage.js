@@ -41,12 +41,12 @@ const MiniDrawer = () => {
   let { from } = location.state || { from: { pathname: "/" } };
   const history = createBrowserHistory();
 
-  if (!localStorage.getItem('USER_FINANCIERA')) {
+  if (!sessionStorage.getItem('USER_FINANCIERA')) {
     return <Redirect to="/Login" />
   }
 
   const logout =()=>{
-    localStorage.removeItem('USER_FINANCIERA');
+    sessionStorage.removeItem('USER_FINANCIERA');
     histories.push("/Login");
   }
   return (
@@ -56,7 +56,7 @@ const MiniDrawer = () => {
         <Toolbar>
           <div className={classes.containerLogin}>
             <IconButton onClick={logout}>
-              <PersonOutlineIcon className={classes.iconoLogin}/><h5 className={classes.textLogin}>{"Hola" +","+localStorage.getItem('USER_FINANCIERA')}</h5>
+              <PersonOutlineIcon className={classes.iconoLogin}/><h5 className={classes.textLogin}>{"Hola" +","+sessionStorage.getItem('USER_FINANCIERA')}</h5>
             </IconButton>  
           </div>
         </Toolbar>
@@ -69,7 +69,7 @@ const MiniDrawer = () => {
               Sistema <br></br>de Financiera
             </h5>
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={12} className={classes.gridReporte}>
               <List>
               <ListItem button component={Link} to={'/Cliente'} >
                 <ListItemIcon ><AccountBalanceIcon className={classes.icono} /></ListItemIcon>
