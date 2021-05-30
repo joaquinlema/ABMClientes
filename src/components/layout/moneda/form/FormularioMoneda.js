@@ -15,7 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     grid: {
         width: '100%',
-        margin: '2%',
+        margin:'10px'
     },
     botones: {
         marginLeft: '29%'
@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#FFFFFF',
         boxShadow: '0px 5px 10px rgba(0, 37, 99, 0.05)',
         borderRadius: '12px',
+       
     },
     botonGuardar: {
         background: '#5974FB',
@@ -46,6 +47,16 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'none',
         fontFamily: 'Titillium Web'
 
+    },
+    titulo:{
+        fontStyle: 'normal',
+        fontWeight: 'bolder',
+        fontSize: '22px',
+        lineHeight: '24px',
+        letterSpacing: '0.18px',
+        color: '#002563',
+        fontFamily:'Titillium Web',
+        marginLeft:'20px'
     },
 }));
 
@@ -86,27 +97,28 @@ const FormularioUsuario = () => {
             >
                 {({ submitForm, isSubmitting }) => (
                     <Form>
+                        <span className={classes.titulo}>{"Operacion"}</span>
                         <Grid container className={classes.root}>
-                            <Grid item xs={12} md={5} lg={5}>
+                            <Grid item xs={5} md={5} lg={5}  className={classes.grid}>
                                 <MyTextField className={classes.textField} name="cliente" type="text" label="Cliente" placeholder="Nombre"></MyTextField>
                             </Grid>
-                            <Grid item xs={12} md={5} lg={5}>
+                            <Grid item xs={5} md={5} lg={5} className={classes.grid}>
                                 <MyTextField className={classes.textField} name="valorCliente" type="text" />
                             </Grid>
-                            <Grid item xs={12} md={2} lg={2}>
+                            <Grid item xs={1} md={1} lg={1} className={classes.grid}>
                                 <MyTextField className={classes.textField} name="moneda" />
                             </Grid>
-                            <Grid item xs={12} md={6} lg={6}>
+                            <Grid item xs={5} md={5} lg={5} className={classes.grid}>
                                 <MyTextField className={classes.textField} name="cotizacion" type="text" label="Cotizacion"></MyTextField>
                             </Grid>
-                            <Grid item xs={12} md={6} lg={6}>
+                            <Grid item xs={6} md={6} lg={6} className={classes.grid}>
                                 <MyTextField className={classes.textField} name="valorCotizacion" type="text"></MyTextField>
                             </Grid>
-                            <Grid item xs={12} md={12} lg={12}>
+                            <Grid item xs={6} md={6} lg={6} className={classes.grid}>
                                 {isSubmitting && <LinearProgress />}
                             </Grid>
 
-                            <Grid item xs={12} md={12} lg={12} className={classes.botones}>
+                            {/* <Grid item xs={12} md={12} lg={12} className={classes.botones}>
                                 <Button
                                     variant="contained"
                                     color="primary"
@@ -115,7 +127,7 @@ const FormularioUsuario = () => {
                                 >
                                     Guardar
                                 </Button>
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                     </Form>
                 )}
