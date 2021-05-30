@@ -7,12 +7,16 @@ export function makeServer({ environment = "test" } = {}) {
     models: {
       user: Model,
       task: Model,
-      cliente: Model
+      cliente: Model,
+      rol:Model
     },
 
     seeds(server) {
-      server.create("user", { name: "Bob", apellido: 'Wills',email:'j@hotmail.com' });
-      server.create("user", { name: "Alice", apellido: 'McDonal',email:'j@hotmail.com' });
+      server.create("rol", { rol: "Supervisor", id: 0});
+      server.create("rol", { rol: "Cajero", id: 1});
+      server.create("rol", { rol: "Dueño", id: 2});
+      server.create("user", { nombre: "Bob", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'1' });
+      server.create("user", { nombre: "Bob", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'2'});
       server.create("task",{codigo: 'Argentina', descripcion: 'descripcion',duracionPlanificada: '45 min', usuarioId:'0'});
       server.create("cliente",{
         alias: 'alias', 
@@ -57,9 +61,12 @@ export function makeServer({ environment = "test" } = {}) {
         return schema.clientes.find(id).update(attrs)
       });
 
-      //viejo
       this.get("/users", (schema) => {
         return schema.users.all()
+      });
+
+      this.get("/users/roles", (schema) => {
+        return schema.rols.all()
       });
 
       this.post("/users", (schema, request) => {
@@ -80,7 +87,7 @@ export function makeServer({ environment = "test" } = {}) {
       
         return schema.users.find(id).update(attrs)
       });
-
+   //viejo
       this.get("/tasks", (schema) => {
         return schema.tasks.all()
       });

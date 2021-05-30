@@ -73,15 +73,15 @@ export default makeStyles((theme) => ({
    },
    button: {
       height: '40px',
-      width: '215px',
-      left: '0px',
-      top: '0px',
-      right: '0%',
-      bottom: '0%',
+      width: '80%',
       textAlign: 'center',
       backgroundColor: '#5974FB',
       borderRadius: '4px',
-      color: '#FFFFFF'
+      color: '#FFFFFF',
+      '&:hover': {
+         backgroundColor: '#5974FB',
+         color: '#FFFFFF',
+      }
    },
    labelButton: {
       height: '16px',
@@ -98,6 +98,7 @@ export default makeStyles((theme) => ({
       lineHeight: '16px',
       textAlign: 'center',
       color: '#FFFFFF',
+      
    },
    label:{
       marginLeft: '20px',

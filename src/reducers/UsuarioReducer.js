@@ -6,42 +6,60 @@ import {
     DELETE_USER,
     UPDATE_USER,
     STATUS_FORMULARIO,
-    UPDATE_USER_LIST
+    UPDATE_USER_LIST,
+    CERRAR_MENSAJE,
+    GET_USERS_ROL
 } from '../actions/types';
  
 const initialState = {
     loading: false,
     error: '',
-    users:[],
-    userEdit:{},
+    usuarios:[],
+    usuarioEdit:{},
     editStatus: false,
     abrirFormularioStatus: false,
-    tituloFormulario: 'Formulario Nuevo'
+    tituloFormulario: 'Nuevo Usuario',
+    mostrarMensaje: false,
+    textoMensaje: '',
+    roles: []
 }
 const UsuarioReducer =  (state = initialState, action) => {
     switch(action.type){
+        case GET_USERS_ROL:
+            return{
+                ...state,
+                roles: action.payload
+            }
+        case CERRAR_MENSAJE:
+            return {
+                ...state,
+                mostrarMensaje: false,
+                textoMensaje: ''
+            };
         case UPDATE_USER_LIST:
             return{
                 ...state,
-                users: state.users.map(elem => elem.id === action.payload.id ? action.payload : elem),
+                usuarios: state.usuarios.map(elem => elem.id === action.payload.id ? action.payload : elem),
                 editStatus:false,
-                tituloFormulario:'Formulario Nuevo',
-                userEdit:{}
+                tituloFormulario:'Nuevo Usuario',
+                usuarioEdit:{},
+                mostrarMensaje: true,
+                textoMensaje: 'Usuario Modificado Exitosamente.'
             }
         case STATUS_FORMULARIO:
             return{
                 ...state,
                 abrirFormularioStatus: action.payload,
-                tituloFormulario:'Formulario Nuevo',
-                userEdit:{},
+                tituloFormulario:'Nuevo Usuario',
+                usuarioEdit:{},
                 editStatus:false,
             }
         case UPDATE_USER:
             return{
                 ...state,
-                userEdit:action.payload,
+                usuarioEdit:action.payload,
                 editStatus:true,
-                tituloFormulario:'Formulario Edicion',
+                tituloFormulario:'Editar '+ action.payload.nombre +' '+ action.payload.apellido,
                 abrirFormularioStatus:true
             }
         case SET_ERROR:
@@ -53,7 +71,7 @@ const UsuarioReducer =  (state = initialState, action) => {
         case GET_USERS:
             return {
                 ...state,
-                users: action.payload
+                usuarios: action.payload
             }
         case SET_LOADING:
             return {
@@ -63,13 +81,17 @@ const UsuarioReducer =  (state = initialState, action) => {
         case SET_NEW_USER:
             return {
                 ...state,
-                users: [...state.users,action.payload]
+                usuarios: [...state.usuarios,action.payload],
+                mostrarMensaje: true,
+                textoMensaje: 'Usuario Creado Exitosamente.'
             }
         case DELETE_USER:
             return{
                 ...state,
                 // eslint-disable-next-line eqeqeq
-                users: state.users.filter(elem => { return (elem.id != action.payload)})
+                usuarios: state.usuarios.filter(elem => { return (elem.id != action.payload)}),
+                mostrarMensaje: true,
+                textoMensaje: 'Usuario Eliminado Exitosamente.'
         }
         default:
             return state;

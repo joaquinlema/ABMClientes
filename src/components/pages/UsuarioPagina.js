@@ -1,30 +1,32 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
-import UserTable from '../layout/usuarios/userTable/UserTable';
-import NewButton from '../layout/usuarios/userTable/nuevoUserButton/NewButton';
-import UserFormDialog from '../layout/usuarios/dialog/userFormDialog';
-import { useSelector } from 'react-redux';
+import { useDispatch ,useSelector } from 'react-redux';
+import {abrirFormularioUsuario, cerrarMensajeUsuario} from '../../actions/UsuarioActions'; 
+import FormularioUsuario from '../layout/usuarios/form/FormularioUsuario';
+import DialogoGeneral from '../layout/utils/dialogUtil/DialogGeneral';
+import Mensaje from '../layout/utils/mensaje/Mensaje';
+import TablaUsuarios from '../layout/usuarios/tablaUsuarios/TablaUsuarios';
 
-const UsuarioPagina = () => {
-  const {abrirFormularioStatus} = useSelector(state => state.UsuarioReducer);
+const UsuarioPage = () => {
+
+    const {abrirFormularioStatus, mostrarMensaje, textoMensaje} = useSelector(state => state.UsuarioReducer);
+    const dispatch = useDispatch();
 
     return (
-        
-    <Grid
-        container
-        direction="row"
-    >
-        <Grid container item xs={12} sm={12} md={8} lg={8}>
-            <NewButton />
-            <UserTable />
-        </Grid>
+        <Grid container direction="row">
+            <Grid>
+                <Mensaje open={mostrarMensaje} mensaje={textoMensaje} cerrarMsj={() => dispatch(cerrarMensajeUsuario())}/>
+            </Grid>
+            <Grid container item xs={12} sm={12} md={12} lg={12}>
+                <TablaUsuarios />
+            </Grid>
 
-        <Grid container item xs={12} sm={12} md={4} lg={4}>
-            <UserFormDialog open={abrirFormularioStatus} />
-        </Grid>
+            <Grid container item xs={12} sm={12} md={4} lg={4}>
+                <DialogoGeneral open={abrirFormularioStatus} cerrar={() => dispatch(abrirFormularioUsuario(false))} contenido={<FormularioUsuario />} />
+            </Grid>
         
-    </Grid>
+        </Grid>
     );
 }
 
-export default UsuarioPagina;
+export default UsuarioPage;

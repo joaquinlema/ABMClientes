@@ -1,0 +1,20 @@
+.popup{
+    background: #FFFFFF;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    /* Subtitle 1 */
+    font-family: Titillium Web;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #002563;
+    width: 240px;
+    height: 96px;
+}
+
+.MuiList-padding {
+    padding-top: 0px !important;
+    padding-bottom: 8px;
+} 

@@ -12,10 +12,16 @@ buttonStyle: {
     lineHeight: '16px',
     textAlign: 'center',
     color: '#FFFFFF',
-    width: '215px',
+    width: '80%',
     height: '40px',
     textTransform: 'none',
-    fontFamily: "Titillium Web"
+    fontFamily: "Titillium Web",
+    marginLeft:'31px',
+    '&:hover': {
+      backgroundColor: '#5974FB',
+      color: '#FFFFFF',
+   }
+
 }
 }));
 

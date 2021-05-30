@@ -33,7 +33,7 @@ export const createClient = (client) => async dispatch => {
 
         dispatch({
             type: SET_NEW_CLIENT,
-            payload: data.client
+            payload: data.cliente
         })
 
     } catch (error) {

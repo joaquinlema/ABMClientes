@@ -1,21 +1,18 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createUser, editUser } from '../../../../actions/FormularioActions';
 import { Formik, Form } from 'formik';
 import { Button, LinearProgress, Grid } from '@material-ui/core';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import ContactMailRoundedIcon from '@material-ui/icons/ContactMailRounded';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import MyTextField from '../../clientes/form/textField/MyTextField';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import Autocomplete from '../../utils/autocomplete/AutocompleteUtils'
 import * as Yup from "yup";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     grid: {
         width: '100%',
-        margin:'10px'
+        margin: '10px'
     },
     botones: {
         marginLeft: '29%'
@@ -30,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#FFFFFF',
         boxShadow: '0px 5px 10px rgba(0, 37, 99, 0.05)',
         borderRadius: '12px',
-       
+
     },
     botonGuardar: {
         background: '#5974FB',
@@ -48,27 +45,36 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Titillium Web'
 
     },
-    titulo:{
+    titulo: {
         fontStyle: 'normal',
         fontWeight: 'bolder',
         fontSize: '22px',
         lineHeight: '24px',
         letterSpacing: '0.18px',
         color: '#002563',
-        fontFamily:'Titillium Web',
-        marginLeft:'20px'
+        fontFamily: 'Titillium Web',
+        marginLeft: '20px'
     },
 }));
 
-const FormularioUsuario = () => {
+const FormularioMoneda = () => {
     const classes = useStyles();
 
     const dispatch = useDispatch();
+    const { clientes } = useSelector(state => state.ClienteReducer);
+    let monedaValues = [
+        { nombre: 'USD' },
+        { nombre: 'ARS' }
+    ]
+
+
 
 
     const SignupSchema = Yup.object().shape({
         // name: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[a-zA-Z ]+$/,"Invalid Name only letters").required('Required'),
     });
+
+
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -76,7 +82,7 @@ const FormularioUsuario = () => {
                 initialValues={{
                     cliente: '',
                     cotizacion: '',
-                    moneda: '',
+                    moneda: monedaValues[0],
                     valorCliente: '',
                     valorCotizacion: ''
 
@@ -84,35 +90,31 @@ const FormularioUsuario = () => {
                 validationSchema={SignupSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     setTimeout(() => {
-                        if (editStatus) {
-                            dispatch(editUser(values, userEdit.id));
-                        } else {
-                            dispatch(createUser(values));
-                        }
                         setSubmitting(false);
-                        dispatch(abrirFormulario(false));
                         resetForm();
                     }, 500);
                 }}
             >
-                {({ submitForm, isSubmitting }) => (
+                {({ submitForm, isSubmitting, setFieldValue, values }) => (
                     <Form>
                         <span className={classes.titulo}>{"Operacion"}</span>
                         <Grid container className={classes.root}>
-                            <Grid item xs={5} md={5} lg={5}  className={classes.grid}>
-                                <MyTextField className={classes.textField} name="cliente" type="text" label="Cliente" placeholder="Nombre"></MyTextField>
+                            <Grid item xs={5} md={5} lg={5} className={classes.grid}>
+                                <Autocomplete OPTIONS_SELECT={clientes.sort()} ONCHANGE_SELECT={(_, data) => { setFieldValue('cliente', data) }} LABEL_SELECT="Cliente"></Autocomplete>
                             </Grid>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
                                 <MyTextField className={classes.textField} name="valorCliente" type="text" />
                             </Grid>
                             <Grid item xs={1} md={1} lg={1} className={classes.grid}>
-                                <MyTextField className={classes.textField} name="moneda" />
+                                <Autocomplete OPTIONS_SELECT={monedaValues} ONCHANGE_SELECT={(_, data) => { setFieldValue('moneda', data) }} LABEL_SELECT="Moneda"></Autocomplete>
                             </Grid>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
-                                <MyTextField className={classes.textField} name="cotizacion" type="text" label="Cotizacion"></MyTextField>
+                                <MyTextField className={classes.textField} name="cotizacion" type="text" label="Descripcion cliente"></MyTextField>
                             </Grid>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                <MyTextField className={classes.textField} name="valorCotizacion" type="text"></MyTextField>
+                                {(values.moneda.nombre == 'USD') ? <MyTextField className={classes.textField} name="valorCotizacion" type="text" label="ARS"></MyTextField> :
+                                    <MyTextField className={classes.textField} name="valorCotizacion" type="text" label="USD"></MyTextField>
+                                }
                             </Grid>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
                                 {isSubmitting && <LinearProgress />}
@@ -136,4 +138,4 @@ const FormularioUsuario = () => {
     );
 }
 
-export default FormularioUsuario;
+export default FormularioMoneda;

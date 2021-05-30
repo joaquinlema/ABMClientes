@@ -75,7 +75,7 @@ const Login = () => {
                                 <Grid item xs={3} md={3}></Grid>
                                 <Grid item xs={6} md={6}>
                                     <Button className={classes.button} disabled={isSubmitting} onClick={submitForm}>
-                                        <label className="-Label-Button">Aceptar</label>
+                                        <label className={classes.labelButton}>Aceptar</label>
                                     </Button>
                                 </Grid>
                                 <Grid item xs={3} md={3}></Grid>

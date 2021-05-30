@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import {getClients} from '../../../../actions/ClienteActions'
 import Nav from '../nav/Nav';
 import Formulario from '../form/FormularioMoneda';
-import Resumen from '../resumen/Resumen'
+import Resumen from '../resumen/Resumen';
+import Progress from '../../progress/Progress'
 import Styles from './styles'
 
 
 
 
 const NavMoneda = () => {
+    const dispatch = useDispatch();
+    const {loading} = useSelector(state => state.ClienteReducer);
+    useEffect(() => {
+        dispatch(getClients());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     const [nav,setNav]= React.useState(false);
     const closeNav=()=>{
         setNav(true);
+    }
+
+    if(loading){
+        return (
+            <Progress></Progress>
+        )
     }
     const classes = Styles();
     return (

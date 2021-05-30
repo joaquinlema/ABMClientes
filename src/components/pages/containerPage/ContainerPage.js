@@ -26,8 +26,6 @@ import TuneIcon from '@material-ui/icons/Tune';
 import SyncAltIcon from '@material-ui/icons/SyncAlt';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import WebIcon from '@material-ui/icons/Web';
-import AccountBalanceOutlinedIcon from '@material-ui/icons/AccountBalanceOutlined';
-import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import { createBrowserHistory } from "history";
 import ClientePage from '../ClientePage';
@@ -83,7 +81,7 @@ const MiniDrawer = () => {
           <Grid item xs={12} md={12}>
           <List>
             <label className={classes.label}>COMPRA/VENTA</label>
-            <ListItem button component={Link} to={'/Cliente'}  >
+            <ListItem button component={Link} to={'/Moneda'}  >
               <ListItemIcon ><AttachMoneyIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink}  primary="Moneda" />
             </ListItem>
@@ -115,11 +113,11 @@ const MiniDrawer = () => {
           <Grid item xs={12} md={12}>
           <List>
             <label className={classes.label}>ADMINISTRACION</label>
-            <ListItem button component={Link} to={'/Moneda'}  >
+            <ListItem button component={Link} to={'/Cliente'}  >
               <ListItemIcon ><PeopleAltOutlinedIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink}  >Clientes</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to={'/Moneda'}  >
+            <ListItem button component={Link} to={'/User'}  >
               <ListItemIcon ><PersonOutlineIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink}  >Usuarios</ListItemText>
             </ListItem>
@@ -139,7 +137,7 @@ const MiniDrawer = () => {
               <Route path='/Cliente' component={ClientePage} />
               <Route path='/about' component={About} />
               <Route path='/Login' component={Login} />
-              <Route path='/moneda' component={MonedaPage} />
+              <Route path='/Moneda' component={MonedaPage} />
               <Route component={NotFound} />
             </Switch>
           </Grid>
