@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {getClients} from '../../../../actions/ClienteActions';
-import {setGuardarCompra} from '../../../../actions/FormularioMonedaAction'
+import {getCotizacion} from '../../../../actions/FormularioMonedaAction'
 import Nav from '../nav/Nav';
 import Formulario from '../form/FormularioMoneda';
 import Resumen from '../resumen/Resumen';
@@ -15,9 +15,9 @@ import Styles from './styles'
 const NavMoneda = () => {
     const dispatch = useDispatch();
     const {loading} = useSelector(state => state.ClienteReducer);
-    const {compra} = useSelector(state=>state.FormularioMonedaReducer)
     useEffect(() => {
         dispatch(getClients());
+        dispatch(getCotizacion());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -27,9 +27,9 @@ const NavMoneda = () => {
         setNav(true);
     }
 
-    const setCompraValue=()=>{
-        dispatch(setGuardarCompra());
-    }
+     const setCompraValue=()=>{
+         alert("dasdasd");
+     }
     if(loading){
         return (
             <Progress></Progress>
@@ -43,7 +43,7 @@ const NavMoneda = () => {
                {(!nav) ? <Nav CloseNav={closeNav} accionCompra={setCompraValue}></Nav> : <Grid></Grid>}
             </Grid>
             <Grid container item xs={9} sm={9} md={9} lg={9} className={classes.grid}>
-                <Formulario compra={compra}></Formulario>
+                <Formulario compra={setCompraValue}></Formulario>
             </Grid>
             <Grid item xs={3} sm={3} md={3} lg={3} className={classes.gridResumen}>
                 <Resumen></Resumen>

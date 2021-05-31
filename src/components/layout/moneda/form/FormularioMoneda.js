@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { setPagoUSD, setPagoARS } from '../../../../actions/FormularioMonedaAction'
 import { Formik, Form } from 'formik';
 import { Button, LinearProgress, Grid } from '@material-ui/core';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
@@ -58,11 +59,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const FormularioMoneda = ({compra}) => {
+const FormularioMoneda = ({ compra }) => {
     const classes = useStyles();
-
     const dispatch = useDispatch();
     const { clientes } = useSelector(state => state.ClienteReducer);
+    const { cotizacion } = useSelector(state => state.FormularioMonedaReducer);
     let monedaValues = [
         { nombre: 'USD' },
         { nombre: 'ARS' }
@@ -76,41 +77,61 @@ const FormularioMoneda = ({compra}) => {
     });
 
 
-    const setValor=(setFieldValue,data,values)=>{
-        setFieldValue('cotizacion',data);
-        (values.tipoMoneda.nombre=='USD') ? setFieldValue('valorCotizacion',data*100) : setFieldValue('valorCotizacion',data/100)
+    const setValor = (setFieldValue, data, values) => {
+        setFieldValue('valorComprar', data);
+        (values.tipoMoneda.nombre == 'USD') ? setFieldValue('valorPagar', data * 100) : setFieldValue('valorPagar', data / 100);
+        if (data != "") {
+            (values.tipoMoneda.nombre == "USD") ? dispatch(setPagoARS(data * 100)) : dispatch(setPagoARS(data / 100));
+            (values.tipoMoneda.nombre == "USD") ? dispatch(setPagoUSD(data)) : dispatch(setPagoUSD(data));
+        } else {
+            dispatch(setPagoARS("0,00"));
+            dispatch(setPagoUSD("0,00"))
+        }
+
+
     }
 
-    const setTipoMoneda =(setFieldValue,data,values)=>{
+    const setTipoMoneda = (setFieldValue, data, values) => {
         setFieldValue('tipoMoneda', data);
-        (values.cotizacion) ? setValorCotizacion(setFieldValue,data,values) : setFieldValue('cotizacion',values.cotizacion);
+        (values.valorComprar) ? setValorCotizacion(setFieldValue, data, values) : setFieldValue('valorComprar', values.valorComprar);
+        if (values.valorComprar != '') {
+            (data.nombre == 'ARS') ? dispatch(setPagoARS(values.valorComprar)) : dispatch(setPagoARS(values.valorComprar * 100));
+            (data.nombre == 'USD') ? dispatch(setPagoUSD(values.valorComprar)) : dispatch(setPagoUSD(values.valorComprar / 100));
+        }else{
+            dispatch(setPagoARS("0,00"));
+            dispatch(setPagoUSD("0,00"))
+        }
+
     }
 
-    const setValorCotizacion=(setFieldValue,data,values)=>{
-        (data.nombre == "USD") ? setFieldValue('valorCotizacion',values.cotizacion * 100) :  setFieldValue('valorCotizacion',values.cotizacion / 100);
+    const setValorCotizacion = (setFieldValue, data, values) => {
+        (data.nombre == "USD") ? setFieldValue('valorPagar', values.valorComprar * 100) : setFieldValue('valorPagar', values.valorComprar / 100);
+
     }
 
-    
+    // if(compra){
+    //     submitForm();
+    // }
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Formik
                 initialValues={{
                     cliente: '',
-                    cotizacion: '',
                     tipoMoneda: monedaValues[0],
                     valorCliente: '',
-                    valorCotizacion: '',
-                    descripcionCliente:'',
+                    descripcionCliente: '',
+                    valorComprar: '',
+                    valorPagar: '',
+                    cotizacionDolar: ''
 
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     setTimeout(() => {
-                     
                         setSubmitting(false);
                         alert(JSON.stringify(values));
                         resetForm();
-                    
+
                     }, 500);
                 }}
             >
@@ -122,28 +143,29 @@ const FormularioMoneda = ({compra}) => {
                                 <Autocomplete OPTIONS_SELECT={clientes.sort()} ONCHANGE_SELECT={(_, data) => { setFieldValue('cliente', data) }} LABEL_SELECT="Cliente"></Autocomplete>
                             </Grid>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
-                                <TextField  variant="outlined" className={classes.textField}  type="number" onChange={(value) => setValor(setFieldValue,value.currentTarget.value,values)}></TextField>
+                                <TextField variant="outlined" className={classes.textField} type="number" onChange={(value) => setValor(setFieldValue, value.currentTarget.value, values)}></TextField>
                             </Grid>
                             <Grid item xs={1} md={1} lg={1} className={classes.grid}>
-                                <Autocomplete OPTIONS_SELECT={monedaValues} VALUES={values.tipoMoneda} ONCHANGE_SELECT={(_, data) => { setTipoMoneda(setFieldValue,data,values)}} LABEL_SELECT="Moneda"></Autocomplete>
+                                <Autocomplete OPTIONS_SELECT={monedaValues} VALUES={values.tipoMoneda} ONCHANGE_SELECT={(_, data) => { setTipoMoneda(setFieldValue, data, values) }} LABEL_SELECT="Moneda"></Autocomplete>
                             </Grid>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
                                 <MyTextField className={classes.textField} name="descripcionCliente" type="text" label="Descripcion cliente"></MyTextField>
                             </Grid>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                {(values.tipoMoneda.nombre == 'USD') ? <MyTextField className={classes.textField} name="valorCotizacion" type="text" label="ARS"></MyTextField> :
-                                    <MyTextField className={classes.textField} name="valorCotizacion" type="text" label="USD"></MyTextField>
+                                {(values.tipoMoneda.nombre == 'USD') ? <MyTextField className={classes.textField} name="valorPagar" type="text" label="ARS"></MyTextField> :
+                                    <MyTextField className={classes.textField} name="valorPagar" type="text" label="USD"></MyTextField>
                                 }
                             </Grid>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
+                                <MyTextField className={classes.textField} name="cotizacionDolar" type="text" label="Cotizacion"></MyTextField>
+                            </Grid>
+                            <Grid item xs={6} md={6} lg={6} className={classes.grid}> </Grid>
+
+
+                            <Grid item xs={12} md={12} lg={12} className={classes.grid}>
                                 {isSubmitting && <LinearProgress />}
                             </Grid>
-                              {compra && <Button
-                                    variant="contained"
-                                    color="primary"
-                                    disabled={isSubmitting}
-                                    onClick={submitForm}
-                                ></Button> }
+
                             {/* <Grid item xs={12} md={12} lg={12} className={classes.botones}>
                                 <Button
                                     variant="contained"

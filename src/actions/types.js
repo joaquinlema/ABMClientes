@@ -16,3 +16,8 @@ export const UPDATE_TASK_LIST = 'UPDATE_TASK_LIST';
 export const CERRAR_MENSAJE = 'CERRAR_MENSAJE';
 export const GET_USERS_ROL = 'GET_USERS_ROL';
 export const SET_GUARDAR_COMPRA = 'SET_GUARDAR_COMPRA';
+export const GET_COTIZACION = 'GET_COTIZACION';
+export const SET_PAGO_ARS = 'SET_PAGO_ARS';
+export const SET_PAGO_USD = 'SET_PAGO_USD';
+
+
