@@ -27,7 +27,7 @@ const TablaUsuarios = () => {
           customBodyRender: (value, tableMeta, updateValue) => {
             return (
                 <EdicionPopUp 
-                accionEdicion={() => dispatch(setEditUser({ nombre: tableMeta.rowData[0], apellido: tableMeta.rowData[1], usuario:tableMeta.rowData[2], rol:tableMeta.rowData[3], sucursal:tableMeta.rowData[4] })) }
+                accionEdicion={() => dispatch(setEditUser(tableMeta)) }
                 accionEliminar={() => console.log('Eliminar')}
                 />
             );

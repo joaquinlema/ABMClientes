@@ -15,10 +15,11 @@ export function makeServer({ environment = "test" } = {}) {
       server.create("rol", { rol: "Supervisor", id: 0});
       server.create("rol", { rol: "Cajero", id: 1});
       server.create("rol", { rol: "Dueño", id: 2});
-      server.create("user", { nombre: "Bob", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'1' });
-      server.create("user", { nombre: "Bob", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'2'});
+      server.create("user", {id:1, nombre: "Bob", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'1', contraseña: '0000' });
+      server.create("user", {id:2, nombre: "Bob", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'2', contraseña: '0000'});
       server.create("task",{codigo: 'Argentina', descripcion: 'descripcion',duracionPlanificada: '45 min', usuarioId:'0'});
       server.create("cliente",{
+        id:1,
         alias: 'alias', 
         telefono: '12344412',
         nombre: 'nombre completo', 

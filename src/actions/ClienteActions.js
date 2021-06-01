@@ -29,6 +29,10 @@ export const getClients = () => async dispatch => {
 
 export const setEditClient = (elem) => async dispatch => {
     try {
+        
+        const {id} = elem;
+        const { data } = await axios.get('/api/users/'+id);
+
         dispatch({
             type: UPDATE_CLIENT,
             payload: elem

@@ -30,9 +30,12 @@ export const getUsuarios = () => async dispatch => {
 
 export const setEditUser = (elem) => async dispatch => {
     try {
+        const {id} = elem;
+        const { data } = await axios.get('/api/users/'+id);
+
         dispatch({
             type: UPDATE_USER,
-            payload: elem
+            payload: data
         });
 
     } catch (error) {
