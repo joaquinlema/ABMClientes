@@ -35,7 +35,7 @@ export const setEditUser = (elem) => async dispatch => {
 
         dispatch({
             type: UPDATE_USER,
-            payload: data
+            payload: data.user
         });
 
     } catch (error) {

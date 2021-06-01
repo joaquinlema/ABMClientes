@@ -24,10 +24,11 @@ const TablaUsuarios = () => {
           filter: true,
           sort: false,
           empty: true,
-          customBodyRender: (value, tableMeta, updateValue) => {
+          customBodyRender: (nada, row, rowIndex) => {
+            const dataOfRow = usuarios.filter( e => e.nombre === row.rowData[0] && e.apellido === row.rowData[1])[0]
             return (
                 <EdicionPopUp 
-                accionEdicion={() => dispatch(setEditUser(tableMeta)) }
+                accionEdicion={() => dispatch(setEditUser(dataOfRow)) }
                 accionEliminar={() => console.log('Eliminar')}
                 />
             );
@@ -36,7 +37,7 @@ const TablaUsuarios = () => {
       }
     ];
 
-    const attr = ["nombre", "apellido","usuario","rol","sucursal"];
+    const attr = ["nombre", "apellido","usuario","rol","sucursal","id"];
 
     const options = {
       selectableRows: false,

@@ -24,10 +24,11 @@ const TablaClientes = () => {
           filter: true,
           sort: false,
           empty: true,
-          customBodyRender: (value, tableMeta, updateValue) => {
+          customBodyRender : (nada, row, rowIndex ) => {
+            const dataOfRow = clientes.filter( e => e.alias === row.rowData[0] && e.mail === row.rowData[3])[0]
             return (
               <EdicionPopUp 
-              accionEdicion={() => dispatch(setEditClient(tableMeta)) }
+              accionEdicion={() => dispatch(setEditClient(dataOfRow)) }
               accionEliminar={() => console.log('Eliminar')}
               />
             );
@@ -36,7 +37,7 @@ const TablaClientes = () => {
       }
     ];
 
-    const attr = ["alias", "nombre","telefono","mail","direccion"];
+    const attr = ["alias", "nombre","telefono","mail","direccion","id"];
 
     const options = {
       selectableRows: false,
