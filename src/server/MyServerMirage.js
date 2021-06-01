@@ -42,6 +42,12 @@ export function makeServer({ environment = "test" } = {}) {
         return schema.clientes.all()
       });
 
+      this.get("/clients/:id", (schema, request) => {
+        let id = request.params.id;
+      
+        return schema.clientes.find(id);
+      });
+
       this.post("/clients", (schema, request) => {
         let attrs = JSON.parse(request.requestBody).data;
 
@@ -63,6 +69,12 @@ export function makeServer({ environment = "test" } = {}) {
 
       this.get("/users", (schema) => {
         return schema.users.all()
+      });
+
+      this.get("/users/:id", (schema, request) => {
+        let id = request.params.id;
+      
+        return schema.users.find(id);
       });
 
       this.get("/users/roles", (schema) => {
