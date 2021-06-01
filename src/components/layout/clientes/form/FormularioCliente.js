@@ -117,7 +117,6 @@ const FormularioCliente = () => {
     const SignupSchema = Yup.object().shape({
         alias: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
         telefono: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[0-9]+$/,"Solo Numeros").required('Required'),
-        mail: Yup.string().email('Formarto Invalido').required('Required'),
     });
 
     return (

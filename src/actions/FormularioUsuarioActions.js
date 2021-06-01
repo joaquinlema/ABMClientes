@@ -46,7 +46,7 @@ export const createUser = (user) => async dispatch => {
 export const editUser = (newValues,id) => async dispatch => {
     try {
         const { data } = await Axios.patch('/api/users/edit/'+id, {data: newValues});
-        console.log(data);
+
         dispatch({
             type: UPDATE_USER_LIST,
             payload: data.user
