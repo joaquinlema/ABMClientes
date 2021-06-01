@@ -38,10 +38,10 @@ const EdicionPopUp = ({accionEdicion, accionEliminar}) => {
                 }}
             >
                 <List component="nav" className='popup'>
-                    <ListItem button onClick={accionEdicion}>
+                    <ListItem button onClick={() => {accionEdicion();handleClose();}}>
                         <ListItemText primary="Editar" />
                     </ListItem>
-                    <ListItem button onClick={accionEliminar}>
+                    <ListItem button onClick={() => {accionEliminar(); handleClose();}}>
                         <ListItemText primary="Eliminar" />
                     </ListItem>
                 </List>
