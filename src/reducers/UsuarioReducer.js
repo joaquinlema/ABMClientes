@@ -8,7 +8,8 @@ import {
     STATUS_FORMULARIO,
     UPDATE_USER_LIST,
     CERRAR_MENSAJE,
-    GET_USERS_ROL
+    GET_USERS_ROL,
+    SET_USER_ELIMINAR
 } from '../actions/types';
  
 const initialState = {
@@ -21,10 +22,21 @@ const initialState = {
     tituloFormulario: 'Nuevo Usuario',
     mostrarMensaje: false,
     textoMensaje: '',
-    roles: []
+    roles: [],
+    tituloDialogo: '',
+    labelBoton: '',
+    usuarioEliminar:{}
 }
 const UsuarioReducer =  (state = initialState, action) => {
     switch(action.type){
+        case SET_USER_ELIMINAR:
+            return {
+                ...state,
+                usuarioEliminar: action.payload,
+                textoMensaje: '¿Estás seguro de que querés eliminarlo?',
+                tituloDialogo: 'Eliminar ' + action.payload.nombre,
+                labelBoton: 'Si, Eliminar',
+            }
         case GET_USERS_ROL:
             return{
                 ...state,
@@ -91,7 +103,10 @@ const UsuarioReducer =  (state = initialState, action) => {
                 // eslint-disable-next-line eqeqeq
                 usuarios: state.usuarios.filter(elem => { return (elem.id != action.payload)}),
                 mostrarMensaje: true,
-                textoMensaje: 'Usuario Eliminado Exitosamente.'
+                textoMensaje: 'Usuario Eliminado Exitosamente.',
+                usuarioEliminar: {},
+                tituloDialogo: '',
+                labelBoton: '',
         }
         default:
             return state;

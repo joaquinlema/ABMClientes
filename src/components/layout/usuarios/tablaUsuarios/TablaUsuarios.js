@@ -4,13 +4,13 @@ import HeaderPage from '../../utils/header/HeaderPage';
 import NuevoUsuario from './nuevo/NuevoUsuario';
 import TablaUtil from '../../utils/tabla/TablaUtil';
 import { useDispatch, useSelector } from 'react-redux';
-import {getUsuarios, setEditUser} from '../../../../actions/UsuarioActions';
+import {getUsuarios, setEditUser, setDeleteUser, deleteUser} from '../../../../actions/UsuarioActions';
 import EdicionPopUp from '../../utils/popup/EdicionPopUp';
 import ConfirmarPopUp from '../../utils/popup/ConfirmarPopUp';
 
 const TablaUsuarios = () => {
   const [abrir, setabrir] = useState(false);
-  const { usuarios } = useSelector(state => state.UsuarioReducer);
+  const { usuarios , usuarioEliminar, labelBoton, textoMensaje, tituloDialogo} = useSelector(state => state.UsuarioReducer);
   const dispatch = useDispatch();
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const TablaUsuarios = () => {
             return (
                 <EdicionPopUp 
                 accionEdicion={() => dispatch(setEditUser(dataOfRow)) }
-                accionEliminar={() => setabrir(true)}
+                accionEliminar={() => {dispatch(setDeleteUser(dataOfRow)); setabrir(true);}}
                 />
             );
           }
@@ -41,7 +41,7 @@ const TablaUsuarios = () => {
     const attr = ["nombre", "apellido","usuario","rol","sucursal","id"];
 
     const options = {
-      selectableRows: false,
+      selectableRows: 'none',
       download: false,
       print:false,
       filter:true,
@@ -58,7 +58,7 @@ const TablaUsuarios = () => {
                 <TablaUtil rows={usuarios} columns={columns} title={'Listado Total'} attr={attr} options={options}/>
             </Grid>
             <Grid>
-              <ConfirmarPopUp status={abrir} cerrar={setabrir}/>
+              <ConfirmarPopUp status={abrir} cerrar={setabrir} labelBoton={labelBoton} titulo={tituloDialogo} mensaje={textoMensaje} accionBoton={() => dispatch(deleteUser(usuarioEliminar.id))}/>
             </Grid>
         </Fragment>
     );
