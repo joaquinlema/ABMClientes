@@ -45,13 +45,13 @@ export const createClient = (client) => async dispatch => {
     }
 }
 
-export const editClient = (newValues,id) => async dispatch => {
+export const editClient = (newValues, id) => async dispatch => {
     try {
-        const { data } = await Axios.patch('/api/clientes/edit/'+id, {data: newValues});
-        console.log(data);
+        const { data } = await Axios.patch('/api/clients/edit/'+id, {data: newValues});
+
         dispatch({
             type: UPDATE_CLIENT_LIST,
-            payload: data.client
+            payload: data.cliente
         });
 
     } catch (error) {

@@ -1,16 +1,17 @@
 import { Grid } from '@material-ui/core';
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import HeaderPage from '../../utils/header/HeaderPage';
 import NuevoUsuario from './nuevo/NuevoUsuario';
 import TablaUtil from '../../utils/tabla/TablaUtil';
 import { useDispatch, useSelector } from 'react-redux';
-import {getUsuarios, setEditUser} from '../../../../actions/UsuarioActions';
+import {getUsuarios, setEditUser, setDeleteUser, deleteUser} from '../../../../actions/UsuarioActions';
 import EdicionPopUp from '../../utils/popup/EdicionPopUp';
+import ConfirmarPopUp from '../../utils/popup/ConfirmarPopUp';
 
 const TablaUsuarios = () => {
-
-    const { usuarios } = useSelector(state => state.UsuarioReducer);
-    const dispatch = useDispatch();
+  const [abrir, setabrir] = useState(false);
+  const { usuarios , usuarioEliminar, labelBoton, textoMensaje, tituloDialogo} = useSelector(state => state.UsuarioReducer);
+  const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getUsuarios());
@@ -24,11 +25,12 @@ const TablaUsuarios = () => {
           filter: true,
           sort: false,
           empty: true,
-          customBodyRender: (value, tableMeta, updateValue) => {
+          customBodyRender: (nada, row, rowIndex) => {
+            const dataOfRow = usuarios.filter( e => e.nombre === row.rowData[0] && e.apellido === row.rowData[1])[0]
             return (
                 <EdicionPopUp 
-                accionEdicion={() => dispatch(setEditUser({ nombre: tableMeta.rowData[0], apellido: tableMeta.rowData[1], usuario:tableMeta.rowData[2], rol:tableMeta.rowData[3], sucursal:tableMeta.rowData[4] })) }
-                accionEliminar={() => console.log('Eliminar')}
+                accionEdicion={() => dispatch(setEditUser(dataOfRow)) }
+                accionEliminar={() => {dispatch(setDeleteUser(dataOfRow)); setabrir(true);}}
                 />
             );
           }
@@ -36,10 +38,10 @@ const TablaUsuarios = () => {
       }
     ];
 
-    const attr = ["nombre", "apellido","usuario","rol","sucursal"];
+    const attr = ["nombre", "apellido","usuario","rol","sucursal","id"];
 
     const options = {
-      selectableRows: false,
+      selectableRows: 'none',
       download: false,
       print:false,
       filter:true,
@@ -54,6 +56,9 @@ const TablaUsuarios = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <TablaUtil rows={usuarios} columns={columns} title={'Listado Total'} attr={attr} options={options}/>
+            </Grid>
+            <Grid>
+              <ConfirmarPopUp status={abrir} cerrar={setabrir} labelBoton={labelBoton} titulo={tituloDialogo} mensaje={textoMensaje} accionBoton={() => dispatch(deleteUser(usuarioEliminar.id))}/>
             </Grid>
         </Fragment>
     );

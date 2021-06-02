@@ -5,7 +5,8 @@ import {
     STATUS_FORMULARIO,
     UPDATE_USER,
     CERRAR_MENSAJE,
-    GET_USERS_ROL
+    GET_USERS_ROL,
+    SET_USER_ELIMINAR
 } from './types';
 
 import axios from 'axios';
@@ -28,11 +29,33 @@ export const getUsuarios = () => async dispatch => {
     }
 }
 
+export const setDeleteUser = (elem) => async dispatch => {
+    try {
+        const {id} = elem;
+        const { data } = await axios.get('/api/users/'+id);
+
+        dispatch({
+            type: SET_USER_ELIMINAR,
+            payload: data.user
+        });
+
+    } catch (error) {
+        dispatch({
+            type: SET_ERROR,
+            payload: error
+        });
+
+    }
+}
+
 export const setEditUser = (elem) => async dispatch => {
     try {
+        const {id} = elem;
+        const { data } = await axios.get('/api/users/'+id);
+
         dispatch({
             type: UPDATE_USER,
-            payload: elem
+            payload: data.user
         });
 
     } catch (error) {

@@ -1,15 +1,17 @@
 import { Grid } from '@material-ui/core';
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import HeaderPage from '../../utils/header/HeaderPage';
 import NuevoCliente from '../tablaClientes/nuevo/NuevoCliente';
 import TablaUtil from '../../utils/tabla/TablaUtil';
 import { useDispatch, useSelector } from 'react-redux';
-import {getClients, setEditClient} from '../../../../actions/ClienteActions';
+import {getClients, setEditClient, setDeleteClient, deleteClient} from '../../../../actions/ClienteActions';
 import EdicionPopUp from '../../utils/popup/EdicionPopUp';
+import ConfirmarPopUp from '../../utils/popup/ConfirmarPopUp';
 
 const TablaClientes = () => {
 
-    const {clientes} = useSelector(state => state.ClienteReducer);
+    const [abrir, setabrir] = useState(false);
+    const {clientes, clienteEliminar,labelBoton, textoMensaje, tituloDialogo} = useSelector(state => state.ClienteReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -24,11 +26,12 @@ const TablaClientes = () => {
           filter: true,
           sort: false,
           empty: true,
-          customBodyRender: (value, tableMeta, updateValue) => {
+          customBodyRender : (nada, row, rowIndex ) => {
+            const dataOfRow = clientes.filter( e => e.alias === row.rowData[0] && e.mail === row.rowData[3])[0]
             return (
               <EdicionPopUp 
-              accionEdicion={() => dispatch(setEditClient({ alias: tableMeta.rowData[0], nombre: tableMeta.rowData[1], telefono:tableMeta.rowData[2], mail:tableMeta.rowData[3], direccion:tableMeta.rowData[4] })) }
-              accionEliminar={() => console.log('Eliminar')}
+              accionEdicion={() => dispatch(setEditClient(dataOfRow)) }
+              accionEliminar={() => {dispatch(setDeleteClient(dataOfRow)); setabrir(true);}}
               />
             );
           }
@@ -36,10 +39,10 @@ const TablaClientes = () => {
       }
     ];
 
-    const attr = ["alias", "nombre","telefono","mail","direccion"];
+    const attr = ["alias", "nombre","telefono","mail","direccion","id"];
 
     const options = {
-      selectableRows: false,
+      selectableRows: 'none',
       download: false,
       print:false,
       filter:false,
@@ -54,6 +57,9 @@ const TablaClientes = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <TablaUtil rows={clientes} columns={columns} title={'Listado Total'} attr={attr} options={options}/>
+            </Grid>
+            <Grid>
+              <ConfirmarPopUp status={abrir} cerrar={setabrir} labelBoton={labelBoton} titulo={tituloDialogo} mensaje={textoMensaje} accionBoton={() => dispatch(deleteClient(clienteEliminar.id))}/>
             </Grid>
         </Fragment>
     );

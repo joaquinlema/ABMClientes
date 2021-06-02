@@ -15,10 +15,11 @@ export function makeServer({ environment = "test" } = {}) {
       server.create("rol", { rol: "Supervisor", id: 0});
       server.create("rol", { rol: "Cajero", id: 1});
       server.create("rol", { rol: "Dueño", id: 2});
-      server.create("user", { nombre: "Bob", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'1' });
-      server.create("user", { nombre: "Bob", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'2'});
+      server.create("user", {id:1, nombre: "Bob", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'4', contraseña: '0000' });
+      server.create("user", {id:2, nombre: "Bob2", apellido: 'Wills',usuario:'j@hotmail.com',rol:'Supervisor', sucursal:'3', contraseña: '0000'});
       server.create("task",{codigo: 'Argentina', descripcion: 'descripcion',duracionPlanificada: '45 min', usuarioId:'0'});
       server.create("cliente",{
+        id:10,
         alias: 'alias', 
         telefono: '12344412',
         nombre: 'nombre completo', 
@@ -43,6 +44,12 @@ export function makeServer({ environment = "test" } = {}) {
         return schema.clientes.all()
       });
 
+      this.get("/clients/:id", (schema, request) => {
+        let id = request.params.id;
+      
+        return schema.clientes.find(id);
+      });
+
       this.post("/clients", (schema, request) => {
         let attrs = JSON.parse(request.requestBody).data;
 
@@ -64,6 +71,12 @@ export function makeServer({ environment = "test" } = {}) {
 
       this.get("/users", (schema) => {
         return schema.users.all()
+      });
+
+      this.get("/users/:id", (schema, request) => {
+        let id = request.params.id;
+      
+        return schema.users.find(id);
       });
 
       this.get("/users/roles", (schema) => {
