@@ -4,14 +4,14 @@ import HeaderPage from '../../utils/header/HeaderPage';
 import NuevoCliente from '../tablaClientes/nuevo/NuevoCliente';
 import TablaUtil from '../../utils/tabla/TablaUtil';
 import { useDispatch, useSelector } from 'react-redux';
-import {getClients, setEditClient} from '../../../../actions/ClienteActions';
+import {getClients, setEditClient, setDeleteClient, deleteClient} from '../../../../actions/ClienteActions';
 import EdicionPopUp from '../../utils/popup/EdicionPopUp';
 import ConfirmarPopUp from '../../utils/popup/ConfirmarPopUp';
 
 const TablaClientes = () => {
 
     const [abrir, setabrir] = useState(false);
-    const {clientes} = useSelector(state => state.ClienteReducer);
+    const {clientes, clienteEliminar,labelBoton, textoMensaje, tituloDialogo} = useSelector(state => state.ClienteReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const TablaClientes = () => {
             return (
               <EdicionPopUp 
               accionEdicion={() => dispatch(setEditClient(dataOfRow)) }
-              accionEliminar={() => setabrir(true)}
+              accionEliminar={() => {dispatch(setDeleteClient(dataOfRow)); setabrir(true);}}
               />
             );
           }
@@ -42,7 +42,7 @@ const TablaClientes = () => {
     const attr = ["alias", "nombre","telefono","mail","direccion","id"];
 
     const options = {
-      selectableRows: false,
+      selectableRows: 'none',
       download: false,
       print:false,
       filter:false,
@@ -59,7 +59,7 @@ const TablaClientes = () => {
                 <TablaUtil rows={clientes} columns={columns} title={'Listado Total'} attr={attr} options={options}/>
             </Grid>
             <Grid>
-              <ConfirmarPopUp status={abrir} cerrar={setabrir}/>
+              <ConfirmarPopUp status={abrir} cerrar={setabrir} labelBoton={labelBoton} titulo={tituloDialogo} mensaje={textoMensaje} accionBoton={() => dispatch(deleteClient(clienteEliminar.id))}/>
             </Grid>
         </Fragment>
     );

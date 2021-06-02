@@ -4,7 +4,8 @@ import {
     SET_ERROR,
     STATUS_FORMULARIO_CLIENTE,
     UPDATE_CLIENT,
-    CERRAR_MENSAJE
+    CERRAR_MENSAJE,
+    SET_CLIENTE_ELIMINAR
 } from './typesCliente';
 
 import axios from 'axios';
@@ -26,6 +27,27 @@ export const getClients = () => async dispatch => {
 
     }
 }
+
+export const setDeleteClient = (elem) => async dispatch => {
+    try {
+
+        const {id} = elem;
+        const { data } = await axios.get('/api/clients/'+id);
+
+        dispatch({
+            type: SET_CLIENTE_ELIMINAR,
+            payload: data.cliente
+        });
+
+    } catch (error) {
+        dispatch({
+            type: SET_ERROR,
+            payload: error
+        });
+
+    }
+}
+
 
 export const setEditClient = (elem) => async dispatch => {
     try {

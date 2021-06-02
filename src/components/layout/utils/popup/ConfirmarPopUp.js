@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import BotonNuevo from '../botonNuevo/BotonNuevo';
 import './popupestilo.css';
 
-export default function ConfirmarPopUp({status, cerrar}) {
+export default function ConfirmarPopUp({status, cerrar, titulo, mensaje, accionBoton, labelBoton}) {
     
     const handleClose = () => {
         cerrar(false);
@@ -21,19 +21,19 @@ export default function ConfirmarPopUp({status, cerrar}) {
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        className='popupConfirmacion'
       >
-        <DialogTitle id="alert-dialog-title" className='titulo'>{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title" className='titulo'>{titulo}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
+            {mensaje}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button size="small" className='cancelar' onClick={handleClose} >
             Cancelar
           </Button>
-          <BotonNuevo accion={handleClose} label='Si Eliminar' />
+          <BotonNuevo accion={() => {accionBoton(); handleClose();}} label={labelBoton} />
         </DialogActions>
       </Dialog>
     </Fragment>
