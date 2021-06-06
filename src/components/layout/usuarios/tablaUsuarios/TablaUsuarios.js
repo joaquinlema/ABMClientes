@@ -4,19 +4,30 @@ import HeaderPage from '../../utils/header/HeaderPage';
 import NuevoUsuario from './nuevo/NuevoUsuario';
 import TablaUtil from '../../utils/tabla/TablaUtil';
 import { useDispatch, useSelector } from 'react-redux';
-import {getUsuarios, setEditUser, setDeleteUser, deleteUser} from '../../../../actions/UsuarioActions';
+import {getUsuarios, setEditUser, setDeleteUser, deleteUse,getSucursales} from '../../../../actions/UsuarioActions';
 import EdicionPopUp from '../../utils/popup/EdicionPopUp';
 import ConfirmarPopUp from '../../utils/popup/ConfirmarPopUp';
+import Progress from '../../progress/Progress'
 
 const TablaUsuarios = () => {
   const [abrir, setabrir] = useState(false);
-  const { usuarios , usuarioEliminar, labelBoton, textoMensaje, tituloDialogo} = useSelector(state => state.UsuarioReducer);
+  const { usuarios , usuarioEliminar, labelBoton, textoMensaje, tituloDialogo,loading} = useSelector(state => state.UsuarioReducer);
   const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getUsuarios());
+        dispatch(getSucursales());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    if (loading) {
+      return (
+        <Progress />
+      );
+    }
+  
+  
+
 
     const columns = ["Nombre", "Apellido","Usuario","Rol","Sucursal",
       {
@@ -26,7 +37,7 @@ const TablaUsuarios = () => {
           sort: false,
           empty: true,
           customBodyRender: (nada, row, rowIndex) => {
-            const dataOfRow = usuarios.filter( e => e.nombre === row.rowData[0] && e.apellido === row.rowData[1])[0]
+            const dataOfRow = usuarios.filter( e => e.lastName === row.rowData[0] && e.firstName === row.rowData[1])[0]
             return (
                 <EdicionPopUp 
                 accionEdicion={() => dispatch(setEditUser(dataOfRow)) }
@@ -38,7 +49,7 @@ const TablaUsuarios = () => {
       }
     ];
 
-    const attr = ["nombre", "apellido","usuario","rol","sucursal","id"];
+    const attr = ["lastName", "firstName","userCode","role","branchOfficeId","userId"];
 
     const options = {
       selectableRows: 'none',

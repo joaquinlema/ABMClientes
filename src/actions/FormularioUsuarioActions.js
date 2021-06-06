@@ -17,21 +17,17 @@ export const setLoading = () => {
 
 export const createUser = (user) => async dispatch => {
     try {
-        const { data } = await Axios.post('/api/users', 
-        { data: 
-            { 
-                nombre: user.nombre, 
-                apellido: user.apellido, 
-                rol: user.rol,
-                sucursal: user.sucursal,
-                contraseña: user.contraseña,
-                usuario: user.usuario 
-            } 
-        });
+        const { data } = await  Axios.post('https://localhost:44321/api/User/',
+        {"lastName":user.apellido,
+        "firstName":user.nombre,
+        "userCode":user.usuario,
+        "passwordHash":user.contraseña,
+        'role':user.rol,
+        "branchOfficeId":user.sucursal});
 
         dispatch({
             type: SET_NEW_USER,
-            payload: data.user
+            payload: data.result
         })
 
     } catch (error) {

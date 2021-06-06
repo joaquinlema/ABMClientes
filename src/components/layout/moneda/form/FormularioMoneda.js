@@ -10,6 +10,9 @@ import Autocomplete from '../../utils/autocomplete/AutocompleteUtils'
 import * as Yup from "yup";
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
+import IconButtonUtils from '../../utils/iconButton/IconButton';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 const useStyles = makeStyles((theme) => ({
     grid: {
@@ -47,6 +50,17 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Titillium Web'
 
     },
+    label: {
+        marginLeft: '20px',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        fontSize: '12px',
+        lineHeight: '16px',
+        letterSpacing: '0.4px',
+        color: 'rgba(0, 37, 99, 0.6)',
+        fontFamily: 'Titillium Web'
+
+    },
     titulo: {
         fontStyle: 'normal',
         fontWeight: 'bolder',
@@ -57,11 +71,16 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Titillium Web',
         marginLeft: '20px'
     },
+    gridTitle:{
+        marginBottom:'20px'
+    }
 }));
 
 const FormularioMoneda = ({ compra }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
+
+    const [expandUno,setExpandUno] = React.useState(true);
     const { clientes } = useSelector(state => state.ClienteReducer);
     const { cotizacion } = useSelector(state => state.FormularioMonedaReducer);
     let monedaValues = [
@@ -70,6 +89,10 @@ const FormularioMoneda = ({ compra }) => {
     ]
 
 
+    const setSeccionUno=()=>{
+        setExpandUno(!expandUno);
+    }
+    
 
 
     const SignupSchema = Yup.object().shape({
@@ -97,7 +120,7 @@ const FormularioMoneda = ({ compra }) => {
         if (values.valorComprar != '') {
             (data.nombre == 'ARS') ? dispatch(setPagoARS(values.valorComprar)) : dispatch(setPagoARS(values.valorComprar * 100));
             (data.nombre == 'USD') ? dispatch(setPagoUSD(values.valorComprar)) : dispatch(setPagoUSD(values.valorComprar / 100));
-        }else{
+        } else {
             dispatch(setPagoARS("0,00"));
             dispatch(setPagoUSD("0,00"))
         }
@@ -122,7 +145,7 @@ const FormularioMoneda = ({ compra }) => {
                     descripcionCliente: '',
                     valorComprar: '',
                     valorPagar: '',
-                    cotizacionDolar: ''
+                    cotizacionDolar: 100
 
                 }}
                 validationSchema={SignupSchema}
@@ -137,27 +160,42 @@ const FormularioMoneda = ({ compra }) => {
             >
                 {({ submitForm, isSubmitting, setFieldValue, values }) => (
                     <Form>
-                        <span className={classes.titulo}>{"Operacion"}</span>
+                        <Grid container spacing={3}>
+                            <Grid item xs={6} md={6} lg={6}  className={classes.gridTitle}>
+                                <label className={classes.titulo}>{"Operacion"}</label>
+                            </Grid>
+                            <Grid item xs={6} md={6} lg={6} className={classes.gridTitle} position="right">
+                                <label className={classes.label}>{"Paso 1"}</label>
+                                {(expandUno) ? <IconButtonUtils ICON_BUTTON={<ExpandMoreIcon />}  ICON_ACCION={setSeccionUno}/> : 
+                                <IconButtonUtils ICON_BUTTON={<ExpandLessIcon />}  ICON_ACCION={setSeccionUno}/>} 
+                            </Grid>
+                        </Grid>{(expandUno) ?
                         <Grid container className={classes.root}>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
-                                <Autocomplete OPTIONS_SELECT={clientes.sort()} ONCHANGE_SELECT={(_, data) => { setFieldValue('cliente', data) }} LABEL_SELECT="Cliente"></Autocomplete>
+                                <label className={classes.label}>{"Cliente"}</label>
+                                <Autocomplete OPTIONS_SELECT={clientes.sort()} ONCHANGE_SELECT={(_, data) => { setFieldValue('cliente', data) }}></Autocomplete>
                             </Grid>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
+                                <label className={classes.label}>{"Valor de Venta"}</label>
                                 <TextField variant="outlined" className={classes.textField} type="number" onChange={(value) => setValor(setFieldValue, value.currentTarget.value, values)}></TextField>
                             </Grid>
                             <Grid item xs={1} md={1} lg={1} className={classes.grid}>
-                                <Autocomplete OPTIONS_SELECT={monedaValues} VALUES={values.tipoMoneda} ONCHANGE_SELECT={(_, data) => { setTipoMoneda(setFieldValue, data, values) }} LABEL_SELECT="Moneda"></Autocomplete>
+                                <label className={classes.label}>{"Moneda"}</label>
+                                <Autocomplete OPTIONS_SELECT={monedaValues} VALUES={values.tipoMoneda} ONCHANGE_SELECT={(_, data) => { setTipoMoneda(setFieldValue, data, values) }}></Autocomplete>
                             </Grid>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
-                                <MyTextField className={classes.textField} name="descripcionCliente" type="text" label="Descripcion cliente"></MyTextField>
+                                <label className={classes.label}>{"Descripcion cliente"}</label>
+                                <MyTextField className={classes.textField} name="descripcionCliente" type="text"></MyTextField>
                             </Grid>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                {(values.tipoMoneda.nombre == 'USD') ? <MyTextField className={classes.textField} name="valorPagar" type="text" label="ARS"></MyTextField> :
-                                    <MyTextField className={classes.textField} name="valorPagar" type="text" label="USD"></MyTextField>
+                                <label className={classes.label}>{"Valor de pago"}</label>
+                                {(values.tipoMoneda.nombre == 'USD') ? <MyTextField className={classes.textField} name="valorPagar" type="text"></MyTextField> :
+                                    <MyTextField className={classes.textField} name="valorPagar" type="text" ></MyTextField>
                                 }
                             </Grid>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
-                                <MyTextField className={classes.textField} name="cotizacionDolar" type="text" label="Cotizacion"></MyTextField>
+                                <label className={classes.label}>{"Cotizacion"}</label>
+                                <TextField className={classes.textField} variant="outlined" value={values.cotizacionDolar} disabled type="text"></TextField>
                             </Grid>
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}> </Grid>
 
@@ -175,8 +213,8 @@ const FormularioMoneda = ({ compra }) => {
                                 >
                                     Guardar
                                 </Button>
-                            </Grid> */}
-                        </Grid>
+                            </Grid> */} 
+                        </Grid> : <Grid />}
                     </Form>
                 )}
             </Formik>

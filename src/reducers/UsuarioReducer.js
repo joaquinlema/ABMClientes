@@ -9,11 +9,12 @@ import {
     UPDATE_USER_LIST,
     CERRAR_MENSAJE,
     GET_USERS_ROL,
-    SET_USER_ELIMINAR
+    SET_USER_ELIMINAR,
+    GET_BRANCH_OFFICE
 } from '../actions/types';
  
 const initialState = {
-    loading: false,
+    loading: true,
     error: '',
     usuarios:[],
     usuarioEdit:{},
@@ -25,7 +26,8 @@ const initialState = {
     roles: [],
     tituloDialogo: '',
     labelBoton: '',
-    usuarioEliminar:{}
+    usuarioEliminar:{},
+    sucursales:[],
 }
 const UsuarioReducer =  (state = initialState, action) => {
     switch(action.type){
@@ -71,7 +73,7 @@ const UsuarioReducer =  (state = initialState, action) => {
                 ...state,
                 usuarioEdit:action.payload,
                 editStatus:true,
-                tituloFormulario:'Editar '+ action.payload.nombre +' '+ action.payload.apellido,
+                tituloFormulario:'Editar '+ action.payload.firstName +' '+ action.payload.lastName,
                 abrirFormularioStatus:true
             }
         case SET_ERROR:
@@ -83,7 +85,8 @@ const UsuarioReducer =  (state = initialState, action) => {
         case GET_USERS:
             return {
                 ...state,
-                usuarios: action.payload
+                usuarios: action.payload,
+                loading:false
             }
         case SET_LOADING:
             return {
@@ -96,7 +99,7 @@ const UsuarioReducer =  (state = initialState, action) => {
                 usuarios: [...state.usuarios,action.payload],
                 mostrarMensaje: true,
                 textoMensaje: 'Usuario Creado Exitosamente.'
-            }
+            };
         case DELETE_USER:
             return{
                 ...state,
@@ -107,6 +110,11 @@ const UsuarioReducer =  (state = initialState, action) => {
                 usuarioEliminar: {},
                 tituloDialogo: '',
                 labelBoton: '',
+        };
+        case GET_BRANCH_OFFICE:
+            return{
+                ...state,
+                sucursales:action.payload
         }
         default:
             return state;

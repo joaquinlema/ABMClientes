@@ -6,18 +6,19 @@ import {
     UPDATE_USER,
     CERRAR_MENSAJE,
     GET_USERS_ROL,
-    SET_USER_ELIMINAR
+    SET_USER_ELIMINAR,
+    GET_BRANCH_OFFICE
 } from './types';
 
 import axios from 'axios';
 
 export const getUsuarios = () => async dispatch => {
     try {
-        const { data } = await axios.get('/api/users');
+        const { data } = await axios.get('https://localhost:44321/api/User/');
 
         dispatch({
             type: GET_USERS,
-            payload: data.users
+            payload: data.listUserDTO
         });
 
     } catch (error) {
@@ -31,8 +32,8 @@ export const getUsuarios = () => async dispatch => {
 
 export const setDeleteUser = (elem) => async dispatch => {
     try {
-        const {id} = elem;
-        const { data } = await axios.get('/api/users/'+id);
+        const { id } = elem;
+        const { data } = await axios.get('https://localhost:44321/api/User/' + id);
 
         dispatch({
             type: SET_USER_ELIMINAR,
@@ -50,12 +51,12 @@ export const setDeleteUser = (elem) => async dispatch => {
 
 export const setEditUser = (elem) => async dispatch => {
     try {
-        const {id} = elem;
-        const { data } = await axios.get('/api/users/'+id);
+        const { userId } = elem;
+        const { data } = await axios.get('https://localhost:44321/api/User/' + userId);
 
         dispatch({
             type: UPDATE_USER,
-            payload: data.user
+            payload: data.data.user
         });
 
     } catch (error) {
@@ -71,7 +72,7 @@ export const setEditUser = (elem) => async dispatch => {
 export const deleteUser = (id) => async dispatch => {
     try {
         // eslint-disable-next-line no-unused-vars
-        const { data } = await axios.post('/api/users/delete/'+id);
+        const { data } = await axios.delete('https://localhost:44321/api/User/' + id);
         dispatch({
             type: DELETE_USER,
             payload: id
@@ -86,7 +87,7 @@ export const deleteUser = (id) => async dispatch => {
     }
 }
 
-export const abrirFormularioUsuario = (status) =>  dispatch => {
+export const abrirFormularioUsuario = (status) => dispatch => {
     dispatch(getUsuarioRol());
     dispatch({
         type: STATUS_FORMULARIO,
@@ -96,25 +97,36 @@ export const abrirFormularioUsuario = (status) =>  dispatch => {
 }
 
 export const getUsuarioRol = () => async dispatch => {
+    const data = [
+        { rol: "Administrador", id: 0 },
+        { rol: "Supervisor", id: 1 },
+        { rol: "Dueño", id: 2 },
+        { rol: "Cajero", id: 3 }]
+    dispatch({
+        type: GET_USERS_ROL,
+        payload: data
+    });
+
+}
+
+
+export const getSucursales = () => async dispatch => {
     try {
-        const { data } = await axios.get('/api/users/roles');
-
+        const { data } = await axios.get('https://localhost:44321/api/BranchOffice/');
         dispatch({
-            type: GET_USERS_ROL,
-            payload: data.rols
+            type: GET_BRANCH_OFFICE,
+            payload: data.listBranchOffices
         });
-
     } catch (error) {
         dispatch({
             type: SET_ERROR,
             payload: error
         });
-
     }
 }
 
-export const cerrarMensajeUsuario = ()  => dispatch => {
-      
+export const cerrarMensajeUsuario = () => dispatch => {
+
     dispatch({
         type: CERRAR_MENSAJE,
     });

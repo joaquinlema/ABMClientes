@@ -20,3 +20,5 @@ export const GET_COTIZACION = 'GET_COTIZACION';
 export const SET_PAGO_ARS = 'SET_PAGO_ARS';
 export const SET_PAGO_USD = 'SET_PAGO_USD';
 export const SET_USER_ELIMINAR = 'SET_USER_ELIMINAR';
+export const GET_BRANCH_OFFICE = 'GET_BRANCH_OFFICE';
+

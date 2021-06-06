@@ -112,7 +112,7 @@ const FormularioUsuario = () => {
     const classes = useStyles();
 
    const dispatch = useDispatch();
-   const {usuarioEdit, editStatus, tituloFormulario, roles}  = useSelector(state => state.UsuarioReducer);
+   const {usuarioEdit, editStatus, tituloFormulario, roles,sucursales}  = useSelector(state => state.UsuarioReducer);
     
     const SignupSchema = Yup.object().shape({
         nombre: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
@@ -120,18 +120,18 @@ const FormularioUsuario = () => {
         usuario: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
         rol: Yup.string().ensure().required('Required'),
         contraseña: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
-        sucursal: Yup.string().min(1, 'Too Short!').max(70, 'Too Long!').required('Required'),
+        //sucursal: Yup.string().min(1, 'Too Short!').max(70, 'Too Long!').required('Required'),
     });
 
     return (
             <Formik
                 initialValues={{
-                    nombre: (typeof usuarioEdit.nombre !== 'undefined') ? usuarioEdit.nombre : '', 
-                    apellido: (typeof usuarioEdit.apellido !== 'undefined') ? usuarioEdit.apellido : '', 
-                    usuario: (typeof usuarioEdit.usuario !== 'undefined') ? usuarioEdit.usuario : '', 
-                    rol: (typeof usuarioEdit.rol !== 'undefined') ? usuarioEdit.rol : '', 
-                    contraseña: (typeof usuarioEdit.contraseña !== 'undefined') ? usuarioEdit.contraseña : '', 
-                    sucursal: (typeof usuarioEdit.sucursal !== 'undefined') ? usuarioEdit.sucursal : '', 
+                    nombre: (typeof usuarioEdit.firstName !== 'undefined') ? usuarioEdit.firstName : '', 
+                    apellido: (typeof usuarioEdit.lastName !== 'undefined') ? usuarioEdit.lastName : '', 
+                    usuario: (typeof usuarioEdit.userCode !== 'undefined') ? usuarioEdit.userCode : '', 
+                    rol: (typeof usuarioEdit.role !== 'undefined') ? usuarioEdit.role : '', 
+                    contraseña: (typeof usuarioEdit.passwordHash !== 'undefined') ? usuarioEdit.passwordHash : '', 
+                    sucursal: (typeof usuarioEdit.branchOfficeIdDTO !== 'undefined') ? usuarioEdit.branchOfficeIdDTO : '', 
                     
                 }}
                 validationSchema={SignupSchema}
@@ -140,6 +140,7 @@ const FormularioUsuario = () => {
                         if(editStatus){
                            dispatch(editUser(values, usuarioEdit.id));
                         }else{
+                            //console.log(values);
                             dispatch(createUser(values));
                         }
                         setSubmitting(false);
@@ -184,7 +185,7 @@ const FormularioUsuario = () => {
                                     >
                                         {roles.length > 0 &&
                                             roles.map((item, index) => (
-                                                <MenuItem key={index} value={item.rol}>{item.rol}</MenuItem>
+                                                <MenuItem key={index} value={item.id}>{item.rol}</MenuItem>
                                             ))
                                         }
                                     </Field>
@@ -200,7 +201,24 @@ const FormularioUsuario = () => {
 
                             <Grid item xs={6} md={6} lg={6} className={classes.grid} >
                                 <label className={classes.label}>Sucursal *</label> 
-                                <MyTextField className={classes.textField} name="sucursal" type="text" />
+                                <FormControl className={classes.textField}>
+                                    <Field
+                                        error={errors.rol && touched.rol ? true : false}
+                                        component={Select}
+                                        name="sucursal"
+                                        defaultValue={initialValues.sucursal}
+                                        variant="outlined"
+                                        inputProps={{
+                                            id: 'sucursal',
+                                        }}
+                                    >
+                                        {sucursales.length > 0 &&
+                                            sucursales.map((item, index) => (
+                                                <MenuItem key={index} value={item.branchOfficeId}>{item.number}</MenuItem>
+                                            ))
+                                        }
+                                    </Field>
+                                 </FormControl>   
                             </Grid>
 
                             <Grid item xs={12} md={12} lg={12}>
