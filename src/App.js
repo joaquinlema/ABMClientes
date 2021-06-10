@@ -12,7 +12,6 @@ import WebFont from 'webfontloader';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    
   }
 }));
 

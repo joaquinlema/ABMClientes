@@ -36,7 +36,7 @@ const UsuarioReducer =  (state = initialState, action) => {
                 ...state,
                 usuarioEliminar: action.payload,
                 textoMensaje: '¿Estás seguro de que querés eliminarlo?',
-                tituloDialogo: 'Eliminar ' + action.payload.nombre,
+                tituloDialogo: 'Eliminar ' + action.payload.firstName,
                 labelBoton: 'Si, Eliminar',
             }
         case GET_USERS_ROL:
@@ -104,7 +104,7 @@ const UsuarioReducer =  (state = initialState, action) => {
             return{
                 ...state,
                 // eslint-disable-next-line eqeqeq
-                usuarios: state.usuarios.filter(elem => { return (elem.id != action.payload)}),
+                usuarios: state.usuarios.filter(elem => { return (elem.userId != action.payload)}),
                 mostrarMensaje: true,
                 textoMensaje: 'Usuario Eliminado Exitosamente.',
                 usuarioEliminar: {},

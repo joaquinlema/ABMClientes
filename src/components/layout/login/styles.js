@@ -12,16 +12,21 @@ export default makeStyles((theme) => ({
       lineHeight: '24px',
       letterSpacing: '0.18px',
       textAlign: 'center',
-      marginBottom: '-30px'
+      left:'50%'
+      // marginBottom: '-25%'
    },
    grid: {
       margin:'5px'
     },
+    gridPass:{
+      margin:'5px',
+      // marginTop:'-10%'
+    },
     gridButtom: {
-      marginTop: '18px',
+      // marginTop: '-28%',
     },
     gridBienvenido: {
-      marginTop: '100px',
+      marginTop: '15%',
     },
    financiera: {
       borderRadius: 'nullpx',
@@ -32,7 +37,8 @@ export default makeStyles((theme) => ({
       lineHeight: '56px',
       textAlign: 'center',
       color: '#FFFFFF',
-      marginBottom: '10px'
+      // marginBottom: '-15%',
+      // marginTop:'-3%'
    },
 
    inputUsuario: {
@@ -63,7 +69,6 @@ export default makeStyles((theme) => ({
       border: '1px solid #E0E0E0',
       boxSizing: 'border-box',
       borderRadius: '4px',
-
    },
    trailingIcon: {
       width: '24px',
@@ -136,5 +141,6 @@ export default makeStyles((theme) => ({
    body: {
       background: '#002563',
       height:'100%',
+      position:'absolute'
    }
 }))

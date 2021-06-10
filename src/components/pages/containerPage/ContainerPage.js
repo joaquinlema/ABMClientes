@@ -1,24 +1,16 @@
 import React from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { logout } from '../../../actions/LoginActions'
+import {Drawer,AppBar,Toolbar,List,ListItemIcon,Grid,Divider,CssBaseline,IconButton,ListItem,ListItemText} from '@material-ui/core'
 import clsx from 'clsx';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Home from '../Home';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect,useHistory,useLocation } from 'react-router-dom';
-import { Grid } from '@material-ui/core';
-import About from '../About';
+import { createBrowserHistory } from "history";
+import ClientePage from '../ClientePage';
 import NotFound from '../NotFound';
+import About from '../About';
 import MonedaPage from '../MonedaPage'
 import UsuarioPagina from '../UsuarioPagina';
-import Login from '../../layout/login/Login'
+import Login from '../../layout/login/Login';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
@@ -27,8 +19,6 @@ import SyncAltIcon from '@material-ui/icons/SyncAlt';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import WebIcon from '@material-ui/icons/Web';
 import TelegramIcon from '@material-ui/icons/Telegram';
-import { createBrowserHistory } from "history";
-import ClientePage from '../ClientePage';
 import styles from './styles'
 
 
@@ -36,18 +26,22 @@ const MiniDrawer = () => {
 
   const classes = styles();
   let histories = useHistory();
+  const dispatch = useDispatch();
+  const {autorizado}  = useSelector(state => state.LoginReducer);
   const [open, setOpen] = React.useState(true);
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
   const history = createBrowserHistory();
 
-  if (!sessionStorage.getItem('USER_FINANCIERA')) {
+  if (!autorizado && !sessionStorage.getItem('USER_FINANCIERA')) {
+   
     return <Redirect to="/Login" />
   }
 
-  const logout =()=>{
+  const logoutIn =()=>{
     sessionStorage.removeItem('USER_FINANCIERA');
-    histories.push("/Login");
+    dispatch(logout());
+    histories.push("/Login"); 
   }
   return (
     <div className={classes.root}>
@@ -55,7 +49,7 @@ const MiniDrawer = () => {
       <AppBar className={clsx(classes.appBar, { [classes.appBarShift]: open, })}>
         <Toolbar>
           <div className={classes.containerLogin}>
-            <IconButton onClick={logout}>
+            <IconButton onClick={logoutIn}>
               <PersonOutlineIcon className={classes.iconoLogin}/><h5 className={classes.textLogin}>{"Hola" +","+sessionStorage.getItem('USER_FINANCIERA')}</h5>
             </IconButton>  
           </div>

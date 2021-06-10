@@ -32,12 +32,12 @@ export const getUsuarios = () => async dispatch => {
 
 export const setDeleteUser = (elem) => async dispatch => {
     try {
-        const { id } = elem;
-        const { data } = await axios.get('https://localhost:44321/api/User/' + id);
+        const { userId } = elem;
+        const { data } = await axios.get('https://localhost:44321/api/User/' + userId);
 
         dispatch({
             type: SET_USER_ELIMINAR,
-            payload: data.user
+            payload: data.data.user
         });
 
     } catch (error) {

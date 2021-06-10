@@ -69,7 +69,7 @@ const TablaUsuarios = () => {
                 <TablaUtil rows={usuarios} columns={columns} title={'Listado Total'} attr={attr} options={options}/>
             </Grid>
             <Grid>
-              <ConfirmarPopUp status={abrir} cerrar={setabrir} labelBoton={labelBoton} titulo={tituloDialogo} mensaje={textoMensaje} accionBoton={() => dispatch(deleteUser(usuarioEliminar.id))}/>
+              <ConfirmarPopUp status={abrir} cerrar={setabrir} labelBoton={labelBoton} titulo={tituloDialogo} mensaje={textoMensaje} accionBoton={() => dispatch(deleteUser(usuarioEliminar.userId))}/>
             </Grid>
         </Fragment>
     );
