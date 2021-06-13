@@ -3,7 +3,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getLoginUser } from '../../../actions/LoginActions'
 import { Grid, Button, InputLabel, LinearProgress, Hidden, Typography } from '@material-ui/core';
-import { Formik, Form } from 'formik';
+import { Formik, Form,Field } from 'formik';
 import * as Yup from "yup";
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -21,7 +21,7 @@ const Login = () => {
     
     const SignupSchema = Yup.object().shape({
         nombre: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[a-zA-Z ]+$/, "Invalid Name only letters").required('Required'),
-        password: Yup.string().min(6, 'Password has to be longer than 6 characters!').required('Password is required!')
+        //password: Yup.string().min(6, 'Password has to be longer than 6 characters!').required('Password is required!')
     });
 
     if(autorizado){ 
@@ -50,7 +50,7 @@ const Login = () => {
                 <Form>
                     <Grid className={classes.body} container alignItems="center">
                         <Hidden only={['sm', 'xs']}>
-                            <Grid item xs={12} md={4} only="lg"></Grid>
+                            <Grid item xs={12} md={4}></Grid>
                         </Hidden>
                         <Grid container item xs={12} md={4}>
                             <Grid item xs={12} md={12} className={classes.gridBienvenido}>
@@ -60,12 +60,15 @@ const Login = () => {
                                 <Typography className={classes.financiera}>Sistema <br></br>de Financiera</Typography>
                             </Grid>
                             <Grid item xs={12} md={12} className={classes.grid}>
-                                <InputLabel className={classes.label}>Nombre</InputLabel>
-                                <MyTextField type="text" name="nombre" className={classes.inputUsuario} />
+                                <InputLabel className={(!errors.nombre) ? classes.label : classes.error}>Nombre</InputLabel>
+                                {/* <MyTextField type="text" name="nombre" className={classes.inputUsuario} /> */}
+                                <Field type="text" name="nombre"  errors={errors.nombre}  variant="outlined" className={classes.inputUsuario} />
+                                {errors.nombre ? (
+                                  <label className={classes.error}>{errors.nombre}</label>) : null} 
                             </Grid>
                             <Grid item xs={12} md={12} className={classes.gridPass}>
-                                <InputLabel className={classes.label}>Password</InputLabel>
-                                <MyTextField className={classes.inputUsuario} name="password" type={values.showPassword ? 'text' : 'password'} InputProps={{
+                                <InputLabel className={(!errors.password) ? classes.c : classes.error}>Password</InputLabel>
+                                <Field variant="outlined" className={classes.inputUsuario} name="password" type={values.showPassword ? 'text' : 'password'} InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="start">
                                             <IconButton onClick={() => { setFieldValue('showPassword', !values.showPassword) }} >
@@ -74,6 +77,8 @@ const Login = () => {
                                         </InputAdornment>
                                     ),
                                 }} />
+                                      {errors.password ? (
+                                   <label className={classes.error}>{errors.password}</label>) : null} 
                             </Grid>
                             <Grid item xs={12} md={12} lg={12}>
                                 {isSubmitting && <LinearProgress />}
@@ -93,7 +98,7 @@ const Login = () => {
                         </Grid>
                     </Grid>
                     <Hidden only={['sm', 'xs']}>
-                        <Grid item xs={12} md={4} only="lg"></Grid>
+                        <Grid item xs={12} md={4}></Grid>
                     </Hidden>
                 </Form>
             )}

@@ -12,18 +12,18 @@ export default makeStyles((theme) => ({
       lineHeight: '24px',
       letterSpacing: '0.18px',
       textAlign: 'center',
-      left:'50%'
-      // marginBottom: '-25%'
+     
+     
    },
    grid: {
       margin:'5px'
     },
     gridPass:{
       margin:'5px',
-      // marginTop:'-10%'
+     
     },
     gridButtom: {
-      // marginTop: '-28%',
+      marginTop:'5%'
     },
     gridBienvenido: {
       marginTop: '15%',
@@ -42,11 +42,11 @@ export default makeStyles((theme) => ({
    },
 
    inputUsuario: {
-      width: '100%',
+      width: '98%',
       background: '#FFFFFF',
       borderRadius: '4px',
       backgroundColor: '#FFFFFF',
-      textAlign: 'center',
+      height:'56px'
    },
    labelInput: {
       height: '16px',
@@ -61,14 +61,25 @@ export default makeStyles((theme) => ({
       letterSpacing: '0.4px',
       color: '#FFFFFF',
    },
+   error:{
+      color:'#FF4F4F',
+      marginLeft: '20px',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: '12px',
+      lineHeight: '16px',
+      letterSpacing: '0.4px',
+      fontFamily:'Titillium Web'
+   },
    inputPassword: {
-      width: '100%',
+      width: '98%',
       background: '#FFFFFF',
       borderRadius: '4px',
       backgroundColor: '#FFFFFF',
       border: '1px solid #E0E0E0',
       boxSizing: 'border-box',
       borderRadius: '4px',
+      height:'56px'
    },
    trailingIcon: {
       width: '24px',

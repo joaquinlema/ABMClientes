@@ -11,14 +11,15 @@ import {
 } from './types';
 
 import axios from 'axios';
+import UserDTO from '../DTO/UserDTO'
 
 export const getUsuarios = () => async dispatch => {
     try {
         const { data } = await axios.get('https://localhost:44321/api/User/');
-
+            
         dispatch({
             type: GET_USERS,
-            payload: data.listUserDTO
+            payload: UserDTO.getAllUser(data.listUserDTO)
         });
 
     } catch (error) {
@@ -56,7 +57,7 @@ export const setEditUser = (elem) => async dispatch => {
 
         dispatch({
             type: UPDATE_USER,
-            payload: data.data.user
+            payload:  UserDTO.getUser(data.data.user)
         });
 
     } catch (error) {
@@ -97,14 +98,10 @@ export const abrirFormularioUsuario = (status) => dispatch => {
 }
 
 export const getUsuarioRol = () => async dispatch => {
-    const data = [
-        { rol: "Administrador", id: 0 },
-        { rol: "Supervisor", id: 1 },
-        { rol: "Dueño", id: 2 },
-        { rol: "Cajero", id: 3 }]
+    
     dispatch({
         type: GET_USERS_ROL,
-        payload: data
+        payload: UserDTO.getUsersRols()
     });
 
 }

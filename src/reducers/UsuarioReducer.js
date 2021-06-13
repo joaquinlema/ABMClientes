@@ -53,7 +53,7 @@ const UsuarioReducer =  (state = initialState, action) => {
         case UPDATE_USER_LIST:
             return{
                 ...state,
-                usuarios: state.usuarios.map(elem => elem.id === action.payload.id ? action.payload : elem),
+                usuarios: state.usuarios.map(elem => elem.userId === action.payload.userId ? action.payload : elem),
                 editStatus:false,
                 tituloFormulario:'Nuevo Usuario',
                 usuarioEdit:{},
