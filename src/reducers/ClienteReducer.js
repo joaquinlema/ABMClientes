@@ -12,7 +12,7 @@ import {
 } from '../actions/typesCliente';
  
 const initialState = {
-    loading: false,
+    loading: true,
     error: '',
     clientes:[],
     clienteEdit:{},
@@ -70,7 +70,8 @@ const ClienteReducer =  (state = initialState, action) => {
         case GET_CLIENTS:
             return {
                 ...state,
-                clientes: action.payload
+                clientes: action.payload,
+                loading:false
             }
         case SET_LOADING:
             return {

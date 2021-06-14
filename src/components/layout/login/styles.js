@@ -1,5 +1,6 @@
 
 import { makeStyles } from '@material-ui/core/styles';
+import imgFondo from'../../../img/fondo2.svg';
 export default makeStyles((theme) => ({
 
    bienvenido: {
@@ -152,6 +153,7 @@ export default makeStyles((theme) => ({
    body: {
       background: '#002563',
       height:'100%',
-      position:'absolute'
+      position:'absolute',
+      backgroundImage: `url(${imgFondo})`
    }
 }))

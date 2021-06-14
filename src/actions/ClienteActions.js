@@ -12,11 +12,11 @@ import axios from 'axios';
 
 export const getClients = () => async dispatch => {
     try {
-        const { data } = await axios.get('/api/clients');
+        const { data } = await axios.get('https://localhost:44321/api/Client');
 
         dispatch({
             type: GET_CLIENTS,
-            payload: data.clientes
+            payload: data.listClientDTO
         });
 
     } catch (error) {
@@ -31,12 +31,12 @@ export const getClients = () => async dispatch => {
 export const setDeleteClient = (elem) => async dispatch => {
     try {
 
-        const {id} = elem;
-        const { data } = await axios.get('/api/clients/'+id);
+        const {clientId} = elem;
+        const { data } = await axios.get('https://localhost:44321/api/Client/'+clientId);
 
         dispatch({
             type: SET_CLIENTE_ELIMINAR,
-            payload: data.cliente
+            payload: data.data.cliente
         });
 
     } catch (error) {
@@ -52,14 +52,13 @@ export const setDeleteClient = (elem) => async dispatch => {
 export const setEditClient = (elem) => async dispatch => {
     try {
 
-        const {id} = elem;
-        const { data } = await axios.get('/api/clients/'+id);
+        const {clientId} = elem;
+        const { data } = await axios.get('https://localhost:44321/api/Client/'+clientId);
 
         dispatch({
             type: UPDATE_CLIENT,
-            payload: data.cliente
+            payload:data.data.client
         });
-
     } catch (error) {
         dispatch({
             type: SET_ERROR,

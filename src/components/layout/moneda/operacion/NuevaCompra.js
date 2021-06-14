@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {getClients} from '../../../../actions/ClienteActions';
@@ -8,8 +8,6 @@ import Formulario from '../form/FormularioMoneda';
 import Resumen from '../resumen/Resumen';
 import Progress from '../../progress/Progress'
 import Styles from './styles'
-
-
 
 
 const NavMoneda = () => {

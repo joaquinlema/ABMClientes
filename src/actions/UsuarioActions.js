@@ -38,7 +38,7 @@ export const setDeleteUser = (elem) => async dispatch => {
 
         dispatch({
             type: SET_USER_ELIMINAR,
-            payload: data.data.user
+            payload:UserDTO.getUser(data.data.user)
         });
 
     } catch (error) {
@@ -70,13 +70,13 @@ export const setEditUser = (elem) => async dispatch => {
 }
 
 
-export const deleteUser = (id) => async dispatch => {
+export const deleteUser = (userId) => async dispatch => {
     try {
-        // eslint-disable-next-line no-unused-vars
-        const { data } = await axios.delete('https://localhost:44321/api/User/' + id);
+       
+        const { data } = await axios.delete('https://localhost:44321/api/User/' + userId,{headers: {'Content-Type': 'application/json'}});
         dispatch({
             type: DELETE_USER,
-            payload: id
+            payload: userId
         });
 
     } catch (error) {

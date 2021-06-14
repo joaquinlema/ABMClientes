@@ -21,7 +21,7 @@ const Login = () => {
     
     const SignupSchema = Yup.object().shape({
         nombre: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').matches(/^[a-zA-Z ]+$/, "Invalid Name only letters").required('Required'),
-        //password: Yup.string().min(6, 'Password has to be longer than 6 characters!').required('Password is required!')
+        password: Yup.string().min(6, 'Password has to be longer than 6 characters!').required('Password is required!')
     });
 
     if(autorizado){ 
@@ -67,7 +67,7 @@ const Login = () => {
                                   <label className={classes.error}>{errors.nombre}</label>) : null} 
                             </Grid>
                             <Grid item xs={12} md={12} className={classes.gridPass}>
-                                <InputLabel className={(!errors.password) ? classes.c : classes.error}>Password</InputLabel>
+                                <InputLabel className={(!errors.password) ? classes.label : classes.error}>Password</InputLabel>
                                 <Field variant="outlined" className={classes.inputUsuario} name="password" type={values.showPassword ? 'text' : 'password'} InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="start">

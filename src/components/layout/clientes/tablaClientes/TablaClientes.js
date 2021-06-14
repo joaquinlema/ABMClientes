@@ -7,17 +7,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getClients, setEditClient, setDeleteClient, deleteClient} from '../../../../actions/ClienteActions';
 import EdicionPopUp from '../../utils/popup/EdicionPopUp';
 import ConfirmarPopUp from '../../utils/popup/ConfirmarPopUp';
+import Progress from '../../progress/Progress'
 
 const TablaClientes = () => {
 
     const [abrir, setabrir] = useState(false);
-    const {clientes, clienteEliminar,labelBoton, textoMensaje, tituloDialogo} = useSelector(state => state.ClienteReducer);
+    const {clientes, clienteEliminar,labelBoton, textoMensaje, tituloDialogo,loading} = useSelector(state => state.ClienteReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getClients());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    if (loading) {
+      return (
+        <Progress />
+      );
+    }
+  
 
     const columns = ["Alias", "Nombre","Telefono","Mail","Direccion",
       {
@@ -59,7 +67,7 @@ const TablaClientes = () => {
                 <TablaUtil rows={clientes} columns={columns} title={'Listado Total'} attr={attr} options={options}/>
             </Grid>
             <Grid>
-              <ConfirmarPopUp status={abrir} cerrar={setabrir} labelBoton={labelBoton} titulo={tituloDialogo} mensaje={textoMensaje} accionBoton={() => dispatch(deleteClient(clienteEliminar.id))}/>
+              <ConfirmarPopUp status={abrir} cerrar={setabrir} labelBoton={labelBoton} titulo={tituloDialogo} mensaje={textoMensaje} accionBoton={() => dispatch(deleteClient(clienteEliminar.clientId))}/>
             </Grid>
         </Fragment>
     );

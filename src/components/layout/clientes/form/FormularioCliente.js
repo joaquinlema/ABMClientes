@@ -139,7 +139,7 @@ const FormularioCliente = () => {
                 onSubmit={(values, { setSubmitting,resetForm }) => {
                     setTimeout(() => {
                         if(editStatus){
-                           dispatch(editClient(values, clienteEdit.id));
+                           dispatch(editClient(values, clienteEdit.clientId));
                         }else{
                             dispatch(createClient(values));
                         }

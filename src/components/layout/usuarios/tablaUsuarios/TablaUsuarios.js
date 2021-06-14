@@ -4,7 +4,7 @@ import HeaderPage from '../../utils/header/HeaderPage';
 import NuevoUsuario from './nuevo/NuevoUsuario';
 import TablaUtil from '../../utils/tabla/TablaUtil';
 import { useDispatch, useSelector } from 'react-redux';
-import {getUsuarios, setEditUser, setDeleteUser, deleteUse,getSucursales} from '../../../../actions/UsuarioActions';
+import {getUsuarios, setEditUser, setDeleteUser, deleteUser,getSucursales} from '../../../../actions/UsuarioActions';
 import EdicionPopUp from '../../utils/popup/EdicionPopUp';
 import ConfirmarPopUp from '../../utils/popup/ConfirmarPopUp';
 import Progress from '../../progress/Progress'
