@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getLoginUser } from '../../../actions/LoginActions'
-import { Grid, Button, InputLabel, LinearProgress, Hidden, Typography } from '@material-ui/core';
+import { Grid, Button, InputLabel, LinearProgress, Hidden, Typography,TextField } from '@material-ui/core';
 import { Formik, Form,Field } from 'formik';
 import * as Yup from "yup";
 import Visibility from '@material-ui/icons/Visibility';
@@ -62,13 +62,13 @@ const Login = () => {
                             <Grid item xs={12} md={12} className={classes.grid}>
                                 <InputLabel className={(!errors.nombre) ? classes.label : classes.error}>Nombre</InputLabel>
                                 {/* <MyTextField type="text" name="nombre" className={classes.inputUsuario} /> */}
-                                <Field type="text" name="nombre"  errors={errors.nombre}  variant="outlined" className={classes.inputUsuario} />
+                                <TextField type="text" error={!errors.nombre ? false : true} name="nombre"  onChange={(e) => { setFieldValue("nombre",e.target.value);}} errors={errors.nombre}  variant="outlined" className={classes.inputUsuario} />
                                 {errors.nombre ? (
                                   <label className={classes.error}>{errors.nombre}</label>) : null} 
                             </Grid>
                             <Grid item xs={12} md={12} className={classes.gridPass}>
                                 <InputLabel className={(!errors.password) ? classes.label : classes.error}>Password</InputLabel>
-                                <Field variant="outlined" className={classes.inputUsuario} name="password" type={values.showPassword ? 'text' : 'password'} InputProps={{
+                                <TextField error={!errors.password ? false : true} variant="outlined" className={classes.inputUsuario} onChange={(e) => { setFieldValue("password",e.target.value);}} name="password" type={values.showPassword ? 'text' : 'password'} InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="start">
                                             <IconButton onClick={() => { setFieldValue('showPassword', !values.showPassword) }} >
