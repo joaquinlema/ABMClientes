@@ -15,7 +15,6 @@ const rootReducer =  combineReducers({
      ClienteReducer,
      FormularioMonedaReducer,
      LoginReducer
-
 });
 
 export default rootReducer;
