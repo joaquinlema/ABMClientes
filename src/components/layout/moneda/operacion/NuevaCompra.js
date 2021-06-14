@@ -15,12 +15,12 @@ const NavMoneda = () => {
     const {loading} = useSelector(state => state.ClienteReducer);
     useEffect(() => {
         dispatch(getClients());
-        dispatch(getCotizacion());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        //dispatch(getCotizacion());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const [nav,setNav]= React.useState(false);
-
+    const classes = Styles();
     const closeNav=()=>{
         setNav(true);
     }
@@ -34,7 +34,7 @@ const NavMoneda = () => {
         )
     }
   
-    const classes = Styles();
+    
     return (
         <Grid container direction="row">
             <Grid item xs={12} sm={12} md={12} lg={12} >

@@ -73,7 +73,7 @@ export const setEditUser = (elem) => async dispatch => {
 export const deleteUser = (userId) => async dispatch => {
     try {
        
-        const { data } = await axios.delete('https://localhost:44321/api/User/' + userId,{headers: {'Content-Type': 'application/json'}});
+        const { data } = await axios.delete('https://localhost:44321/api/User/' + userId,{data:{userId: userId}});
         dispatch({
             type: DELETE_USER,
             payload: userId
