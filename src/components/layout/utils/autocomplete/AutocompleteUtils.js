@@ -12,7 +12,7 @@ const SelectUtils = (props) => {
                 className={classes.selectUtils}
                 options={props.OPTIONS_SELECT}
                 onChange={props.ONCHANGE_SELECT}
-                getOptionLabel={(option) => option['nombre']}   
+                getOptionLabel={(option) => option['alias']}   
                 value={props.VALUES}
                 renderInput={(params) =>
                     <TextField {...params}

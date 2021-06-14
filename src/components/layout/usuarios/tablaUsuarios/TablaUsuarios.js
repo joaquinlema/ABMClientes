@@ -46,7 +46,7 @@ const TablaUsuarios = () => {
       }
     ];
 
-    const attr = ["lastName", "firstName","userCode","role","branchOfficeId","userId"];
+    const attr = ["lastName", "firstName","userCode","role","branchOffice","userId"];
 
     const options = {
       selectableRows: 'none',

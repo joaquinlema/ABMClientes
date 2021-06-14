@@ -131,14 +131,14 @@ const FormularioUsuario = () => {
                     usuario: (typeof usuarioEdit.userCode !== 'undefined') ? usuarioEdit.userCode : '', 
                     rol: (typeof usuarioEdit.role !== 'undefined') ? usuarioEdit.role : '', 
                     contraseña: (typeof usuarioEdit.passwordHash !== 'undefined') ? usuarioEdit.passwordHash : '', 
-                    sucursal: (typeof usuarioEdit.branchOfficeIdDTO !== 'undefined') ? usuarioEdit.branchOfficeIdDTO : '', 
+                    sucursal: (typeof usuarioEdit.branchOfficeIdDTO !== 'undefined') ? usuarioEdit.branchOfficeId : '', 
                     
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { setSubmitting,resetForm }) => {
                     setTimeout(() => {
                         if(editStatus){
-                           dispatch(editUser(values, usuarioEdit.id));
+                           dispatch(editUser(values, usuarioEdit.userId));
                         }else{
                             //console.log(values);
                             dispatch(createUser(values));

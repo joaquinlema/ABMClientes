@@ -18,7 +18,7 @@ const ClientePage = () => {
                 <Mensaje open={mostrarMensaje} mensaje={textoMensaje} cerrarMsj={() => dispatch(cerrarMensajeCliente())}/>
             </Grid>
             <Grid container item xs={12} sm={12} md={12} lg={12}>
-                {/* <TablaClientes /> */}
+                 <TablaClientes /> 
             </Grid>
 
             <Grid container item xs={12} sm={12} md={4} lg={4}>

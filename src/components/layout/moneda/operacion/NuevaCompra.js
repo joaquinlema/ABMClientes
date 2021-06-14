@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {getClients} from '../../../../actions/ClienteActions';
@@ -10,19 +10,17 @@ import Progress from '../../progress/Progress'
 import Styles from './styles'
 
 
-
-
 const NavMoneda = () => {
     const dispatch = useDispatch();
     const {loading} = useSelector(state => state.ClienteReducer);
     useEffect(() => {
         dispatch(getClients());
-        dispatch(getCotizacion());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        //dispatch(getCotizacion());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const [nav,setNav]= React.useState(false);
-
+    const classes = Styles();
     const closeNav=()=>{
         setNav(true);
     }
@@ -36,7 +34,7 @@ const NavMoneda = () => {
         )
     }
   
-    const classes = Styles();
+    
     return (
         <Grid container direction="row">
             <Grid item xs={12} sm={12} md={12} lg={12} >
