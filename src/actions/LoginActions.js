@@ -16,7 +16,7 @@ export const setLoading = () => {
 
 export const getLoginUser = (values) => async dispatch => {
     try {
-        const { data } = await  axios.post('https://localhost:44321/api/Login/login',
+        const { data } = await  axios.post('https://localhost:44321/api/Login/',
                 { "userName": values.nombre,
                 "password": values.password});
 
