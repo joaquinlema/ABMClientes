@@ -233,9 +233,9 @@ const FormularioCliente = () => {
                                 {isSubmitting && <LinearProgress />}
                             </Grid>
 
-                            <Grid item xs={12} md={12} lg={12} className={classes.botones}  container justify="flex-end" spacing={1}>
+                            <Grid item xs={12} md={12} lg={12} container justify="flex-end" spacing={1}>
                                 <Button size="small" className={classes.botonCancelar} disabled={isSubmitting} 
-                                onClick={() => { dispatch(abrirFormularioCliente(false));}}
+                                    onClick={() => { dispatch(abrirFormularioCliente(false));}}
                                 >
                                     Cancelar
                                 </Button>

@@ -60,7 +60,7 @@ const TablaClientes = () => {
       
     return (
         <Fragment>
-            <Grid container item xs={12} sm={12} md={12} lg={12} style={{marginLeft:'240px'}}>
+            <Grid container item xs={12} sm={12} md={12} lg={12} >
                 <HeaderPage titulo={'Clientes'} boton={<NuevoCliente />}/>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>

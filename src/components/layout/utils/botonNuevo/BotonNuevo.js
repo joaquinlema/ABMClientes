@@ -12,7 +12,7 @@ buttonStyle: {
     lineHeight: '16px',
     textAlign: 'center',
     color: '#FFFFFF',
-    width: '80%',
+    width: '50%',
     height: '40px',
     textTransform: 'none',
     fontFamily: "Titillium Web",
