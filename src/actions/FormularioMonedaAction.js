@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { 
     SET_ERROR,
     SET_LOADING,

@@ -2,8 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles'
 import store from './store';
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { makeServer } from './server/MyServerMirage';
+//import { makeServer } from './server/MyServerMirage';
 import HomePage from './components/pages/containerPage/ContainerPage';
 import MonedaPage from './components/pages/MonedaPage'
 import Login from './components/layout/login/Login'

@@ -4,7 +4,6 @@ import {
     SET_LOADING,
     SET_NEW_USER,
     UPDATE_USER_LIST,
-    SET_NEW_TASK,
 } from './types';
 import UserDTO from '../DTO/UserDTO'
 
@@ -57,25 +56,6 @@ export const editUser = (user, id) => async dispatch => {
             type: UPDATE_USER_LIST,
             payload:  UserDTO.editUser(data.result)
         });
-
-    } catch (error) {
-        dispatch({
-            type: SET_ERROR,
-            payload: error
-        });
-
-    }
-}
-
-
-export const createTask = (task) => async dispatch => {
-    try {
-        const { data } = await Axios.post('/api/tasks', { data: { codigo: task.codigo, descripcion: task.descripcion, duracionPlanificada: task.duracionPlanificada, usuarioId: task.usuarioId } });
-
-        dispatch({
-            type: SET_NEW_TASK,
-            payload: data.task
-        })
 
     } catch (error) {
         dispatch({

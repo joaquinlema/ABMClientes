@@ -17,9 +17,11 @@ export const setLoading = () => {
 export const getLoginUser = (values) => async dispatch => {
     try {
         const { data } = await  axios.post('https://localhost:44321/api/Login/login',
-        { "userName": values.nombre,
-        "password": values.password});
+                { "userName": values.nombre,
+                "password": values.password});
+
         sessionStorage.setItem("USER_FINANCIERA", data.data.userCode);
+        
         dispatch({
             type: GET_USER_LOGIN,
             payload: data.data
