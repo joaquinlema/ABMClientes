@@ -26,11 +26,15 @@ const TablaUsuarios = () => {
       );
     }
 
-    const columns = ["Nombre", "Apellido","Usuario","Rol","Sucursal",
+    const columns = [{name: "Nombre", options: {display: true, viewColumns: false, filter: false}}, 
+    {name : "Apellido",options: {display: true, viewColumns: false, filter: false}},
+    {name: "Usuario",options: {display: true, viewColumns: false, filter: false}},
+    {name: "Rol",options: {display: true, viewColumns: false, filter: true}},
+    {name: "Sucursal",options: {display: true, viewColumns: false, filter: false}},
       {
         name: " ",
         options: {
-          filter: true,
+          filter: false,
           sort: false,
           empty: true,
           customBodyRender: (nada, row, rowIndex) => {
