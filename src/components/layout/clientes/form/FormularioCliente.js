@@ -165,7 +165,7 @@ const FormularioCliente = () => {
 
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
                                 <label className={classes.label}>Telefono*</label>
-                                <MyTextField className={classes.textField}  name="telefono" type="text" />
+                                <MyTextField className={classes.textField}  name="telefono" type="number" />
                             </Grid>
 
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
@@ -175,12 +175,12 @@ const FormularioCliente = () => {
 
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
                                 <label className={classes.label}>DNI</label>
-                                <MyTextField className={classes.textField}  name="dni" type="text"  />
+                                <MyTextField className={classes.textField}  name="dni" type="number"  />
                             </Grid>
 
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>
                                 <label className={classes.label}>CUIL</label>
-                                <MyTextField className={classes.textField}  name="cuil" type="text"  />
+                                <MyTextField className={classes.textField}  name="cuil" type="number"  />
                             </Grid>
 
                             <Grid item xs={12} md={12} lg={12} className={classes.grid}>
@@ -207,26 +207,26 @@ const FormularioCliente = () => {
                                 <label className={classes.labelCV}>Compra</label>
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField  name="clearingCompra" type="text"  />
+                                <MyTextField  name="clearingCompra" type="number"  />
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
                                 <MyTextField   name="comisionCompra" type="text"  />
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="tasaMensualCompra" type="text"  />
+                                <MyTextField   name="tasaMensualCompra" type="number"  />
                             </Grid>
 
                             <Grid item xs={3} md={3} lg={3} className={classes.grid +' '+ classes.tipo + ' ' + classes.gridCompraVenta}>
                                 <label className={classes.labelCV}>Venta</label>
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="clearingVenta" type="text"  />
+                                <MyTextField   name="clearingVenta" type="number"  />
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="comisionVenta" type="text"  />
+                                <MyTextField   name="comisionVenta" type="number"  />
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="tasaMensualVenta" type="text"  />
+                                <MyTextField   name="tasaMensualVenta" type="number"  />
                             </Grid>
 
                             <Grid item xs={12} md={12} lg={12}>
