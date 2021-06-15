@@ -43,8 +43,6 @@ export default class UserDTO {
         obj.passwordHash = res.passwordHash;
         obj.branchOffice = res.branchOfficeDTO.number;
         obj.branchOfficeId = res.branchOfficeDTO.branchOfficeId
-
-
         return obj;
     }
 

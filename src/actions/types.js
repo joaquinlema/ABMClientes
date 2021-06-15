@@ -18,4 +18,4 @@ export const SET_USER_ELIMINAR = 'SET_USER_ELIMINAR';
 export const GET_BRANCH_OFFICE = 'GET_BRANCH_OFFICE';
 export const GET_USER_LOGIN = 'GET_USER_LOGIN';
 export const LOGOUT= 'LOGOUT';
-
+export const SET_ERROR_LOGIN= 'SET_ERROR_LOGIN';

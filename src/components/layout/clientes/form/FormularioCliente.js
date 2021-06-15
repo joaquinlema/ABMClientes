@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {createClient,editClient} from '../../../../actions/FormularioClienteActions';
 import {abrirFormularioCliente} from '../../../../actions/ClienteActions';

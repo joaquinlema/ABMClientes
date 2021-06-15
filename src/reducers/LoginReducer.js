@@ -2,13 +2,16 @@ import {
     SET_ERROR,
     SET_LOADING,
     GET_USER_LOGIN,
-    LOGOUT
+    LOGOUT,
+    SET_ERROR_LOGIN
 } from '../actions/types';
 
 const initialState = {
     loading: false,
-    usuario:[],
-    autorizado:false,
+    usuario: [],
+    autorizado: false,
+    errorLogin: false,
+    mensajeErrorLogin: "",
 
 }
 const LoginReducer = (state = initialState, action) => {
@@ -28,13 +31,22 @@ const LoginReducer = (state = initialState, action) => {
             return {
                 ...state,
                 usuario: action.payload,
-                autorizado:true,
+                autorizado: true,
+                loading: false,
+                errorLogin: false,
             };
-            case LOGOUT:
-                return {
-                    ...state,
-                    autorizado:false,
-                };
+        case LOGOUT:
+            return {
+                ...state,
+                autorizado: false,
+            };
+        case SET_ERROR_LOGIN:
+            return {
+                ...state,
+                errorLogin: true,
+                mensajeErrorLogin:action.payload,
+                loading:false
+            };
 
 
         default:

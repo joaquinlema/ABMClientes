@@ -181,7 +181,7 @@ const FormularioMoneda = ({ compra }) => {
                             </Grid>
                             <Grid item xs={1} md={1} lg={1} className={classes.grid}>
                                 <label className={classes.label}>{"Moneda"}</label>
-                                <Autocomplete OPTIONS_SELECT={monedaValues} VALUES={values.tipoMoneda} ONCHANGE_SELECT={(_, data) => { setTipoMoneda(setFieldValue, data, values) }}></Autocomplete>
+                                <Autocomplete OPTIONS_SELECT={monedaValues} FILTER_PROPERTY={"nombre"} VALUES={values.tipoMoneda} ONCHANGE_SELECT={(_, data) => { setTipoMoneda(setFieldValue, data, values) }}></Autocomplete>
                             </Grid>
                             <Grid item xs={5} md={5} lg={5} className={classes.grid}>
                                 <label className={classes.label}>{"Descripcion cliente"}</label>

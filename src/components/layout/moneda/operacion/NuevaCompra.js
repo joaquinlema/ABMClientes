@@ -16,7 +16,7 @@ const NavMoneda = () => {
     useEffect(() => {
         dispatch(getClients());
         //dispatch(getCotizacion());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+       
     }, []);
 
     const [nav,setNav]= React.useState(false);

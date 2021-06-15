@@ -1,14 +1,15 @@
 import axios from 'axios';
-import { 
+import {
     SET_ERROR,
     SET_LOADING,
     GET_USER_LOGIN,
-    LOGOUT
-    
+    LOGOUT,
+    SET_ERROR_LOGIN
+
 } from './types';
 
 export const setLoading = () => {
-    return{
+    return {
         type: SET_LOADING
     }
 }
@@ -16,15 +17,24 @@ export const setLoading = () => {
 
 export const getLoginUser = (values) => async dispatch => {
     try {
-        const { data } = await  axios.post('https://localhost:44321/api/Login/',
-                { "userName": values.nombre,
-                "password": values.password});
+        dispatch(setLoading());
+        const { data } = await axios.post('https://localhost:44321/api/Login/',
+            {
+                "userName": values.nombre,
+                "password": values.password
+            });
 
-        sessionStorage.setItem("USER_FINANCIERA", data.data.userCode);
-        
+
+        if (data.data) {
+            sessionStorage.setItem("USER_FINANCIERA", data.data.userCode);
+            dispatch({
+                type: GET_USER_LOGIN,
+                payload: data.data
+            });
+        }
         dispatch({
-            type: GET_USER_LOGIN,
-            payload: data.data
+            type: SET_ERROR_LOGIN,
+            payload: data.message
         });
 
     } catch (error) {
@@ -36,9 +46,9 @@ export const getLoginUser = (values) => async dispatch => {
     }
 }
 
-export const logout=()=>dispatch=>{
-    dispatch({
-        type: LOGOUT,
-    });
+    export const logout = () => dispatch => {
+        dispatch({
+            type: LOGOUT,
+        });
 
-}
+    }

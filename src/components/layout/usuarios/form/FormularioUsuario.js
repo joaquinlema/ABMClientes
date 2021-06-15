@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {createUser,editUser} from '../../../../actions/FormularioUsuarioActions';
 import {abrirFormularioUsuario} from '../../../../actions/UsuarioActions';
