@@ -36,7 +36,7 @@ export const setDeleteClient = (elem) => async dispatch => {
 
         dispatch({
             type: SET_CLIENTE_ELIMINAR,
-            payload: data.data.cliente
+            payload: data.data.client
         });
 
     } catch (error) {
@@ -57,7 +57,7 @@ export const setEditClient = (elem) => async dispatch => {
 
         dispatch({
             type: UPDATE_CLIENT,
-            payload:data.data.client
+            payload: data.data.client
         });
     } catch (error) {
         dispatch({
