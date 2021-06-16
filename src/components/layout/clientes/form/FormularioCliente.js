@@ -122,18 +122,18 @@ const FormularioCliente = () => {
             <Formik
                 initialValues={{
                     alias: (typeof clienteEdit.alias !== 'undefined') ? clienteEdit.alias : '', 
-                    telefono: (typeof clienteEdit.telefono !== 'undefined') ? clienteEdit.telefono : '',
+                    telefono: (typeof clienteEdit.telefono !== 'undefined') ? clienteEdit.telefono : 0,
                     nombre: (typeof clienteEdit.nombre !== 'undefined') ? clienteEdit.nombre : '', 
                     mail: (typeof clienteEdit.mail !== 'undefined') ? clienteEdit.mail : '', 
                     direccion: (typeof clienteEdit.direccion !== 'undefined') ? clienteEdit.direccion : '',
-                    dni: (typeof clienteEdit.dni !== 'undefined') ? clienteEdit.dni : '', 
+                    dni: (typeof clienteEdit.dni !== 'undefined') ? clienteEdit.dni : 0, 
                     cuil: (typeof clienteEdit.cuil !== 'undefined') ? clienteEdit.cuil : '', 
-                    clearingCompra: (typeof clienteEdit.clearingCompra !== 'undefined') ? clienteEdit.clearingCompra : '', 
-                    tasaMensualCompra: (typeof clienteEdit.tasaMensualCompra !== 'undefined') ? clienteEdit.tasaMensualCompra : '',
-                    comisionCompra: (typeof clienteEdit.comisionCompra !== 'undefined') ? clienteEdit.comisionCompra : '',
-                    clearingVenta: (typeof clienteEdit.clearingVenta !== 'undefined') ? clienteEdit.clearingVenta : '', 
-                    tasaMensualVenta: (typeof clienteEdit.tasaMensualVenta !== 'undefined') ? clienteEdit.tasaMensualVenta : '', 
-                    comisionVenta: (typeof clienteEdit.comisionVenta !== 'undefined') ? clienteEdit.comisionVenta : '',
+                    clearingCompra: (typeof clienteEdit.clearingCompra !== 'undefined') ? clienteEdit.clearingCompra : 0, 
+                    tasaMensualCompra: (typeof clienteEdit.tasaMensualCompra !== 'undefined') ? clienteEdit.tasaMensualCompra : 0,
+                    comisionCompra: (typeof clienteEdit.comisionCompra !== 'undefined') ? clienteEdit.comisionCompra : 0,
+                    clearingVenta: (typeof clienteEdit.clearingVenta !== 'undefined') ? clienteEdit.clearingVenta : 0, 
+                    tasaMensualVenta: (typeof clienteEdit.tasaMensualVenta !== 'undefined') ? clienteEdit.tasaMensualVenta : 0, 
+                    comisionVenta: (typeof clienteEdit.comisionVenta !== 'undefined') ? clienteEdit.comisionVenta : 0,
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { setSubmitting,resetForm }) => {
