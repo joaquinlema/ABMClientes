@@ -210,7 +210,7 @@ const FormularioCliente = () => {
                                 <MyTextField  name="clearingCompra" type="number"  />
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
-                                <MyTextField   name="comisionCompra" type="text"  />
+                                <MyTextField   name="comisionCompra" type="number"  />
                             </Grid>
                             <Grid item xs={3} md={3} lg={3} className={classes.grid + ' ' + classes.gridCompraVenta}>
                                 <MyTextField   name="tasaMensualCompra" type="number"  />

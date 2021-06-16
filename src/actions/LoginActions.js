@@ -24,7 +24,6 @@ export const getLoginUser = (values) => async dispatch => {
                 "password": values.password
             });
 
-
         if (data.data) {
             sessionStorage.setItem("USER_FINANCIERA", data.data.userCode);
             dispatch({
@@ -32,6 +31,7 @@ export const getLoginUser = (values) => async dispatch => {
                 payload: data.data
             });
         }
+
         dispatch({
             type: SET_ERROR_LOGIN,
             payload: data.message
