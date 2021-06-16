@@ -38,7 +38,7 @@ const ClienteReducer =  (state = initialState, action) => {
         case UPDATE_CLIENT_LIST:
             return{
                 ...state,
-                clientes: state.clientes.map(elem => elem.id === action.payload.id ? action.payload : elem),
+                clientes: state.clientes.map(elem => elem.clientId === action.payload.clientId ? action.payload : elem),
                 editStatus:false,
                 tituloFormulario: 'Nuevo Cliente',
                 clienteEdit:{},

@@ -47,7 +47,7 @@ const TablaClientes = () => {
       }
     ];
 
-    const attr = ["alias", "nombre","telefono","mail","direccion","id"];
+    const attr = ["alias", "nombre","telefono","mail","direccion","clientId"];
 
     const options = {
       selectableRows: 'none',

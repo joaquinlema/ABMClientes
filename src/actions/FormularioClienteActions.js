@@ -19,7 +19,7 @@ export const createClient = (newValues) => async dispatch => {
             alias: newValues.alias,
             nombre: (newValues.nombre) ? (newValues.nombre) : "",
             telefono: newValues.telefono,
-            email: newValues.mail,
+            mail: newValues.mail,
             dni: (newValues.dni) ? newValues.dni : 0,
             cuil: (newValues.cuil) ? newValues.cuil : 0,
             direccion: newValues.direccion,
@@ -52,7 +52,7 @@ export const editClient = (newValues, id) => async dispatch => {
             alias: newValues.alias,
             nombre: newValues.nombre,
             telefono: newValues.telefono,
-            email: newValues.email,
+            mail: newValues.mail,
             dni: newValues.dni,
             cuil: newValues.cuil,
             direccion: newValues.direccion,
@@ -66,7 +66,7 @@ export const editClient = (newValues, id) => async dispatch => {
 
         dispatch({
             type: UPDATE_CLIENT_LIST,
-            payload: data.cliente
+            payload: data.result
         });
 
     } catch (error) {
