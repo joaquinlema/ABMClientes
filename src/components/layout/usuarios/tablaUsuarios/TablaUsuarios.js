@@ -4,10 +4,11 @@ import HeaderPage from '../../utils/header/HeaderPage';
 import NuevoUsuario from './nuevo/NuevoUsuario';
 import TablaUtil from '../../utils/tabla/TablaUtil';
 import { useDispatch, useSelector } from 'react-redux';
-import {getUsuarios, setEditUser, setDeleteUser, deleteUser,getSucursales} from '../../../../actions/UsuarioActions';
+import {getUsuarios, setEditUser, setDeleteUser, deleteUser} from '../../../../actions/UsuarioActions';
 import EdicionPopUp from '../../utils/popup/EdicionPopUp';
 import ConfirmarPopUp from '../../utils/popup/ConfirmarPopUp';
 import Progress from '../../progress/Progress'
+import UserDTO from '../../../../DTO/UserDTO';
 
 const TablaUsuarios = () => {
   const [abrir, setabrir] = useState(false);
@@ -16,7 +17,6 @@ const TablaUsuarios = () => {
 
     useEffect(() => {
         dispatch(getUsuarios());
-        dispatch(getSucursales());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -29,7 +29,13 @@ const TablaUsuarios = () => {
     const columns = [{name: "Nombre", options: {display: true, viewColumns: false, filter: false}}, 
     {name : "Apellido",options: {display: true, viewColumns: false, filter: false}},
     {name: "Usuario",options: {display: true, viewColumns: false, filter: false}},
-    {name: "Rol",options: {display: true, viewColumns: false, filter: true}},
+    {name: "Rol",options: {display: true, viewColumns: false, filter: true, 
+      customBodyRender: (nada, row, rowIndex) => {
+        let valorRol = UserDTO.getUsersRols().filter(elem => elem.id === row.rowData[3])[0].rol;
+        return (
+            <span>{valorRol}</span>
+        );
+      }}},
     {name: "Sucursal",options: {display: true, viewColumns: false, filter: false}},
       {
         name: " ",
