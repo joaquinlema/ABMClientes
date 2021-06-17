@@ -49,15 +49,15 @@ export default class UserDTO {
 
     static getUsersRols() {
         const data = [
-            { rol: "Administrador", id: 0 },
-            { rol: "Supervisor", id: 1 },
-            { rol: "Dueño", id: 2 },
-            { rol: "Cajero", id: 3 }]
+            { rol: "Administrador", id: 1 },
+            { rol: "Supervisor", id: 2 },
+            { rol: "Dueño", id: 3 },
+            { rol: "Cajero", id: 4 }]
 
         return data;
     }
 
-    static ToEntity(res, id) {
+    static ToEntity(res,id) {
         let obj = {};
         obj.lastName = res.apellido
         obj.firstName = res.nombre

@@ -191,7 +191,7 @@ const FormularioUsuario = () => {
                                     </Field>
                                 </FormControl>
                                 {errors.rol && touched.rol ? (
-                                    <p className='MuiFormHelperText-root MuiFormHelperText-contained Mui-error'>{errors.rol}</p>) : null}
+                                    <p className='MuiFormHelperText-root MuiFormHelperText-contained Mui-error'  style={{color:'red'}}>{errors.rol}</p>) : null}
                             </Grid>
 
                             <Grid item xs={6} md={6} lg={6} className={classes.grid}>

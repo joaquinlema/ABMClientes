@@ -29,11 +29,19 @@ export const createUser = (user) => async dispatch => {
             }
         }   
         );
-            
-        dispatch({
-            type: SET_NEW_USER,
-            payload: data.result
-        })
+          
+        debugger;
+        if(data.isValid){
+            dispatch({
+                type: SET_NEW_USER,
+                payload: UserDTO.ToEntity(user,data.result.userId)
+            })    
+        }else{
+            dispatch({
+                type: SET_ERROR,
+                payload: 'Usuario no pudo ser guardado'
+            });    
+        }
 
     } catch (error) {
         dispatch({
