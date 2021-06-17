@@ -118,7 +118,7 @@ const FormularioUsuario = () => {
         nombre: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
         apellido: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
         usuario: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
-        rol: Yup.number().moreThan(0,'Debe seleccionar un Rol').required('Required'),
+        rol: Yup.number().moreThan(-1,'Debe seleccionar un Rol').required('Required'),
         contraseña: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
         sucursal: Yup.number().moreThan(0,'Debe seleccionar una Sucursal').required('Required'),
     });
@@ -129,9 +129,9 @@ const FormularioUsuario = () => {
                     nombre: (typeof usuarioEdit.firstName !== 'undefined') ? usuarioEdit.firstName : '', 
                     apellido: (typeof usuarioEdit.lastName !== 'undefined') ? usuarioEdit.lastName : '', 
                     usuario: (typeof usuarioEdit.userCode !== 'undefined') ? usuarioEdit.userCode : '', 
-                    rol: (typeof usuarioEdit.role !== 'undefined') ? usuarioEdit.role : 0, 
+                    rol: (typeof usuarioEdit.role !== 'undefined') ? usuarioEdit.role : -1, 
                     contraseña: (typeof usuarioEdit.passwordHash !== 'undefined') ? usuarioEdit.passwordHash : '', 
-                    sucursal: (typeof usuarioEdit.branchOfficeId !== 'undefined') ? usuarioEdit.branchOfficeId : 0, 
+                    sucursal: (typeof usuarioEdit.branchOfficeId !== 'undefined') ? usuarioEdit.branchOfficeId : -1, 
                     
                 }}
                 validationSchema={SignupSchema}
