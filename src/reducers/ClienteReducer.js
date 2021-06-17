@@ -95,7 +95,7 @@ const ClienteReducer =  (state = initialState, action) => {
             return{
                 ...state,
                 // eslint-disable-next-line eqeqeq
-                clientes: state.clientes.filter(elem => { return (elem.id != action.payload)}),
+                clientes: state.clientes.filter(elem => { return (elem.clientId != action.payload)}),
                 mostrarMensaje: true,
                 textoMensaje: 'Cliente Eliminado Exitosamente.',
                 clienteEliminar: {},
