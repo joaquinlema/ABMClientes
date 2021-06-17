@@ -91,6 +91,7 @@ export const deleteUser = (userId) => async dispatch => {
 
 export const abrirFormularioUsuario = (status) => dispatch => {
     dispatch(getUsuarioRol());
+    dispatch(getSucursales());
     dispatch({
         type: STATUS_FORMULARIO,
         payload: status
