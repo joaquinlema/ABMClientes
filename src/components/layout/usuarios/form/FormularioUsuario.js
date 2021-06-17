@@ -118,9 +118,9 @@ const FormularioUsuario = () => {
         nombre: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
         apellido: Yup.string().min(1, 'Too Short!').max(170, 'Too Long!').required('Required'),
         usuario: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
-        rol: Yup.string().ensure().required('Required'),
+        rol: Yup.number().moreThan(0,'Debe seleccionar un Rol').required('Required'),
         contraseña: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Required'),
-        //sucursal: Yup.string().min(1, 'Too Short!').max(70, 'Too Long!').required('Required'),
+        sucursal: Yup.number().moreThan(0,'Debe seleccionar una Sucursal').required('Required'),
     });
 
     return (
@@ -129,9 +129,9 @@ const FormularioUsuario = () => {
                     nombre: (typeof usuarioEdit.firstName !== 'undefined') ? usuarioEdit.firstName : '', 
                     apellido: (typeof usuarioEdit.lastName !== 'undefined') ? usuarioEdit.lastName : '', 
                     usuario: (typeof usuarioEdit.userCode !== 'undefined') ? usuarioEdit.userCode : '', 
-                    rol: (typeof usuarioEdit.role !== 'undefined') ? usuarioEdit.role : '', 
+                    rol: (typeof usuarioEdit.role !== 'undefined') ? usuarioEdit.role : 0, 
                     contraseña: (typeof usuarioEdit.passwordHash !== 'undefined') ? usuarioEdit.passwordHash : '', 
-                    sucursal: (typeof usuarioEdit.branchOfficeIdDTO !== 'undefined') ? usuarioEdit.branchOfficeId : '', 
+                    sucursal: (typeof usuarioEdit.branchOfficeIdDTO !== 'undefined') ? usuarioEdit.branchOfficeId : 0, 
                     
                 }}
                 validationSchema={SignupSchema}
@@ -219,6 +219,8 @@ const FormularioUsuario = () => {
                                         }
                                     </Field>
                                  </FormControl>   
+                                 {errors.sucursal && touched.sucursal ? (
+                                    <p className='MuiFormHelperText-root MuiFormHelperText-contained Mui-error' style={{color:'red'}}>{errors.sucursal}</p>) : null}
                             </Grid>
 
                             <Grid item xs={12} md={12} lg={12}>
