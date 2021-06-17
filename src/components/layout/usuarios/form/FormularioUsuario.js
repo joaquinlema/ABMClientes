@@ -131,7 +131,7 @@ const FormularioUsuario = () => {
                     usuario: (typeof usuarioEdit.userCode !== 'undefined') ? usuarioEdit.userCode : '', 
                     rol: (typeof usuarioEdit.role !== 'undefined') ? usuarioEdit.role : 0, 
                     contraseña: (typeof usuarioEdit.passwordHash !== 'undefined') ? usuarioEdit.passwordHash : '', 
-                    sucursal: (typeof usuarioEdit.branchOfficeIdDTO !== 'undefined') ? usuarioEdit.branchOfficeId : 0, 
+                    sucursal: (typeof usuarioEdit.branchOfficeId !== 'undefined') ? usuarioEdit.branchOfficeId : 0, 
                     
                 }}
                 validationSchema={SignupSchema}
