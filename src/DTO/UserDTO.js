@@ -30,6 +30,7 @@ export default class UserDTO {
         obj.role = res.role;
         obj.branchOffice = res.branchOfficeDTO.number;
         obj.branchOfficeId = res.branchOfficeDTO.branchOfficeId
+        obj.branchOfficeDTO = res.branchOfficeDTO;
         return obj;
     }
 
@@ -42,7 +43,8 @@ export default class UserDTO {
         obj.role = res.role;
         obj.passwordHash = res.passwordHash;
         obj.branchOffice = res.branchOfficeDTO.number;
-        obj.branchOfficeId = res.branchOfficeDTO.branchOfficeId
+        obj.branchOfficeId = res.branchOfficeDTO.branchOfficeId;
+        obj.branchOfficeDTO = res.branchOfficeDTO;
         return obj;
     }
 

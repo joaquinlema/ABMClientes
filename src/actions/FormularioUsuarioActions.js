@@ -25,16 +25,15 @@ export const createUser = (user) => async dispatch => {
             "branchOfficeId": user.sucursal,
             "branchOffice": {
               "branchOfficeId": user.sucursal,
-              "number": user.sucursal
+              "number": user.sucursalNumber
             }
         }   
         );
           
-        debugger;
         if(data.isValid){
             dispatch({
                 type: SET_NEW_USER,
-                payload: UserDTO.ToEntity(user,data.result.userId)
+                payload: UserDTO.getUser(data.result)
             })    
         }else{
             dispatch({
@@ -62,7 +61,12 @@ export const editUser = (user, id) => async dispatch => {
             "passwordHash": user.contraseña,
             'role': user.rol,
             'userId': id,
-            "branchOfficeId": user.sucursal
+            "branchOfficeId": user.sucursal,
+            "branchNumber": user.sucursalNumber,
+            "branchOffice": {
+                "branchOfficeId": user.sucursal,
+                "number": user.sucursalNumber
+              }
         });
       
         dispatch({

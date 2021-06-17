@@ -132,7 +132,7 @@ const FormularioUsuario = () => {
                     rol: (typeof usuarioEdit.role !== 'undefined') ? usuarioEdit.role : -1, 
                     contraseña: (typeof usuarioEdit.passwordHash !== 'undefined') ? usuarioEdit.passwordHash : '', 
                     sucursal: (typeof usuarioEdit.branchOfficeId !== 'undefined') ? usuarioEdit.branchOfficeId : -1, 
-                    
+                    sucursalNumber:(typeof usuarioEdit.branchOfficeDTO !== 'undefined') ? usuarioEdit.branchOfficeDTO.number : -1,
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values, { setSubmitting,resetForm }) => {
@@ -149,7 +149,7 @@ const FormularioUsuario = () => {
                     }, 500);
                 }}
             >
-                {({ submitForm, isSubmitting, errors, touched, initialValues}) => (
+                {({ submitForm, isSubmitting, errors, touched, initialValues, setFieldValue}) => (
                     <Form >
                         <span className={classes.titulo}>{tituloFormulario}</span>
                         <Grid container spacing={2}>
@@ -207,6 +207,10 @@ const FormularioUsuario = () => {
                                         component={Select}
                                         name="sucursal"
                                         defaultValue={initialValues.sucursal}
+                                        onChange={(data) => {
+                                            let sucursal = sucursales.filter(elem => elem.branchOfficeId === data.target.value)[0]; 
+                                            setFieldValue('sucursal',sucursal.branchOfficeId);setFieldValue('sucursalNumber',sucursal.number); }
+                                        }
                                         variant="outlined"
                                         inputProps={{
                                             id: 'sucursal',
