@@ -154,6 +154,8 @@ export default makeStyles((theme) => ({
       background: '#002563',
       height:'100%',
       position:'absolute',
-      backgroundImage: `url(${imgFondo})`
+      backgroundImage: `url(${imgFondo})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover', 
    }
 }))

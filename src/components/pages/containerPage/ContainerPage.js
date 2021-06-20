@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect,useHistory,useLo
 import { createBrowserHistory } from "history";
 import ClientePage from '../ClientePage';
 import NotFound from '../NotFound';
+import NuevaMoenda from '../../layout/moneda/operacion/NuevaCompra'
 import About from '../About';
 import MonedaPage from '../MonedaPage'
 import UsuarioPagina from '../UsuarioPagina';
@@ -132,6 +133,7 @@ const MiniDrawer = () => {
               <Route path='/about' component={About} />
               <Route path='/Login' component={Login} />
               <Route path='/Moneda' component={MonedaPage} />
+              <Route path='/NuevaMoneda' component={NuevaMoenda} />
               <Route component={NotFound} />
             </Switch>
           </Grid>

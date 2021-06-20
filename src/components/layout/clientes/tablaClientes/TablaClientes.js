@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getClients, setEditClient, setDeleteClient, deleteClient} from '../../../../actions/ClienteActions';
 import EdicionPopUp from '../../utils/popup/EdicionPopUp';
 import ConfirmarPopUp from '../../utils/popup/ConfirmarPopUp';
-import Progress from '../../progress/Progress'
+import Progress from '../../progress/Progress';
 
 const TablaClientes = () => {
 
@@ -44,7 +44,7 @@ const TablaClientes = () => {
             );
           }
         }
-      }
+      },
     ];
 
     const attr = ["alias", "nombre","telefono","mail","direccion","clientId"];

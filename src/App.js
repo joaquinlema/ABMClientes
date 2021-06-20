@@ -6,7 +6,7 @@ import store from './store';
 import { BrowserRouter as Router, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 //import { makeServer } from './server/MyServerMirage';
 import HomePage from './components/pages/containerPage/ContainerPage';
-import MonedaPage from './components/pages/MonedaPage'
+import MonedaPage from './components/pages/NuevaMonedaPage'
 import Login from './components/layout/login/Login'
 import './App.css';
 import WebFont from 'webfontloader';
