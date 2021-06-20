@@ -10,6 +10,7 @@ import Styles from './styles';
 
 const NavMoneda = ({CloseNav,accionCompra}) => {
    const classes = Styles();
+  
     return (
         <Grid  className={classes.root} container direction="row">
                 <Grid item xs={1} sm={1} md={1} lg={1} className={classes.grid}>

@@ -2,12 +2,12 @@ import React, {useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {getClients} from '../../../../actions/ClienteActions';
-import {getCotizacion} from '../../../../actions/FormularioMonedaAction'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect,useHistory,useLocation } from 'react-router-dom';
 import Nav from '../nav/Nav';
 import Formulario from '../form/FormularioMoneda';
 import Resumen from '../resumen/Resumen';
 import Progress from '../../progress/Progress'
-import Styles from './styles'
+import Styles from './styles';
 
 
 const NavMoneda = () => {
@@ -21,19 +21,24 @@ const NavMoneda = () => {
 
     const [nav,setNav]= React.useState(false);
     const classes = Styles();
+    let histories = useHistory();
+    
     const closeNav=()=>{
-        setNav(true);
+        histories.push("/NuevaMoneda"); 
     }
 
      const setCompraValue=()=>{
-         alert("dasdasd");
-     }
+            histories.push("/HistorialCompra"); 
+        }
+        
+     
     if(loading){
         return (
             <Progress></Progress>
         )
     }
   
+   
     
     return (
         <Grid container direction="row">

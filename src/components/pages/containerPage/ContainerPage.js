@@ -9,7 +9,8 @@ import ClientePage from '../ClientePage';
 import NotFound from '../NotFound';
 import NuevaMoenda from '../../layout/moneda/operacion/NuevaCompra'
 import About from '../About';
-import MonedaPage from '../MonedaPage'
+import MonedaPage from '../MonedaPage';
+import HistorialCompra from '../../layout/moneda/PDF/historial/Historial';
 import UsuarioPagina from '../UsuarioPagina';
 import Login from '../../layout/login/Login';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -20,7 +21,8 @@ import SyncAltIcon from '@material-ui/icons/SyncAlt';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import WebIcon from '@material-ui/icons/Web';
 import TelegramIcon from '@material-ui/icons/Telegram';
-import styles from './styles'
+import styles from './styles';
+
 
 
 const MiniDrawer = () => {
@@ -134,6 +136,7 @@ const MiniDrawer = () => {
               <Route path='/Login' component={Login} />
               <Route path='/Moneda' component={MonedaPage} />
               <Route path='/NuevaMoneda' component={NuevaMoenda} />
+              <Route path='/HistorialCompra' component={HistorialCompra} />
               <Route component={NotFound} />
             </Switch>
           </Grid>
