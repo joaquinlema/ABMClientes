@@ -33,7 +33,7 @@ export default function ConfirmarPopUp({status, cerrar, titulo, mensaje, accionB
           <Button size="small" className='cancelar' onClick={handleClose} >
             Cancelar
           </Button>
-          <BotonNuevo accion={() => {accionBoton(); handleClose();}} label={labelBoton} />
+          <BotonNuevo accion={() => {accionBoton(); handleClose();}} classButton={"buttonStyle"} label={labelBoton} />
         </DialogActions>
       </Dialog>
     </Fragment>

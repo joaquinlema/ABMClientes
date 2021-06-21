@@ -4,8 +4,9 @@ import MUIDataTable from "mui-datatables";
 import { Avatar, Chip, Grid, IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import ChipUtils from '../../utils/chip/ChipUtils';
-import HeaderPage from '../../utils/header/HeaderPage';
-import NuevaMoneda from '../nuevaMoneda/NuevaMoneda';
+import HeaderMonedaPage from '../../utils/header/HeaderMonedaPage';
+import NuevaCompra from '../nuevaMoneda/NuevaCompra';
+import NuevaVenta from '../nuevaMoneda/NuevaVenta';
 import Styles from './styles';
  
 
@@ -79,7 +80,7 @@ const TablaMoneda = () => {
     return (
         <Fragment>
             <Grid  container item xs={12} sm={12} md={12} lg={12}>
-                 <HeaderPage titulo={'Moneda'} boton={<NuevaMoneda/>}/>
+                 <HeaderMonedaPage titulo={'Moneda'} botonCompra={<NuevaCompra/>} botonVenta={<NuevaVenta/>} />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
                 <MUIDataTable

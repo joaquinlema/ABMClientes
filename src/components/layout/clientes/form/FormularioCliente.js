@@ -240,7 +240,7 @@ const FormularioCliente = () => {
                                     Cancelar
                                 </Button>
                                 
-                                <BotonNuevo accion={submitForm} label={editStatus ? 'Modificar' : 'Crear'}/>
+                                <BotonNuevo accion={submitForm} classButton={"buttonStyle"} label={editStatus ? 'Modificar' : 'Crear'}/>
                           
                             </Grid>
                         </Grid>

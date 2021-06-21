@@ -23,7 +23,7 @@ const NavMoneda = ({CloseNav,accionCompra}) => {
                     <label className={classes.textGuardar}>Guardar como borrador</label>
                 </Grid>
                 <Grid item xs={3} sm={3} md={3} lg={3} className={classes.grid}>
-                    <BotonComprar label={'Comprar'} accion={accionCompra}/>
+                    <BotonComprar  classButton={"buttonStyle"} label={'Comprar'} accion={accionCompra}/>
                 </Grid>
         </Grid>
     );

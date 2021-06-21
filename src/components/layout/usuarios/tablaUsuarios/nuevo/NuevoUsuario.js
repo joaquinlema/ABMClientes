@@ -8,7 +8,7 @@ const NuevoUsuario = () => {
     const dispatch = useDispatch();
 
     return (
-       <BotonNuevo accion={() => dispatch(abrirFormularioUsuario(true))} label={'Nuevo Usuario'} />
+       <BotonNuevo accion={() => dispatch(abrirFormularioUsuario(true))}   classButton={"buttonStyle"} label={'Nuevo Usuario'} />
     );
 }
 

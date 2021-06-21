@@ -8,7 +8,7 @@ const NuevoCliente = () => {
     const dispatch = useDispatch();
 
     return (
-       <BotonNuevo accion={() => dispatch(abrirFormularioCliente(true))} label={'Nuevo Cliente'} />
+       <BotonNuevo accion={() => dispatch(abrirFormularioCliente(true))}  classButton={"buttonStyle"} label={'Nuevo Cliente'} />
     );
 }
 
