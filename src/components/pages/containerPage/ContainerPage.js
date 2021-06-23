@@ -54,7 +54,7 @@ const MiniDrawer = () => {
         <Toolbar>
           <div className={classes.containerLogin}>
             <IconButton onClick={logoutIn}>
-              <PersonOutlineIcon className={classes.iconoLogin}/><h5 className={classes.textLogin}>{"Hola" +","+sessionStorage.getItem('USER_FINANCIERA')}</h5>
+              <PersonOutlineIcon className={classes.iconoLogin}/><h5 className={classes.textLogin}>{"Hola,"+sessionStorage.getItem('USER_FINANCIERA')}</h5>
             </IconButton>  
           </div>
         </Toolbar>
