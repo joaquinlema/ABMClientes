@@ -8,10 +8,10 @@ const NuevaCompra = () => {
     const dispatch = useDispatch();
     let histories = useHistory();
     const nueva=()=>{
-        histories.push("/NuevaMoneda"); 
+        histories.push("/NuevaCompra"); 
     }
     return (
-       <BotonNuevo   classButton={"buttonStyle"} accion={nueva} label={'Nueva Moneda'} />
+       <BotonNuevo classButton={"buttonStyle"} accion={nueva} label={'Nueva Compra'} />
     );
 }
 

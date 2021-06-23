@@ -5,7 +5,7 @@ export default function AlertUtils(props) {
     const classes = styles();
     return (
         <>
-             <Alert severity={props.TYPE} className={classes[props.CLASS]} >{props.LABEL}</Alert>
+             <Alert severity={props.TYPE} className={classes[props.CLASS]}>{props.LABEL}</Alert>
         </>
     )
 }

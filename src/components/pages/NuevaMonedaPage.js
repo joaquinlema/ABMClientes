@@ -2,10 +2,10 @@ import { Grid } from '@material-ui/core';
 import React from 'react';
 import { useDispatch ,useSelector } from 'react-redux';
 import {abrirFormularioCliente, cerrarMensajeCliente} from '../../actions/ClienteActions'; 
-import NuevaMoneda from '../layout/moneda/operacion/NuevaCompra'
+import NuevaMoneda from '../layout/moneda/operacion/compra/NuevaCompra'
 import Mensaje from '../layout/utils/mensaje/Mensaje';
 
-const MonedaPage = () => {
+const CompraMonedaPage = () => {
 
     const {abrirFormularioStatus, mostrarMensaje, textoMensaje} = useSelector(state => state.ClienteReducer);
     const dispatch = useDispatch();
@@ -23,4 +23,4 @@ const MonedaPage = () => {
     );
 }
 
-export default MonedaPage;
+export default CompraMonedaPage;
