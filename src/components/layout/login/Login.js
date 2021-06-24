@@ -24,7 +24,8 @@ const Login = () => {
     });
 
     if (autorizado) {
-        history.push("/");
+        // history.push("/");
+        history.push('/App/Common');
     }
 
     return (

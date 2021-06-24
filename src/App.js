@@ -5,11 +5,12 @@ import store from './store';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 //import { makeServer } from './server/MyServerMirage';
-import HomePage from './components/pages/containerPage/ContainerPage';
-import MonedaPage from './components/pages/NuevaMonedaPage'
-import Login from './components/layout/login/Login'
+// import HomePage from './components/pages/containerPage/ContainerPage';
+// import MonedaPage from './components/pages/NuevaMonedaPage'
+// import Login from './components/layout/login/Login'
 import './App.css';
 import WebFont from 'webfontloader';
+import MainRoute from './components/route/MainRoute';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,15 +33,16 @@ const App = () => {
   const classes = useStyles();
   return (
     <Provider store={store}>
-      <HashRouter>
         <div className={classes.root}>
-          <Switch>
-            <Route exact={true} path='/' component={HomePage} />
-            <Route path='/Login' component={Login} />
-            <Route path='/Moneda' component={MonedaPage} />
-          </Switch>
+          {/* <HashRouter>
+              <Switch>
+                <Route exact={true} path='/' component={HomePage} />
+                <Route path='/Login' component={Login} />
+                <Route path='/Moneda' component={MonedaPage} />
+              </Switch>
+          </HashRouter> */}
+          <MainRoute />
         </div>
-      </HashRouter>
     </Provider>
   );
 }

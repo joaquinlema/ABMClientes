@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, HashRouter, Switch, Route } from 'react-router-dom';
 import ChequeCompra from '../pages/ChequeCompra';
 import ChequeVenta from '../pages/ChequeVenta';

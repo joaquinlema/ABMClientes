@@ -23,8 +23,7 @@ import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import WebIcon from '@material-ui/icons/Web';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import styles from './styles';
-
-
+import AppRoute from '../../route/AppRoute';
 
 const MiniDrawer = () => {
 
@@ -130,7 +129,7 @@ const MiniDrawer = () => {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Grid container>
-            <Switch>
+            {/* <Switch>
               <Route path='/User' component={UsuarioPagina} />
               <Route path='/Cliente' component={ClientePage} />
               <Route path='/about' component={About} />
@@ -140,7 +139,8 @@ const MiniDrawer = () => {
               <Route path='/HistorialCompra' component={HistorialCompra} />
               <Route path='/NuevaVenta' component={NuevaVenta} />            
               <Route component={NotFound} />
-            </Switch>
+            </Switch> */}
+            <AppRoute />
           </Grid>
         </main>
       </Router>
