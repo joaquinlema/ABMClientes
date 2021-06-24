@@ -20,7 +20,8 @@ export default function CuentaCorriente({CHIP_LABEL,SALDO,POST}) {
             </Grid>
             <Grid item xs={12} md={12} className={classes.gridItem}>
                 <label className={classes.labelPost}>{"Post transacción: "}{POST}</label>
-            </Grid>       
+            </Grid>
+            <Grid item xs={12} md={12} className={classes.gridItem}/>       
         </Grid>
         </>
     )

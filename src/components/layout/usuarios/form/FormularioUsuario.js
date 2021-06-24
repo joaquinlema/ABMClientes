@@ -238,7 +238,7 @@ const FormularioUsuario = () => {
                                     Cancelar
                                 </Button>
                                 
-                                <BotonNuevo  class={"classes.buttonStyle"} accion={submitForm} label={editStatus ? 'Modificar' : 'Crear'}/>
+                                <BotonNuevo  classButton={"buttonStyle"} accion={submitForm} label={editStatus ? 'Modificar' : 'Crear'}/>
                           
                             </Grid>
                         </Grid>

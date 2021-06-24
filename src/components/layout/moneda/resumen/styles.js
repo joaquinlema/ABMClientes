@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
         backgroundColor: '#002563',
         boxShadow: '0px 5px 10px rgba(0, 37, 99, 0.05)',
         borderRadius: '12px',
+        marginLeft:'30px'
     },
     labelResumen:{
         fontFamily: 'Titillium Web',

@@ -29,13 +29,6 @@ const App = () => {
   return (
     <Provider store={store}>
         <div className={classes.root + ' App'}>
-          {/* <HashRouter>
-              <Switch>
-                <Route exact={true} path='/' component={HomePage} />
-                <Route path='/Login' component={Login} />
-                <Route path='/Moneda' component={MonedaPage} />
-              </Switch>
-          </HashRouter> */}
           <MainRoute />
         </div>
     </Provider>

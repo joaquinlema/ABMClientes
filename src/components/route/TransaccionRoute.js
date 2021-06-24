@@ -4,7 +4,6 @@ import { BrowserRouter as Router, HashRouter, Switch, Route } from 'react-router
 import ChequeCompra from '../pages/ChequeCompra';
 import ChequeVenta from '../pages/ChequeVenta';
 import CompraMonedaPage from '../pages/CompraMonedaPage';
-import NotFound from '../pages/NotFound';
 import VentaMonedaPage from '../pages/VentaMonedaPage';
 
 const TransaccionRoute = (props) => {

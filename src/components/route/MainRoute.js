@@ -10,7 +10,6 @@ import Login from '../layout/login/Login';
 import AppContainerPage from '../pages/containerPage/AppContainerPage';
 import TransaccionesContainerPage from '../pages/containerPage/TransaccionesContainerPage';
 import NotFound from '../pages/NotFound';
-import TransaccionRoute from './TransaccionRoute';
 
 const MainRoute = () => {
     return (

@@ -10,6 +10,7 @@ export default makeStyles((theme) => ({
         letterSpacing: '0.18px',
         fontFamily: 'Titillium Web',
         marginLeft: '20px',
-        backgroundColor:'#F5B458'
+        backgroundColor:'#F5B458',
+        width:'92%'
     }
 }))
