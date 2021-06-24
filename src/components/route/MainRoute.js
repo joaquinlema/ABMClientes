@@ -18,7 +18,6 @@ const MainRoute = () => {
             <Switch>
                 <Route exact={true} path='/' component={Login} />
                 <Route path='/Login' component={Login} />
-                {/* <Route path='/App/Common' component={AppRoute} /> */}
                 <Route path='/App/Common/' component={AppContainerPage} />
                 <Route path='/App/Transaccion/' component={TransaccionesContainerPage} />
                 <Route path='/App/' component={NotFound} />
