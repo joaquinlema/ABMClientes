@@ -5,9 +5,6 @@ import IconButtons from '../../utils/iconButton/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Styles from './styles';
 
-
-
-
 const NavMoneda = ({CloseNav,accionCompra,title,textBorrador,labelButton}) => {
    const classes = Styles();
   

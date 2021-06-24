@@ -9,7 +9,7 @@ const ReportesPage = () =>(
         alignItems="center"
         style={{margin:'15px'}}
     >
-       <h2>pagina home</h2>
+       <h2>Reportes Page</h2>
         
     </Grid>
 )

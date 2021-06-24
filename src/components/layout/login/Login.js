@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getLoginUser } from '../../../actions/LoginActions'
 import { Grid, Button, InputLabel, LinearProgress, Hidden, Typography, TextField } from '@material-ui/core';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from "yup";
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -25,7 +25,7 @@ const Login = () => {
 
     if (autorizado) {
         // history.push("/");
-        history.push('/App/Common');
+        history.push('/App/Common/');
     }
 
     return (

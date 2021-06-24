@@ -1,25 +1,31 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, HashRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, HashRouter, Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 import ChequesPage from '../pages/ChequesPage';
 import ClientePage from '../pages/ClientePage';
 import MonedaPage from '../pages/MonedaPage';
-import NotFound from '../pages/NotFound';
 import ParametrosGlobalesPage from '../pages/ParametrosGlobalesPage';
 import ReportesPage from '../pages/ReportesPage';
 import UsuarioPage from '../pages/UsuarioPagina';
+import TransferenciasExteriorPage from '../pages/TransferenciasExteriorPage';
+import IngresoEgresosPage from '../pages/IngresosEgresosPage';
 
 const AppRoute = (props) => {
+
         return (
           <>
-            <Route exact path={props.match.path} component={ReportesPage} />
-            <Route path={`${props.match.path}/Home`} component={ReportesPage} />
-            <Route path={`${props.match.path}/Usuarios`} component={UsuarioPage} />
-            <Route path={`${props.match.path}/Clientes`} component={ClientePage} />
-            <Route path={`${props.match.path}/Monedas`} component={MonedaPage} />
-            <Route path={`${props.match.path}/Cheques`} component={ChequesPage} />
-            <Route path={`${props.match.path}/ParamGlobales`} component={ParametrosGlobalesPage} />
-            <Route component={NotFound} />
+            <Route path={props.location.pathname}>
+              <Redirect to="/App/Common/Reportes" />
+            </Route>
+            <Route path='/App/Common/Reportes' component={ReportesPage} />
+            <Route path='/App/Common/Usuarios' component={UsuarioPage} />
+            <Route path='/App/Common/Clientes' component={ClientePage} />
+            <Route path='/App/Common/Monedas' component={MonedaPage} />
+            <Route path='/App/Common/Cheques' component={ChequesPage} />
+            <Route path='/App/Common/Transferencia' component={TransferenciasExteriorPage} />
+            <Route path='/App/Common/ParamGlobales' component={ParametrosGlobalesPage} />
+            <Route path='/App/Common/IngresoEgreso' component={IngresoEgresosPage} />
+            
           </>
         )
       }
