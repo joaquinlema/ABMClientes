@@ -7,7 +7,8 @@ import {
     Link
 } from "react-router-dom";
 import Login from '../layout/login/Login';
-import MiniDrawer from '../pages/containerPage/ContainerPage';
+import AppContainerPage from '../pages/containerPage/AppContainerPage';
+import TransaccionesContainerPage from '../pages/containerPage/TransaccionesContainerPage';
 import NotFound from '../pages/NotFound';
 import TransaccionRoute from './TransaccionRoute';
 
@@ -18,8 +19,8 @@ const MainRoute = () => {
                 <Route exact={true} path='/' component={Login} />
                 <Route path='/Login' component={Login} />
                 {/* <Route path='/App/Common' component={AppRoute} /> */}
-                <Route path='/App/Common/' component={MiniDrawer} />
-                <Route path='/App/Transaccion/' component={TransaccionRoute} />
+                <Route path='/App/Common/' component={AppContainerPage} />
+                <Route path='/App/Transaccion/' component={TransaccionesContainerPage} />
                 <Route path='/App/' component={NotFound} />
                 <Route component={NotFound} />
             </Switch>

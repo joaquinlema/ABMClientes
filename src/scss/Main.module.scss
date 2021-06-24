@@ -1,0 +1,35 @@
+
+.App{
+
+    .MuiAppBar-colorPrimary{    
+        background: #FFFFFF;
+    }
+    
+    .NavBar{
+        h5{
+            font-family: Titillium Web;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 24px;
+            /* identical to box height, or 109% */
+            letter-spacing: 0.18px;
+            /* 00. On Surface / High Emphasis */
+            color: #002563;
+        }
+
+        span{
+                    /* Body 1 bold */
+            font-family: Titillium Web;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 18px;
+            /* identical to box height, or 112% */
+            text-align: right;
+            letter-spacing: 0.5px;
+            /* 01. Primary/900 */
+            color: #002563;
+        }
+    }
+}

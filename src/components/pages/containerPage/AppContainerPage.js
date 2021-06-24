@@ -17,7 +17,7 @@ import TelegramIcon from '@material-ui/icons/Telegram';
 import styles from './styles';
 import AppRoute from '../../route/AppRoute';
 
-const MiniDrawer = () => {
+const AppContainerPage = () => {
 
   const classes = styles();
   let histories = useHistory();
@@ -25,7 +25,6 @@ const MiniDrawer = () => {
   const {autorizado}  = useSelector(state => state.LoginReducer);
   // eslint-disable-next-line no-unused-vars
   const [open, setOpen] = React.useState(true);
-  const history = createBrowserHistory();
   let { url } = useRouteMatch();
 
   if (!autorizado && !sessionStorage.getItem('USER_FINANCIERA')) {
@@ -41,7 +40,7 @@ const MiniDrawer = () => {
 
   return (
     <div className={classes.root}>
-      <Router history={history}>
+      
       <CssBaseline />
       <AppBar className={clsx(classes.appBar, { [classes.appBarShift]: open, })}>
         <Toolbar>
@@ -61,7 +60,7 @@ const MiniDrawer = () => {
             </Grid>
             <Grid item xs={12} md={12} className={classes.gridReporte}>
               <List>
-              <ListItem button component={Link} to={`${url}Reportes`} >
+              <ListItem button component={Link} to={`${url}/Reportes`} >
                 <ListItemIcon ><AccountBalanceIcon className={classes.icono} /></ListItemIcon>
                 <ListItemText className={classes.titleLink}  primary="Reporte" />
               </ListItem>
@@ -71,11 +70,11 @@ const MiniDrawer = () => {
           <Grid item xs={12} md={12}>
           <List>
             <label className={classes.label}>COMPRA/VENTA</label>
-            <ListItem button component={Link} to={`${url}Monedas`}  >
+            <ListItem button component={Link} to={`${url}/Monedas`}  >
               <ListItemIcon ><AttachMoneyIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink}  primary="Moneda" />
             </ListItem>
-            <ListItem button component={Link} to={`${url}Cheques`}  >
+            <ListItem button component={Link} to={`${url}/Cheques`}  >
               <ListItemIcon ><WebIcon className={classes.icono} /></ListItemIcon>
               <ListItemText  className={classes.titleLink}  primary="Cheques" />
             </ListItem>
@@ -84,7 +83,7 @@ const MiniDrawer = () => {
           <Divider className={classes.divider} />
           <Grid item xs={12} md={12}>
           <List>
-            <ListItem button component={Link} to={`${url}Transferencia`}  >
+            <ListItem button component={Link} to={`${url}/Transferencia`}  >
               <ListItemIcon ><TelegramIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink} >Transferencia <br></br> al exterior</ListItemText>
             </ListItem>
@@ -93,7 +92,7 @@ const MiniDrawer = () => {
           <Divider className={classes.divider} />
           <Grid item xs={12} md={12}>
           <List>
-            <ListItem button component={Link} to={`${url}IngresoEgreso`} >
+            <ListItem button component={Link} to={`${url}/IngresoEgreso`} >
               <ListItemIcon ><SyncAltIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink} >Ingreso y <br></br> egresos</ListItemText>
             </ListItem>
@@ -111,7 +110,7 @@ const MiniDrawer = () => {
               <ListItemIcon ><PersonOutlineIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink}  >Usuarios</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to={`${url}ParamGlobales`}  >
+            <ListItem button component={Link} to={`${url}/ParamGlobales`}  >
               <ListItemIcon ><TuneIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink}  >Parametros<br></br>globales</ListItemText>
             </ListItem>
@@ -122,14 +121,12 @@ const MiniDrawer = () => {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Grid container>
-            <Switch>
               <AppRoute />
-            </Switch>
           </Grid>
         </main>
-      </Router>
+     
     </div>
   );
 }
 
-export default MiniDrawer;
+export default AppContainerPage;

@@ -10,14 +10,10 @@ import VentaMonedaPage from '../pages/VentaMonedaPage';
 const TransaccionRoute = (props) => {
         return (
           <>
-            <Route exact path={props.match.path} component={NotFound} />
-            <Route path={`${props.match.path}/Moneda`} component={NotFound} />
-            <Route path={`${props.match.path}/Cheque`} component={NotFound} />
-            <Route path={`${props.match.path}/Moneda/Compra`} component={CompraMonedaPage} />
-            <Route path={`${props.match.path}/Moneda/Venta`} component={VentaMonedaPage} />
-            <Route path={`${props.match.path}/Cheque/Compra`} component={ChequeCompra} />
-            <Route path={`${props.match.path}/Cheque/Venta`} component={ChequeVenta} />
-            <Route component={NotFound} />
+            <Route path='/App/Transaccion/Moneda/Compra' component={CompraMonedaPage} />
+            <Route path='/App/Transaccion/Moneda/Venta' component={VentaMonedaPage} />
+            <Route path='/App/Transaccion/Cheque/Compra' component={ChequeCompra} />
+            <Route path='/App/Transaccion/Cheque/Venta' component={ChequeVenta} />
           </>
         )
       }

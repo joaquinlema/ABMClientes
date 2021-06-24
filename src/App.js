@@ -2,15 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles'
 import store from './store';
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-//import { makeServer } from './server/MyServerMirage';
-// import HomePage from './components/pages/containerPage/ContainerPage';
-// import MonedaPage from './components/pages/NuevaMonedaPage'
-// import Login from './components/layout/login/Login'
 import './App.css';
 import WebFont from 'webfontloader';
 import MainRoute from './components/route/MainRoute';
+import './scss/Main.module.scss';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +28,7 @@ const App = () => {
   const classes = useStyles();
   return (
     <Provider store={store}>
-        <div className={classes.root}>
+        <div className={classes.root + ' App'}>
           {/* <HashRouter>
               <Switch>
                 <Route exact={true} path='/' component={HomePage} />

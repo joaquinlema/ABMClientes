@@ -14,7 +14,7 @@ const AppRoute = (props) => {
 
         return (
           <>
-            <Route path={props.location.pathname}>
+            <Route path='/App/Common/'>
               <Redirect to="/App/Common/Reportes" />
             </Route>
             <Route path='/App/Common/Reportes' component={ReportesPage} />
