@@ -102,11 +102,11 @@ const AppContainerPage = () => {
           <Grid item xs={12} md={12}>
           <List>
             <label className={classes.label}>ADMINISTRACION</label>
-            <ListItem button component={Link} to={`${url}Clientes`} >
+            <ListItem button component={Link} to={`${url}/Clientes`} >
               <ListItemIcon ><PeopleAltOutlinedIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink}  >Clientes</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to={`${url}Usuarios`}  >
+            <ListItem button component={Link} to={`${url}/Usuarios`}  >
               <ListItemIcon ><PersonOutlineIcon className={classes.icono} /></ListItemIcon>
               <ListItemText className={classes.titleLink}  >Usuarios</ListItemText>
             </ListItem>
