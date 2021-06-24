@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '36px',
         color: '#5974FB',
         marginTop:'53px'
+    },
+    grid:{
+        marginLeft:'10px'
     }
 }));
 
@@ -23,7 +26,7 @@ const HeaderMonedaPage = ({titulo, botonCompra,botonVenta}) => {
                 <span className={classes.titulo}>{titulo}</span>
             </Grid>
             <Grid item xs={6} sm={6} md={6} lg={6} container justify="flex-end">
-                <Grid item xs={6} md={6}>
+                <Grid item xs={6} md={6} >
                     {botonCompra}
                 </Grid>
                 <Grid item xs={6} md={6}>

@@ -8,6 +8,7 @@ import FormularioVenta from '../../form/venta/FormularioVenta';
 import Resumen from '../../resumen/Resumen';
 import Progress from '../../../progress/Progress';
 import { makeStyles } from '@material-ui/core/styles';
+import Historial from './Historial';
 const useStyles = makeStyles((theme) => ({
     grid: {
       marginTop: '60px',
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const NuevaVenta = () => {
+const HistorialPage = () => {
     const dispatch = useDispatch();
     const {loading} = useSelector(state => state.ClienteReducer);
     useEffect(() => {
@@ -27,7 +28,6 @@ const NuevaVenta = () => {
        
     }, []);
 
-    const [nav,setNav]= React.useState(false);
      const classes = useStyles();
     let histories = useHistory();
     
@@ -35,9 +35,7 @@ const NuevaVenta = () => {
         histories.push("/NuevaMoneda"); 
     }
 
-     const setCompraValue=()=>{
-            histories.push("/HistorialPage"); 
-        }
+    
         
      
     if(loading){
@@ -51,17 +49,15 @@ const NuevaVenta = () => {
     return (
         <Grid container direction="row">
             <Grid item xs={12} sm={12} md={12} lg={12} >
-            <Nav CloseNav={closeNav} accionCompra={setCompraValue} title={"Nueva Venta"} textBorrador={"Guardar como borrador"} labelButton={'Vender'}></Nav> 
+            <Nav CloseNav={closeNav} accionCompra={closeNav} title={"Historial"} textBorrador={"Guardar como borrador"} labelButton={'Vender'}></Nav> 
             </Grid>
             <Grid container item xs={2} sm={2} md={2} lg={2} className={classes.grid}/>
             <Grid  item xs={7} sm={7} md={7} lg={7} className={classes.grid}>
-                <FormularioVenta compra={setCompraValue}/>
+             <Historial/>
             </Grid>
-            <Grid item xs={3} sm={3} md={3} lg={3} className={classes.grid}>
-                <Resumen></Resumen>
-            </Grid>
+            <Grid item xs={3} sm={3} md={3} lg={3} className={classes.grid}></Grid>
         </Grid>
     );
 }
 
-export default NuevaVenta;
+export default HistorialPage;

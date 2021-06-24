@@ -14,8 +14,11 @@ const useStyles = makeStyles((theme) => ({
     },
     gridResumen:{
         marginTop: '30px',
+    },
+    gridForm:{
+        marginTop: '60px',
+        marginLeft:'30px'
     }
-  
 }))
 
 const NuevaCompra = () => {
@@ -36,7 +39,7 @@ const NuevaCompra = () => {
     }
 
      const setCompraValue=()=>{
-            histories.push("/HistorialCompra"); 
+            histories.push("/HistorialPage"); 
         }
         
      
@@ -51,12 +54,14 @@ const NuevaCompra = () => {
     return (
         <Grid container direction="row">
             <Grid item xs={12} sm={12} md={12} lg={12} >
-               {(!nav) ? <Nav CloseNav={closeNav} accionCompra={setCompraValue} title={"Nueva Compra"} textBorrador={"Guardar como borrador"} labelButton={'Comprar'}></Nav> : <Grid></Grid>}
+              <Nav CloseNav={closeNav} accionCompra={setCompraValue} title={"Nueva Compra"} textBorrador={"Guardar como borrador"} labelButton={'Comprar'}></Nav>
             </Grid>
-            <Grid container item xs={9} sm={9} md={9} lg={9} className={classes.grid}>
+            <Grid container item xs={2} sm={2} md={2} lg={2} className={classes.grid}/>
+            <Grid  item xs={6} sm={6} md={6} lg={6} className={classes.grid}>
                 <Formulario compra={setCompraValue}></Formulario>
             </Grid>
-            <Grid item xs={3} sm={3} md={3} lg={3} className={classes.gridResumen}>
+            <Grid  item xs={1} sm={1} md={1} lg={1} className={classes.grid}/>
+            <Grid item xs={3} sm={3} md={3} lg={3} className={classes.grid}>
                 <Resumen></Resumen>
             </Grid>
         </Grid>

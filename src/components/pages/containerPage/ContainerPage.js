@@ -11,7 +11,7 @@ import NuevaCompra from '../../layout/moneda/operacion/compra/NuevaCompra';
 import NuevaVenta from '../../layout/moneda/operacion/venta/NuevaVenta';
 import About from '../About';
 import MonedaPage from '../MonedaPage';
-import HistorialCompra from '../../layout/moneda/PDF/historial/Historial';
+import HistorialPage from '../../layout/moneda/PDF/historial/HistorialPage';
 import UsuarioPagina from '../UsuarioPagina';
 import Login from '../../layout/login/Login';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -60,7 +60,7 @@ const MiniDrawer = () => {
         </Toolbar>
       </AppBar>
       <Router history={history}>
-        <Drawer variant="permanent" className={clsx(classes.drawer, { [classes.drawerOpen]: open,})} classes={{ paper: clsx({ [classes.drawerOpen]: open, }), }}>
+        <Drawer variant="permanent" className={clsx(classes.drawer, {[classes.drawerOpen]: open,})} classes={{ paper: clsx({ [classes.drawerOpen]: open, }), }}>
             <Grid container> 
             <Grid item xs={12} md={12}>
             <h5 className={classes.titleSistema}>
@@ -137,7 +137,7 @@ const MiniDrawer = () => {
               <Route path='/Login' component={Login} />
               <Route path='/Moneda' component={MonedaPage} />
               <Route path='/NuevaCompra' component={NuevaCompra} />
-              <Route path='/HistorialCompra' component={HistorialCompra} />
+              <Route path='/HistorialPage' component={HistorialPage} />
               <Route path='/NuevaVenta' component={NuevaVenta} />            
               <Route component={NotFound} />
             </Switch>
